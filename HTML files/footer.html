@@ -4,9 +4,185 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>footer</title> 
+    <title>footer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+   
+   
 </head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Ubuntu', sans-serif;
+    }
+    .container{
+        color: white;
+        padding: 40px;
+        padding-bottom: 10px;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+    }
+    .info{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    .infoBox{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 3%;
+    }
+    .icon{
+       color: rgb(223, 129, 21);
+       margin-right: 10px;
+    }
+    .footInfo{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    .block{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        /* width: 20%; */
+        justify-self: center;
+        /* margin: auto; */
+    }
+    .head{
+        text-align: center;
+        margin-bottom: 0;
+        font-size: 20px;
+    }
+    ul{
+        list-style: none;
+        margin: 0;
+        color: hwb(0 81% 14%);
+    }
+    ul li{
+        margin-top: 10px;
+    }
+    .footer{
+       text-align: center;
+        margin-top: 20px;
+    }
+    .icons{
+        display: flex;
+        justify-content: center;
+       margin-top: 10px;
+    }
+    @media screen and (max-width: 700px) {
+        .info{
+            flex-direction: column;
+        }
+        .infoBox{
+            margin-left: 20px;
+            margin-top: 14px;
+        }
+        .footInfo{
+            flex-direction: column;
+            margin-top: 10%;
+            margin-bottom: 20%;
+        }
+        .block{
+           margin: auto;
+            margin-top: 5%;
+        }
+        .icon{
+            margin: 5px;
+        }
+        ul{
+            margin: auto    ;
+        }
+
+    }  
+</style>
 <body>
+    <div class="container">
+        <div class="info">
+            <div class="infoBox">
+                <div class="icon">
+                    <i class="fa-sharp fa-solid fa-location-dot fa-2xl"></i>
+                </div>
+                <div class="iconinfo">
+                    <p>322, Opposite Taj Hotel, Navi Mumbai-220022</p>
+                </div>
+            </div>
+
+            <div class="infoBox">
+                <div class="icon">
+                    <i class="fa-solid fa-phone fa-2xl"></i>
+                </div>
+                <div class="iconinfo">
+                    <p>+0121 225413</p>
+                </div>
+            </div>
+            <div class="infoBox">
+                <div class="icon">
+                    <i class="fa-solid fa-envelope fa-2xl"></i>
+                </div>
+                <div class="iconinfo">
+                   <p>exclusive@fitwell.in</p>
+                </div>
+            </div>
+
+          </div>
+         
+
+          <div class="footInfo">
+            <div class="block">
+                <div class="head">
+                    <img src="https://ajay-dhangar.github.io/gym.com/img/logo.png" alt="" srcset="">
+                </div>
+                <ul>
+                    <li>Lorem ipsum dolor, sit amet consectetur </li>
+                </ul>    
+                        <div class="icons">
+                            <div class="icon"><i class="fa-brands fa-instagram"></i></div>
+                            <div class="icon"><i class="fa-brands fa-facebook"></i></div>
+                            <div class="icon"><i class="fa-brands fa-twitter"></i></div>
+                            <div class="icon"><i class="fa-brands fa-linkedin"></i></div>
+                        </div>
+              
+                
+            </div>
+            <div class="block">
+                <div class="head">
+                    <h3>UseFul Links</h3>
+                </div>
+                <ul>
+                    <li>About</li>
+                    <li>Contact</li>
+                    <li>Blogs</li>
+                </ul>
+            </div>
+            <div class="block">
+                <div class="head">
+                    <h3>Support</h3>
+                </div>
+                <ul>
+                    <li>Login</li>
+                    <li>My Account</li>
+                    <li>My Blogs</li>
+                </ul>
+
+            </div>
+          </div>
+
+          <div class="footer">
+            <footer>&copy; Copyrights @ <span id="date"></span> All rights reserved.</footer>
+          </div>
+
+          
+   
+    </div>
     
+    <script src="../JavaScript files/footer.js"></script>
+    <script src="https://kit.fontawesome.com/8f8e3c7113.js" crossorigin="anonymous"></script>
 </body>
 </html>
