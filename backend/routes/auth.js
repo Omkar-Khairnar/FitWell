@@ -46,7 +46,6 @@ router.post('/createuser',async(req, res)=>{
 
 //Route 2:Login a user using POST : No Login required
 router.post('./login', async(req, res)=>{
-    
         var email=req.body.email;
         var password=req.body.password;
         let success=false;
@@ -55,27 +54,21 @@ router.post('./login', async(req, res)=>{
         if(!user){
           return  res.status(400).json({success:success, message:"Please Login with Valid Credentials."})
         }
-
         const comparePassword=await bcrypt.compare(password, user.password);
 
         if(!comparePassword){
             return res.status(400).json({success:success, message:"Please Login with Valid Credentials."})
         }
-
         const data={
             user:{
                 id:user.id,
             }
         }
-
         var authtoken=await jwt.sign(data, JWT_SECRET);
-
         if(authtoken){
             success=true;
         }
-
         res.json({success, authtoken});
-
     }
     catch(err){
         console.log(err);
