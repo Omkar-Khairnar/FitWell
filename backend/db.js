@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 mongoose.set('strictQuery', false);
-const mongoURI='mongodb+srv://Omkar_FitWell:Omkar158@fitwelldatabase.njyspot.mongodb.net/?retryWrites=true&w=majority'
+const mongoURI='mongodb+srv://Omkar_FitWell:Omkar158@fitwelldatabase.njyspot.mongodb.net/Fitwell?retryWrites=true&w=majority'
 
 const connectToMongo=()=>{
     mongoose

@@ -3,7 +3,7 @@ const User=require('../models/User')
 const router=express.Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-
+ 
 const JWT_SECRET="FFSD_FITWELL_PROJECT";
 
 //Route 1: Sign Up(Create New User) :No Login required
@@ -75,3 +75,7 @@ router.post('./login', async(req, res)=>{
         res.status(400).json({Error:err.message})
     }
 })
+
+
+
+module.exports=router
