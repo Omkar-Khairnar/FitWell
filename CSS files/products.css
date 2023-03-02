@@ -1,3 +1,7 @@
+body{
+    background-color: rgb(24, 24, 24);
+}
+
 .carousel-item img{
     height: 30vw;
 }
@@ -128,4 +132,20 @@
     background-color: rgba(214, 92, 10, 0.932);
     /* background-color: rgba(107, 32, 5, 0.24); */
     border: orangered;
+}
+
+
+.btn-decs-container{
+    border: 0px;
+    padding: 0%;
+}
+
+.modal{
+    background-color: rgba(14, 13, 13, 0.788);
+}
+.modal-body{
+    background-color: rgba(59, 58, 58, 0.973);
+}
+.modal-header{
+    background-color: orangered;
 }
