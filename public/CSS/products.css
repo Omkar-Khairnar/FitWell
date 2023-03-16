@@ -19,6 +19,7 @@ body{
     align-self: center;
     vertical-align: middle;
     margin: 0%;
+    font-size: 200%;
 }
 .latestTradings{
     padding-left: 15px;
@@ -32,10 +33,14 @@ body{
 
 .latestProductsCategory{
     display: flex;
-    width: 300px;
+    /* width: 300px; */
+    margin-right: 20px;
     justify-content: space-between;
     align-items: center;
     color: rgb(248, 102, 48);
+    font-size: 100%;
+    font-size: ;
+
 }
 #latestProductsCategory{
     margin-right: 5px;
@@ -144,8 +149,21 @@ body{
     background-color: rgba(14, 13, 13, 0.788);
 }
 .modal-body{
-    background-color: rgba(59, 58, 58, 0.973);
+    background-color: rgb(219, 215, 215);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .modal-header{
     background-color: orangered;
+    border-bottom: 0px;
+}
+.modal-product-img{
+    display: flex;
+}
+
+
+.modal-footer{
+    color: aliceblue;
+    background-color: rgb(20, 17, 17);
 }
