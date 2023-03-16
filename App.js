@@ -21,6 +21,9 @@ app.get('/footer', (req,res)=>{
 app.get('/products', (req,res)=>{
     res.render('products')
 })
+app.get('/signin', (req,res)=>{
+    res.render('signup_signin')
+})
 
 
 app.use('/api/auth', require('./routes/auth'))
