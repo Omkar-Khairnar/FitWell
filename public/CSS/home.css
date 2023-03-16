@@ -1,0 +1,251 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* background-color: black; */
+}
+
+.navbar{
+    padding  : 0;
+    font-weight: bold;
+   
+}
+.navbar-collapse ul a{
+    color: rgb(223, 212, 212);
+    
+}
+#carousel{
+    background-color: black;
+    
+}
+.container-fluid{
+   background-color: black;
+   height: 5vw;
+   opacity: 0.5;
+   font-family: 'Mulish', sans-serif;
+   font-weight: 700;
+}
+
+.container-fluid:hover{
+    opacity: 0.8;
+}
+.container-fluid img{
+    opacity: 1;
+    height: auto;
+    width: auto;
+}
+.nav-item a{
+    transition: 0.5s;
+}
+.nav-item a:hover{
+    color: #f36100;
+    /* transform: rotateY(180deg); */
+    text-decoration-line: line-through;
+    scale: 1.1;
+}
+
+.sliderContainer img{
+    height: 100vh;
+    width: 100vw;
+}
+#infobutton{
+    /* height: 200px; */
+    position: absolute;
+    top: 87%;
+    left: 50%; 
+}
+#infobutton button{
+    color: white;
+    font-weight: bold;
+    background-color:#f36100;
+    padding: 10px 10px;
+    height: 60px;
+    border: none;
+}
+#frontinfo{
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 63%;
+}
+.firstline{
+    font-family: 'Mulish', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    font-stretch:ultra-expanded;
+}
+.secondline{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 60px;
+    font-weight: bolder;
+}
+#colorToOrange{
+    color: #f36100;
+}
+
+.reasonToChoose{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding-top: 6%;
+    padding-bottom: 6%;
+}
+.reasonToChoose-firstLine{
+    color: #ea3209ef;
+    font-family: 'Mulish', sans-serif; 
+}
+.reasonToChoose-secondLine{
+    font-family: 'Secular One', sans-serif;
+}
+.resonToChoose-reasonItems{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.resonToChoose-Item{
+    width: 20rem;
+}
+.resonToChoose-Item h5{
+    font-family: 'Secular One', sans-serif;
+}
+.resonToChoose-Item i{
+    color:#ea3209ef;
+   
+}
+.ourClasses{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(28, 28, 28);
+    color: white;
+    text-align: center;
+}
+.ouClasses-cards{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.ourClasses-firstLine{
+    font-family: 'Mulish', sans-serif;
+    font-stretch: extra-expanded;
+    color: #f36100;
+}
+.ourClasses-secondLine{
+    font-family: 'Secular One', sans-serif;
+}
+.card-desc-1{
+    color: #f36100;
+    font-family: 'Mulish', sans-serif;
+}
+.card-desc-2{
+    font-family: 'Secular One', sans-serif;
+}
+.ouClasses-cards-2{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-bottom: 5rem;
+}
+.appointment{
+    background-color: black;
+    padding-bottom: 5em ;
+    position: relative;
+}
+.appoint-img img{
+    width: 100vw;
+    height: 70vh;
+    opacity: 0.9;
+}
+.appoint-info{
+   position: absolute;
+   color: white;
+   top: 40%; 
+   left: 10%;
+   box-sizing: border-box;
+   text-align: center;
+   margin: auto;
+}
+.appoint-firstLine h2{
+    font-family: 'Secular One', sans-serif;
+    font-size: 48px; 
+    font-weight: 700;
+}
+.appoint-secondline{
+    font-family: 'Mulish', sans-serif;
+    font-weight: 700;
+}
+
+@media screen and  (max-width: 900px) {
+    .container-fluid{
+        height: 9vw;
+    }
+    .sliderContainer img{
+        height: 100vh;
+        width: 100vw;
+    }
+    #frontinfo{
+        top: 50%;
+        left: 58%;
+    }
+    .firstline{
+        font-size: 25px;
+    }
+    .secondline{
+        font-size: 55px;
+    }
+}
+@media screen and  (max-width: 680px) {
+    .container-fluid{
+        height: 10vw;
+    }
+    .sliderContainer img{
+        height: 100vh;
+        width: 100vw;
+    }
+    #frontinfo{
+        top: 45%;
+        left: 50%;
+    }
+    .firstline{
+        font-size: 22px;
+    }
+    .secondline{
+        font-size: 47px;
+    }
+    .appoint-info{
+        top: 30%;
+        left: 5%;
+    }
+    .appoint-firstLine h2{
+        font-size: 40px;
+    }
+}
+@media screen and  (max-width: 520px) {
+    #frontinfo{
+        top: 45%;
+        left: 47%;
+    }
+    .firstline{
+        font-size: 20px;
+    }
+    .secondline{
+        font-size: 43px;
+    }
+}
+@media screen and  (max-width: 400px) {
+    .container-fluid{
+        height: 12vw;
+    }
+    .sliderContainer img{
+        height: 100vh;
+        width: 100vw;
+    }
+    .firstline{
+        font-size: 18px;
+    }
+    .secondline{
+        font-size: 40px;
+    }
+    #infobutton button{
+        height: 40px;
+    }
+}
