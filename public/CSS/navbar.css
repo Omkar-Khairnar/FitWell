@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* background-color: black; */
+}
+.navbar1{
+    padding  : 0;
+    font-weight: bold;
+   
+}
+.collap ul a{
+    color: rgb(223, 212, 212);
+    
+}
+.container-fluid1{
+    background-color: black;
+    height: 5vw;
+    opacity: 0.5;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 700;
+ }
+ 
+ .container-fluid1:hover{
+     opacity: 0.8;
+ }
+ .container-fluid1 img{
+     opacity: 1;
+     height: auto;
+     width: auto;
+ }
+ .nav-item1 a{
+     transition: 0.5s;
+ }
+ .nav-item1 a:hover{
+     color: #f36100;
+     /* transform: rotateY(180deg); */
+     text-decoration-line: line-through;
+     scale: 1.1;
+ }
