@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* background-color: black; */
+}
+
+.topbg img{
+    height: 30vw;
+    width: 100vw;
+    opacity: 0.5;
+}
+.topbg{
+    position: relative;
+}
+.toptitle{
+    font-size: 68px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    font-family: 'Anton', sans-serif;
+    font-stretch: extra-expanded;
+}

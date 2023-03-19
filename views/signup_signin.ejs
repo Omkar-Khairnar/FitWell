@@ -11,22 +11,23 @@
     <h2>Join With US</h2>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="#">
+		<form method="POST" action="api/auth/createuser">
 			<h1>Create Account</h1>
-			<input type="text" placeholder="Name" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-            <input type="number" placeholder="Age">
-            <input type="text" placeholder="Gender">
-			<button>Sign Up</button>
+			<input type="text" id="namec" placeholder="Name" name="name"/>
+			<input type="email" id="emailc" placeholder="Email" name="email"/>
+			<input type="password" id="passwordc" placeholder="Password" name="password"/>
+            <input type="number" id="agec" placeholder="Age" name="age">
+            <input type="text" id="genderc" placeholder="Gender" name="gender" >
+			<input type="url" id="image" name="image" placeholder="Enter Profile Image Url">
+			<button id="signupbtn">Sign Up</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="#">
+		<form method="POST" action="api/auth/login">
 			<h1>Sign in</h1>
-			<input type="email" placeholder="Email"/>
-			<input type="password" placeholder="Password" />    
-			<button>Sign In</button>
+			<input type="email" id="emaill" placeholder="Email" name="email"/>
+			<input type="password" id="passwordl" placeholder="Password" name="password" />    
+			<button  id="signinbtn">Sign In</button>
 		</form>
 	</div>
 	<div class="overlay-container">
@@ -47,6 +48,6 @@
 
 
 
-<script src="../JavaScript files/login_signup.js"></script>
+<script src="./JS/login_signup.js"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@ router.post('/createuser',async(req, res)=>{
         if(prevuser){
           return res.status(400).json({success:success, message:"Email ID already registerd. Please Login"});
         }
-        
+         
         const pass=req.body.password;
         const salt=await bcrypt.genSaltSync(10);
         const secpass=await bcrypt.hashSync(pass, salt);
@@ -24,7 +24,8 @@ router.post('/createuser',async(req, res)=>{
             email:req.body.email,
             password:secpass,
             age:req.body.age,
-            gender:req.body.gender
+            gender:req.body.gender,
+            image:req.body.image,
         })
 
         const data={
@@ -35,7 +36,7 @@ router.post('/createuser',async(req, res)=>{
 
         var authtoken=jwt.sign(data, JWT_SECRET);
         success=true;
-
+        console.log(authtoken);
         res.status(201).json({success:success, authtoken});
     }
     catch(err){
@@ -45,14 +46,15 @@ router.post('/createuser',async(req, res)=>{
 })
 
 //Route 2:Login a user using POST : No Login required
-router.post('./login', async(req, res)=>{
+router.post('/login', async(req, res)=>{
         var email=req.body.email;
         var password=req.body.password;
         let success=false;
     try{
-        let user=await User.findOne({email});
+        console.log(email);
+        let user=await User.findOne({email:email});
         if(!user){
-          return  res.status(400).json({success:success, message:"Please Login with Valid Credentials."})
+          return  res.status(400).json({success:success, message:"User Not Exist"})
         }
         const comparePassword=await bcrypt.compare(password, user.password);
 
@@ -68,7 +70,9 @@ router.post('./login', async(req, res)=>{
         if(authtoken){
             success=true;
         }
-        res.json({success, authtoken});
+        res.status(201).json({success, authtoken});
+        // localStorage.setItem('authtoken', authtoken)
+        // console.log(authtoken);
     }
     catch(err){
         console.log(err);

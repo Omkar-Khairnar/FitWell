@@ -8,7 +8,7 @@
     padding: 40px;
     padding-bottom: 10px;
     background-color: black;
-    display: flex;
+    display: flex; 
     flex-direction: column;
 }
 .info{
@@ -67,6 +67,15 @@ ul li{
 }
 .block1{
     margin-top: 20px;
+}
+.block li a{
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.block li a:hover{
+    color: rgb(223, 129, 21);
 }
 @media screen and (max-width: 700px) {
     .info{

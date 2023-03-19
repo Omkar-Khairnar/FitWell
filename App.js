@@ -4,6 +4,7 @@ var cors=require('cors')
 connectToMongo();
 
 const app=express();
+app.use(express.urlencoded({extended: true}))
 
 const PORT=5000;
 app.set('view engine', 'ejs');
@@ -24,6 +25,14 @@ app.get('/products', (req,res)=>{
 app.get('/signin', (req,res)=>{
     res.render('signup_signin')
 })
+app.get('/about', (req,res)=>{
+    res.render('about')
+})
+app.get('/reviews', (req,res)=>{
+    res.render('reviews')
+})
+
+
 
 
 app.use('/api/auth', require('./routes/auth'))
