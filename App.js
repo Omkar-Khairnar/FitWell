@@ -31,7 +31,9 @@ app.get('/about', (req,res)=>{
 app.get('/reviews', (req,res)=>{
     res.render('reviews')
 })
-
+app.get('/services', (req,res)=>{
+    res.render('services')
+})
 
 
 
