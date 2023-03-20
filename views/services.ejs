@@ -21,30 +21,11 @@
   </head>
 
   <body>
-    <div class="nav">
-      <nav>
-        <h2 class="logo">FIT<span>Well</span></h2>
-        <ul>
-          <li><a href="#"> Home</a></li>
-          <li><a href="#"> Classes</a></li>
-          <li><a href="#"> Our Team </a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#"> Products</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
 
-        <button
-          id="butt1"
-          onclick="window.location.href='http://127.0.0.1:5500/pricing.html';"
-          type="button"
-        >
-          Premium
-        </button>
-      </nav>
-    </div>
+    <%- include('navbar') %>
+
     <div class="bannerimage">
-      <h2>SERVICES</h2>
+
     </div>
 
     <h2 id="se1">WHAT WE DO ?</h2>
@@ -157,80 +138,10 @@
       </div>
     </section>
 
-    <div class="container-2">
-      <div class="info">
-        <div class="infoBox">
-          <div class="icon">
-            <i class="fa-sharp fa-solid fa-location-dot fa-2xl"></i>
-          </div>
-          <div class="iconinfo">
-            <p>322, Opposite Taj Hotel, Navi Mumbai-220022</p>
-          </div>
-        </div>
 
-        <div class="infoBox">
-          <div class="icon">
-            <i class="fa-solid fa-phone fa-2xl"></i>
-          </div>
-          <div class="iconinfo">
-            <p>+0121 225413</p>
-          </div>
-        </div>
-        <div class="infoBox">
-          <div class="icon">
-            <i class="fa-solid fa-envelope fa-2xl"></i>
-          </div>
-          <div class="iconinfo">
-            <p>exclusive@fitwell.in</p>
-          </div>
-        </div>
-      </div>
+<%- include('footer') %>
 
-      <div class="footInfo">
-        <div class="block block1">
-          <div class="head">
-            <img src="/img/logo.png" alt="" srcset="" />
-          </div>
-          <ul>
-            <li></li>
-          </ul>
-          <div class="icons">
-            <div class="icon"><i class="fa-brands fa-instagram"></i></div>
-            <div class="icon"><i class="fa-brands fa-facebook"></i></div>
-            <div class="icon"><i class="fa-brands fa-twitter"></i></div>
-            <div class="icon"><i class="fa-brands fa-linkedin"></i></div>
-          </div>
-        </div>
-        <div class="block">
-          <div class="head">
-            <h2></h2>
-          </div>
-          <ul>
-            <li>About</li>
-            <li>Contact</li>
-            <li>Blogs</li>
-          </ul>
-        </div>
-        <div class="block">
-          <div class="head">
-            <h2>Support</h2>
-          </div>
-          <ul>
-            <li>Login</li>
-            <li>My Account</li>
-            <li>My Blogs</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer">
-        <footer>
-          &copy; Copyrights @ <span id="date"></span> All rights reserved.
-        </footer>
-      </div>
-    </div>
-
-    <script src="../JavaScript files/footer.js"></script>
+  
     <script
       src="https://kit.fontawesome.com/8f8e3c7113.js"
       crossorigin="anonymous"
