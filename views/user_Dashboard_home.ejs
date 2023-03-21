@@ -110,9 +110,17 @@
 
             <div class="bmi-calculator">
 
+              <div class="bmi-output">
+                <div id="bmi-result">
+                  <h3 id="bmi-value"><i class="fas fa-2x fa-smile"></i></h3>
+                  <h3 class="bmi-comment"></h3>
+                </div>
+                <button type="button" onclick="calculateBMI()">Check You BMI</button>
+              </div>
               <div class="personal-info">
-                <h2>Height : x cm</h2>
-                <h2>weight : y kg</h2>
+
+                <h2>Height : <span id="bmi-height">182</span> cm</h2>
+                <h2>Weight : <span id="bmi-weight">57</span> kg</h2>
               </div>
             </div>
           </div>
