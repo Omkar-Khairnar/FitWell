@@ -20,6 +20,35 @@ $(document).ready(function () {
 
 
 
+const weightInput = document.getElementById('bmi-weight').innerText;
+const heightInput = document.getElementById('bmi-height').innerText;
+const resultDiv = document.getElementById('bmi-value');
+const commentdiv = document.getElementsByClassName('bmi-comment');
+
+function calculateBMI() {
+
+  const weight = parseFloat(weightInput);
+  const height = parseFloat(heightInput) / 100; // convert to meters
+
+  const bmi = (weight / (height * height));
+  let comment;
+  if(bmi < 18.5){
+    comment = "Under Weight";
+  }else if(bmi < 25){
+    comment= "Noraml weight";
+
+  }else if(bmi < 30){
+    comment = "Overweight";
+  }else{
+    comment = "Obesity";
+  }
+
+
+  resultDiv.innerHTML = `${bmi.toFixed(2)}`;
+  commentdiv.innerHTML = comment;
+}
+
+
 
 
 

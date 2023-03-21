@@ -458,11 +458,54 @@ h1, .h1 {
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 48%;
-  /* padding: 20px 30px; */
   align-items: center;
   border-radius: 5%;
   
+}
+
+.bmi-output {
+  height: 100%;
+  width: 50%;
+}
+
+
+#bmi-value{
+  position: relative;
+  /* top: 40%; */
+  text-align: center;
+}
+
+#bmi-result {
+  background-image: linear-gradient(yellow, orangered);
+  font-size: xx-large;
+  color: #15171a;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 60%;
+  width: 100%;
+  border: 5px solid rgb(231, 65, 0);
+  border-radius: 50%;
+  /* height: ; */
+}
+
+.bmi-comment {
+  color: #0c0e11;
+  text-align: center;
+}
+
+.bmi-output button {
+  border-radius: 5px;
+  border: 2px solid grey;
+  height: 40px;
+  width: 100%;
+  background-color: #ec4503;
+  font-size: medium;
+  color: rgb(253, 253, 205);
 }
 .content-header {
   display: flex;
