@@ -1,7 +1,8 @@
 const connectToMongo=require('./db')
 const express=require('express')
 var cors=require('cors')
-connectToMongo();
+const db = require("./data/sqlite_db");
+// connectToMongo();
 
 const app=express();
 app.use(express.urlencoded({extended: true}))
@@ -13,7 +14,7 @@ app.use(express.static('public'))
 app.use(express.json());
 
 app.get('/', (req,res)=>{
-   res.render('home')
+   res.render('home') 
 })
 
 app.get('/footer', (req,res)=>{
@@ -30,6 +31,9 @@ app.get('/about', (req,res)=>{
 })
 app.get('/reviews', (req,res)=>{
     res.render('reviews')
+})
+app.get('/classes', (req,res)=>{
+    res.render('classes')
 })
 
 
