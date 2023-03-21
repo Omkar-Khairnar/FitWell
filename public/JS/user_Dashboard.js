@@ -21,7 +21,42 @@ $(document).ready(function () {
 
 
 
+// BMI calculator
 
+const weightInput = document.getElementById('bmi-weight').innerText;
+const heightInput = document.getElementById('bmi-height').innerText;
+const resultDiv = document.getElementById('bmi-value');
+const commentdiv = document.getElementsByClassName('bmi-comment');
+
+function calculateBMI() {
+
+  const weight = parseFloat(weightInput);
+  const height = parseFloat(heightInput) / 100; // convert to meters
+
+  const bmi = (weight / (height * height));
+  let comment;
+  if(bmi < 18.5){
+    comment = "Under Weight";
+  }else if(bmi < 25){
+    comment= "Noraml weight";
+
+  }else if(bmi < 30){
+    comment = "Overweight";
+  }else{
+    comment = "Obesity";
+  }
+
+
+  resultDiv.innerHTML = `${bmi.toFixed(2)}`;
+  commentdiv.innerHTML = comment;
+}
+
+
+
+
+
+
+//Put a Review
 
 const form = document.getElementById('review-form');
 const nameInput = document.getElementById('name');
@@ -31,9 +66,7 @@ const errorText = document.getElementsByClassName("error").innerText;
 
 
 form.addEventListener('submit', e => {
-    // e.preventDefault();
-    
-    // Validate inputs
+
     const error = document.createElement('p');
     error.className = 'error';
     
@@ -55,9 +88,5 @@ form.addEventListener('submit', e => {
         return;
     }
 
-    // Submit review
-    // (Add your submission code here)
-
-    // Clear form
     form.reset();
 });
