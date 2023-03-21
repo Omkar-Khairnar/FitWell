@@ -2,58 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABOUT US</title>
-    <link rel="stylesheet" href="./CSS/about.css">
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <title>CONTACT US</title>
+   
+    <link rel="stylesheet" href="./CSS/contact.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 
-</head> 
+</head>
 <body>
+
     <%- include('navbar') %>
-    <div class="topbg">
-        <img src="https://ajay-dhangar.github.io/gym.com/img/breadcrumb-bg.jpg" alt="" srcset="">
-        <div class="toptitle">
-            ABOUT US
-        </div>
+
+<div class="container">
+    <h1>CONNECT WITH US</h1>
+    <br>
+    <p>We would love to respond to your queries and help you succeed<br>Feel free to get in touch with us</p>
+<div class="contact-box">
+    <div class="contact-left">
+        <h3>Tell us about you</h3>
+
+        <form>
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Name</label>
+                    <input type="text" placeholder="Shivang Singh" name="name">
+                </div>
+                    <div class="input-group">
+                    <label>Phone</label>
+                    <input type="text" placeholder="+91 7865 7878 99" name="phone">
+                    </div>
+                </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                        <label>Email</label>
+                        <input type="text" placeholder="xyz@okmail.com" name="email">
+                            </div>
+                        <div class="input-group">
+                            <label>Subject</label>
+                            <input type="text" placeholder="Product Demo" name="subject">
+                        </div>
+                    </div>
+                <label>Message</label>
+                <textarea rows="5" placeholder="What's on your mind" name="message"></textarea>
+
+            <button type="submit">Send</button>
+
+        </form>
     </div>
 
-    <div class="reasonToChoose">
-        <div class=" reasonToChoose-firstLine">
-            <h3>WHY TO CHOOSE</h3>
-        </div>
-        <div class=" reasonToChoose-secondLine">
-            <h2>PUSH YOUR LIMITS FORWARD</h2>
-        </div>
-    <div class="resonToChoose-reasonItems">
-        <div class="resonToChoose-Item">
-          <i class="fa-solid fa-dumbbell fa-2xl my-5"></i>
-          <h5>MODERN EQUIPMENTS</h5>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis odit fugiat error rem blanditiis maiores impedit culpa beatae.</p>
-        </div>
-        <div class="resonToChoose-Item">
-        <i class="fa-brands fa-nutritionix fa-2xl my-5"></i> 
-          <h5>HEALTHY NUTRITION PLAN</h5>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis odit fugiat error rem blanditiis maiores impedit culpa beatae.</p>
-        </div>
-        <div class="resonToChoose-Item">
-          <i class="fa-solid fa-table  fa-2xl my-5"></i>
-          <h5>TRAINING PLAN</h5>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis odit fugiat error rem blanditiis maiores impedit culpa beatae.</p>
-        </div>
-        <div class="resonToChoose-Item">
-          <i class="fa-solid fa-handshake-angle  fa-2xl my-5"></i>
-          <h5>UNIQUE TO YOUR NEEDS</h5>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis odit fugiat error rem blanditiis maiores impedit culpa beatae.</p>
-        </div>
-      </div>
-    </div>
+    <div class="contact-right">
+        <h3>Reach Us</h3>
+        <table>
+            <tr>
+                <td>Email</td>
+                <td>xyz@okmail.com</td>
+            </tr>
 
-    <%- include('ourTeam'); %>
-    
-    <%- include('footer') %>
+            <tr>
+                <td>Phone</td>
+                <td>+91 7865 7878 99</td>
+            </tr>
+
+            <tr>
+                <td>Address</td>
+                <td>603 , Gnan Marg , SriCity<br>
+                Some layout , Some Road , Sricity<br>
+                Andhra Pradesh 517645</td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+</div>
+
+<%- include('footer') %>
+
 </body>
 </html>

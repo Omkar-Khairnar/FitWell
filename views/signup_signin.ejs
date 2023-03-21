@@ -8,22 +8,27 @@
     <link rel="stylesheet" href="./CSS/login_signup.css">
 </head>
 <body>
-    <h2>Join With US</h2>
+    <h2 >Join With US</h2>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form method="POST" action="api/auth/createuser">
+		<form name="regform" onsubmit="Validation()" method="POST" action="api/auth/createuser">
 			<h1>Create Account</h1>
 			<input type="text" id="namec" placeholder="Name" name="name"/>
+			<span class="regemailver">Enter Valid Email Address.</span>
 			<input type="email" id="emailc" placeholder="Email" name="email"/>
+			<span class="regpassver">Enter minimum eight characters, at least one letter, one number and one special character:.</span>
 			<input type="password" id="passwordc" placeholder="Password" name="password"/>
+			<span class="regagever">Minimum Valid Age >10</span>
             <input type="number" id="agec" placeholder="Age" name="age">
             <input type="text" id="genderc" placeholder="Gender" name="gender" >
+            <input type="text" id="weightc" placeholder="Weight" name="weight" >
+            <input type="text" id="heightc" placeholder="Height(in cm)" name="height" >
 			<input type="url" id="image" name="image" placeholder="Enter Profile Image Url">
-			<button id="signupbtn">Sign Up</button>
-		</form>
+			<button id="signupbtn" >Sign Up</button>
+		</form>  
 	</div>
 	<div class="form-container sign-in-container">
-		<form method="POST" action="api/auth/login">
+		<form name="logform" method="POST" action="api/auth/login">  
 			<h1>Sign in</h1>
 			<input type="email" id="emaill" placeholder="Email" name="email"/>
 			<input type="password" id="passwordl" placeholder="Password" name="password" />    
