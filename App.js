@@ -42,8 +42,24 @@ app.get('/services', (req,res)=>{
 //     res.render('contact')
 // })
 
-
-
+app.get('/user_Dashboard_home', (req,res)=>{
+    res.render('user_Dashboard_home')
+})
+app.get('/user_Dashboard_myorders', (req,res)=>{
+    res.render('user_Dashboard_myorders')
+})
+app.get('/user_Dashboard_payment', (req,res)=>{
+    res.render('user_Dashboard_payment')
+})
+app.get('/user_Dashboard_reviews', (req,res)=>{
+    res.render('user_Dashboard_reviews')
+})
+app.get('/user_Dashboard_cart', (req,res)=>{
+    res.render('user_Dashboard_cart')
+})
+app.get('/user_Dashboard_profile', (req,res)=>{
+    res.render('user_Dashboard_profile')
+})
 
 app.use('/api/auth', require('./routes/auth'))
 
