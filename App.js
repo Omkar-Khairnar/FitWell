@@ -99,8 +99,8 @@ app.get('/about', (req,res)=>{
 app.get('/reviews', (req,res)=>{
     res.render('reviews')
 })
-app.get('/classes', (req,res)=>{
-    res.render('classes')
+app.get('/centres', (req,res)=>{
+    res.render('centres')
 })
 app.get('/services', (req,res)=>{
     res.render('services')
@@ -124,8 +124,17 @@ app.get('/user_Dashboard_reviews', (req,res)=>{
 app.get('/user_Dashboard_cart', (req,res)=>{
     res.render('user_Dashboard_cart')
 })
+app.get('/user_dashboard_workout', (req,res)=>{
+    res.render('user_dashboard_workout')
+})
+app.get('/user_Dashboard_challenges', (req,res)=>{
+    res.render('user_dashboard_challenges')
+})
 app.get('/user_Dashboard_profile', (req,res)=>{
     res.render('user_Dashboard_profile')
+})
+app.get('/user_dashboard_navbar', (req,res)=>{
+    res.render('user_dashboard_navbar')
 })
 
 // app.use('/api/auth', require('./routes/auth'))
