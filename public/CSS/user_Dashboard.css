@@ -666,7 +666,8 @@ input[type="submit"]:hover {
 
 
 .past-order-heading {
-  color: #ff7300;
+  color: #000000;
+  font-weight: bold;
   margin-bottom: 15px;
 }
 
@@ -674,6 +675,7 @@ input[type="submit"]:hover {
   border-radius: 10PX ;
   /* border: 1px solid #d63d00; */
   background-color: rgb(40, 39, 39);
+  background-image: linear-gradient(rgb(43, 30, 9),rgb(40, 39, 39));
   margin-bottom: 15px;
   color: white;
 }
@@ -1065,9 +1067,17 @@ input[type="submit"]:hover {
   border: rgb(34, 22, 0) solid 2px;
   border-radius: 5px;
 }
-.col {
+.col-workout {
   padding :0%;
   border-radius: 5px;
+}
+.challenge-img :hover{
+  border-radius: 10px;
+  border: 5px solid rgb(179, 71, 0);
+}
+.workout-img :hover{
+  border-radius: 10px;
+  border: 5px solid rgb(179, 71, 0);
 }
 
 @media (max-width :400px) {
@@ -1086,7 +1096,11 @@ input[type="submit"]:hover {
   padding: 0%;
 }
 
-
+.challenge-address-text {
+  padding: 10px 10px;
+  text-align: center;
+  font-size: large;
+}
 .challenge-modal-body-border{
   margin: 10px 10px;
   display: flex;
@@ -1134,44 +1148,54 @@ input[type="submit"]:hover {
 }
 .challenge-effect-234 {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   width: 100%;
   height: auto;
 }
+.challenge-progress-tracking{
+  display: flex;
+  /* grid-auto-flow: row; */
+  position: inherit;
+  margin: 10px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.challenge-progress-box {
+  height: 50px;
+  width: 50px;
+  border: 3px solid orangered;
+  margin: 5px;
+  background-color: #a9a9a9;
+}
+
+.challenge-progrss-tracking-count{
+  padding: 0%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0%;
+  padding: 2%;
+  margin-top: 5px;
+  font-weight: bold;
+}
+.challenge-progress-tracking-check {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
 .challenge-effects-container{
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   width: 100%;
 }
 
-.challenge-how-it-work {
-  margin-top: 10px;
-  text-align: center;
-  font-size: 200%;
-  font-weight: bold;
-  color: #201c1a;
-  font-family: 'Times New Roman', Times, serif;
-
+.modal-body{
+  height : 100%;
 }
 
-.challenge-effect-explain{
-  align-self: center;
-  text-align: center;
-  margin: 20px;
-  background-color: #aaaaaa;
-  border-top :2px solid rgb(0, 0, 0);
-}
-
-@media (max-width :790px) {
-  .challenge-effects-container{
-    flex-direction: column;
-  }
-}
-@media (max-width :470px) {
-  .challenge-effect-234{
-    display: grid;
-  }
-}
 
 @media (max-width :400px) {
   .challenge-heading{
