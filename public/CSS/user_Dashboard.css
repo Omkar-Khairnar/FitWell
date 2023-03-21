@@ -628,3 +628,85 @@ input[type="submit"]:hover {
 	margin-top: 5px;
   text-align: center;
 }
+
+
+
+
+
+
+/* User dashboard  ------->   Yours Orders Page Css */
+
+
+.past-order-heading {
+  color: #fad6b9;
+  margin-bottom: 15px;
+}
+
+.card{
+  border-radius: 10PX ;
+  border: 1px solid #d63d00;
+  background-color: rgb(224, 224, 182);
+  margin-bottom: 15px;
+}
+
+.past-order-product-name{
+  color: #d33f05;
+  font-weight: 600;
+}
+
+.card-body {
+  display: flex;
+  max-height: 250px;
+}
+#past-order-item-img {
+  height: 100%;
+  width: auto;
+  margin: 0%;
+  padding: 0%;
+  border-radius: 10PX;
+  border: 2px solid #d63d00;
+}
+
+
+@media (max-width:992px) {
+  #past-order-item-img {
+    height: 150px;
+    width:  150px;
+
+  }
+}
+@media (max-width:600px) {
+  
+  .card-body {
+    height: auto;
+    flex-direction: column;
+    max-height:fit-content;
+
+  }
+  #past-order-item-img {
+    height: 200px;
+    width: auto;
+
+  }
+  .card-footer{
+    font-size: 20px;
+    flex-direction: column;
+  }
+  .card-footer a{
+    margin: 5px 10%;
+    width: 130px;
+    vertical-align: middle;
+    align-self: center;
+
+  }
+}
+
+@media (max-width:345px) {
+  .card-footer h5{
+    font-size: medium;
+    align-self: center;
+    font-weight: 550;
+
+  }
+}
+  

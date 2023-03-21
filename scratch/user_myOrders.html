@@ -6,6 +6,13 @@
   <title>a</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://kit.fontawesome.com/1b34bcf330.css" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../public/CSS/user_Dashboard.css" />
 </head>
 
@@ -17,13 +24,13 @@
         <header>
           <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
           <div class="brand-logo-img">
-            <a href="../HTML files/user_Dashboard.html" class="brand-logo">
-              <img src="../img/Logo/logo1.png" alt="logo" class="logo-img">
+            <a href="../scratch/user_Dashboard.html" class="brand-logo">
+              <img src="../public/img/Logo/logo1.png" alt="logo" class="logo-img">
             </a>
           </div>
         </header>
         <nav class="dashboard-nav-list">
-          <a href="../HTML files/user_Dashboard.html" class="dashboard-nav-item active">
+          <a href="../scratch/user_Dashboard.html" class="dashboard-nav-item active">
             <i class="fas fa-home"></i>
             Home
           </a>
@@ -39,11 +46,11 @@
               User
             </a>
             <div class="dashboard-nav-dropdown-menu">
-              <a href="../HTML files/user_profile.html" class="dashboard-nav-dropdown-item">
+              <a href="../scratch/user_profile.html" class="dashboard-nav-dropdown-item">
                 <i class="fas fa-user"></i>
                 Profile
               </a>
-              <a href="../HTML files/user_MyReviews.html" class="dashboard-nav-dropdown-item">
+              <a href="../scratch/user_MyReviews.html" class="dashboard-nav-dropdown-item">
                 <i class="fas fa-comment"></i>
                 Put a Review
               </a>
@@ -55,17 +62,17 @@
               Shopping
             </a>
             <div class="dashboard-nav-dropdown-menu">
-              <a href="../HTML files/user_cart.html" class="dashboard-nav-dropdown-item">
+              <a href="../scratch/user_cart.html" class="dashboard-nav-dropdown-item">
                 <i class="fas fa-shopping-cart"></i>
-                <h4>Cart</h4>
+                Cart
               </a>
-              <a href="../HTML files/user_payment.html" class="dashboard-nav-dropdown-item">
+              <a href="../scratch/user_payment.html" class="dashboard-nav-dropdown-item">
                 <i class="fas fa-money-check-alt"></i>
-                <h4>Payment</h4>
+                Payment
               </a>
-              <a href="../HTML files/user_myOrders.html" class="dashboard-nav-dropdown-item">
+              <a href="../scratch/user_myOrders.html" class="dashboard-nav-dropdown-item">
                 <i class="fas fa-bag-shopping"></i>
-                <h4>Order</h4>
+                Your Orders
               </a>
             </div>
           </div>
@@ -86,8 +93,8 @@
 
     <div class="dashboard-app">
       <header class="dashboard-toolbar">
-        <a href="../HTML files/home.html" class="menu-toggle"><i class="fas fa-bars"></i></a>
-        <a href="../HTML files/home.html" class="menu-toggle">
+        <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
+        <a href="#" class="menu-toggle">
           <i class="fas fa-right-from-bracket"></i>
           Logout
         </a>
@@ -95,42 +102,98 @@
 
       <!-- Orders  -->
       <div class="dashboard-content" id="dashboard-review-page">
+        <h1 class="past-order-heading">Your Orders</h1>
         <div class="container">
-          <div class="container-review">
-            <h1>Leave a Review</h1>
-            <form id="review-form">
-              <label for="comment">Comment:</label>
-              <textarea id="comment" name="comment" rows="5" ></textarea>
-              
-              <label for="rating">Rating:</label>
-              <select id="rating" name="rating" >
-                <option id="rating" value="">
-                  Select
-                </option>
-                <option id="star" value="5">* * * * *</option>
-                <option id="star" value="4">* * * *</option>
-                <option id="star" value="3">* * *</option>
-                <option id="star" value="2">* *</option>
-                <option id="star" value="1">*</option>
-              </select>
-              <div class="review-submit">
-              <input class="submit-review" type="submit" value="Submit">
+          <div class="container-orders">
+
+
+
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="past-order-img">
+                  <img src="../public/img/product_13-300x300.jpg" alt="order-item-img" id="past-order-item-img">
+                </div>
+                <div class="past-order-info-content">
+                  <h3 class="past-order-product-name">Product Name</h3>
+                  <h5 class="past-order-price">Price : $ <span id="order-price">300</span></h5>
+                  <h5 class="past-order-date">Ordered On : <span id="order-date">12 March 2022</span></h5>
+                  <p class="past-order-delivery">Delivery Address : <span id="order-address">Lorem ipsum dolor sit amet
+                      consectetur adipisicing elit. Sit voluptates optio consequatur ipsa vitae libero.</span></p>
+                </div>
               </div>
-              
-            </form>
+            </div>
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="past-order-img">
+                  <img src="../public/img/product_13-300x300.jpg" alt="order-item-img" id="past-order-item-img">
+                </div>
+                <div class="past-order-info-content">
+                  <h3 class="past-order-product-name">Product Name</h3>
+                  <h5 class="past-order-price">Price : $ <span id="order-price">300</span></h5>
+                  <h5 class="past-order-date">Ordered On : <span id="order-date">12 March 2022</span></h5>
+                  <p class="past-order-delivery">Delivery Address : <span id="order-address">Lorem ipsum dolor sit amet
+                      consectetur adipisicing elit. Sit voluptates optio consequatur ipsa vitae libero.</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="past-order-img">
+                  <img src="../public/img/product_13-300x300.jpg" alt="order-item-img" id="past-order-item-img">
+                </div>
+                <div class="past-order-info-content">
+                  <h3 class="past-order-product-name">Product Name</h3>
+                  <h5 class="past-order-price">Price : $ <span id="order-price">300</span></h5>
+                  <h5 class="past-order-date">Ordered On : <span id="order-date">12 March 2022</span></h5>
+                  <p class="past-order-delivery">Delivery Address : <span id="order-address">Lorem ipsum dolor sit amet
+                      consectetur adipisicing elit. Sit voluptates optio consequatur ipsa vitae libero.</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="past-order-img">
+                  <img src="../public/img/product_13-300x300.jpg" alt="order-item-img" id="past-order-item-img">
+                </div>
+                <div class="past-order-info-content">
+                  <h3 class="past-order-product-name">Product Name</h3>
+                  <h5 class="past-order-price">Price : $ <span id="order-price">300</span></h5>
+                  <h5 class="past-order-date">Ordered On : <span id="order-date">12 March 2022</span></h5>
+                  <p class="past-order-delivery">Delivery Address : <span id="order-address">Lorem ipsum dolor sit amet
+                      consectetur adipisicing elit. Sit voluptates optio consequatur ipsa vitae libero.</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="past-order-img">
+                  <img src="../public/img/product_13-300x300.jpg" alt="order-item-img" id="past-order-item-img">
+                </div>
+                <div class="past-order-info-content">
+                  <h3 class="past-order-product-name">Product Name</h3>
+                  <h5 class="past-order-price">Price : $ <span id="order-price">300</span></h5>
+                  <h5 class="past-order-date">Ordered On : <span id="order-date">12 March 2022</span></h5>
+                  <p class="past-order-delivery">Delivery Address : <span id="order-address">Lorem ipsum dolor sit amet
+                      consectetur adipisicing elit. Sit voluptates optio consequatur ipsa vitae libero.</span></p>
+                </div>
+              </div>
+            </div>
+
+
+
+
+          </div>
         </div>
-
-
       </div>
-
-
     </div>
-  </div>
-  <!-- scripts -->
-  <script src="https://kit.fontawesome.com/1b34bcf330.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="../JavaScript files/user_Dashboard.js"></script>
+    <!-- scripts -->
+    <script src="https://kit.fontawesome.com/1b34bcf330.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../JavaScript files/user_Dashboard.js"></script>
 </body>
 
 </html>

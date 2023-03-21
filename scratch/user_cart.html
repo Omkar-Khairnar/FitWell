@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>a</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" />
+  <link rel="stylesheet" href="../public/CSS/user_Dashboard.css" />
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <div class="dashboard">
+    <div class="dashboard-nav">
+      <div class="top">
+        <header>
+          <a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
+          <div class="brand-logo-img">
+            <a href="../scratch/user_Dashboard.html" class="brand-logo">
+              <img src="../public/img/Logo/logo1.png" alt="logo" class="logo-img">
+            </a>
+          </div>
+        </header>
+        <nav class="dashboard-nav-list">
+          <a href="../scratch/user_Dashboard.html" class="dashboard-nav-item active">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+
+          <!-- <a href="#" class="dashboard-nav-item active">
+            <i class="fas fa-tachometer-alt"></i>
+            dashboard
+          </a> -->
+
+          <div class="dashboard-nav-dropdown">
+            <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+              <i class="fas fa-users"></i>
+              User
+            </a>
+            <div class="dashboard-nav-dropdown-menu">
+              <a href="../scratch/user_profile.html" class="dashboard-nav-dropdown-item">
+                <i class="fas fa-user"></i>
+                Profile
+              </a>
+              <a href="../scratch/user_MyReviews.html" class="dashboard-nav-dropdown-item">
+                <i class="fas fa-comment"></i>
+                Put a Review
+              </a>
+            </div>
+          </div>
+          <div class="dashboard-nav-dropdown">
+            <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+              <i class="fas fa-tags"></i>
+              Shopping
+            </a>
+            <div class="dashboard-nav-dropdown-menu">
+              <a href="../scratch/user_cart.html" class="dashboard-nav-dropdown-item">
+                <i class="fas fa-shopping-cart"></i>
+                Cart
+              </a>
+              <a href="../scratch/user_payment.html" class="dashboard-nav-dropdown-item">
+                <i class="fas fa-money-check-alt"></i>
+                Payment
+              </a>
+              <a href="../scratch/user_myOrders.html" class="dashboard-nav-dropdown-item">
+                <i class="fas fa-bag-shopping"></i>
+                Your Orders
+              </a>
+            </div>
+          </div>
+      </div>
+
+      <!-- <div class="bottom">
+        <div class="nav-item-divider"></div>
+        <a href="#" class="dashboard-nav-item">
+          <i class="fas fa-right-from-bracket"></i>
+          Logout
+        </a>
+      </div> -->
+
+      </nav>
+    </div>
+
+
+
+
+    <div class="dashboard-app">
+      <header class="dashboard-toolbar">
+        <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
+        <a href="#" class="menu-toggle">
+          <i class="fas fa-right-from-bracket"></i>
+          Logout
+        </a>
+      </header>
+
+
+      
+
+
+      <!-- User Profile  -->
+      <div class="dashboard-content" id="dashboard-review-page">
+        <div class="container">
+          <div class="container-review">
+            <h1>Leave a Review</h1>
+            <form id="review-form">
+              <!-- <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required> -->
+              <label for="comment">Comment:</label>
+              <textarea id="comment" name="comment" rows="5" ></textarea>
+              
+              <label for="rating">Rating:</label>
+              <select id="rating" name="rating" >
+                <option id="rating" value="">
+                  Select
+                </option>
+                <option id="star" value="5">* * * * *</option>
+                <option id="star" value="4">* * * *</option>
+                <option id="star" value="3">* * *</option>
+                <option id="star" value="2">* *</option>
+                <option id="star" value="1">*</option>
+              </select>
+              <div class="review-submit">
+              <input class="submit-review" type="submit" value="Submit">
+              </div>
+              
+            </form>
+        </div>
+
+
+      </div>
+
+
+    </div>
+  </div>
+  <!-- partial -->
+  <script src="https://kit.fontawesome.com/1b34bcf330.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="../JavaScript files/user_Dashboard.js"></script>
+</body>
+
+</html>
