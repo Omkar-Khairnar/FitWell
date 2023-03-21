@@ -12,74 +12,7 @@
 <body>
   <!-- partial:index.partial.html -->
   <div class="dashboard">
-    <div class="dashboard-nav">
-      <div class="top">
-        <header>
-          <a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
-          <div class="brand-logo-img">
-            <a href="./user_Dashboard_home" class="brand-logo">
-              <img src="./img/Logo/logo1.png" alt="logo" class="logo-img">
-            </a>
-          </div>
-        </header>
-        <nav class="dashboard-nav-list">
-          <a href="./user_Dashboard_home" class="dashboard-nav-item active">
-            <i class="fas fa-home"></i>
-            Home
-          </a>
-          <a href="#" class="dashboard-nav-item active">
-            <i class="fas fa-dumbbell"></i>
-            Home WorkOut
-          </a>
-
-          <div class="dashboard-nav-dropdown">
-            <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-              <i class="fas fa-users"></i>
-              User
-            </a>
-            <div class="dashboard-nav-dropdown-menu">
-              <a href="./user_Dashboard_profile" class="dashboard-nav-dropdown-item">
-                <i class="fas fa-user"></i>
-                Profile
-              </a>
-              <a href="./user_Dashboard_reviews" class="dashboard-nav-dropdown-item">
-                <i class="fas fa-comment"></i>
-                Put a Review
-              </a>
-            </div>
-          </div>
-          <div class="dashboard-nav-dropdown">
-            <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-              <i class="fas fa-tags"></i>
-              Shopping
-            </a>
-            <div class="dashboard-nav-dropdown-menu">
-              <a href="./user_Dashboard_cart" class="dashboard-nav-dropdown-item">
-                <i class="fas fa-shopping-cart"></i>
-                Cart
-              </a>
-              <a href="./user_Dashboard_payment" class="dashboard-nav-dropdown-item">
-                <i class="fas fa-money-check-alt"></i>
-                Payment
-              </a>
-              <a href="./user_dashboard_myorders" class="dashboard-nav-dropdown-item">
-                <i class="fas fa-bag-shopping"></i>
-                Your Orders
-              </a>
-            </div>
-          </div>
-      </div>
-
-      <!-- <div class="bottom">
-        <div class="nav-item-divider"></div>
-        <a href="#" class="dashboard-nav-item">
-          <i class="fas fa-right-from-bracket"></i>
-          Logout
-        </a>
-      </div> -->
-
-      </nav>
-    </div>
+    <%- include('user_dashboard_navbar.ejs'); %>
     <div class="dashboard-app">
       <header class="dashboard-toolbar">
         <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>

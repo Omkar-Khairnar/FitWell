@@ -57,8 +57,17 @@ app.get('/user_Dashboard_reviews', (req,res)=>{
 app.get('/user_Dashboard_cart', (req,res)=>{
     res.render('user_Dashboard_cart')
 })
+app.get('/user_dashboard_workout', (req,res)=>{
+    res.render('user_dashboard_workout')
+})
+app.get('/user_Dashboard_challenges', (req,res)=>{
+    res.render('user_dashboard_challenges')
+})
 app.get('/user_Dashboard_profile', (req,res)=>{
     res.render('user_Dashboard_profile')
+})
+app.get('/user_dashboard_navbar', (req,res)=>{
+    res.render('user_dashboard_navbar')
 })
 
 app.use('/api/auth', require('./routes/auth'))
