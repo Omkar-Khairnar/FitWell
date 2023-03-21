@@ -4,6 +4,7 @@ var cors=require('cors')
 const db = require("./data/sqlite_db");
 // connectToMongo();
 
+let alert=require('alert')
 const app=express();
 app.use(express.urlencoded({extended: true}))
 
@@ -24,7 +25,73 @@ app.get('/products', (req,res)=>{
     res.render('products')
 })
 app.get('/signin', (req,res)=>{
-    res.render('signup_signin')
+    res.render('signup_signin', {error: 0})
+})
+app.post('/signin',(req,res)=>{
+    try{    
+        const email=req.body.email;
+        const password=req.body.password;
+        db.get(`Select * from USERS where email=$email and password=$password`,{$email: email,$password: password} , (error, row)=>{
+            if(row){
+                const userdetails={
+                    name:row.name,
+                    email:row.email,
+                    password:row.password,
+                    age:row.age,
+                    gender:row.gender,
+                    weight:row.weight,
+                    height:row.height,
+                    image:row.image
+                }
+                 res.redirect('/user_Dashboard_home');
+            }
+            else if(!row){
+                res.render('signup_signin', {error: 1})
+            }
+            else{
+                console.log(error);
+                res.redirect('/signin')
+            }
+    } )  
+}
+catch(err){
+    console.log(err);
+    res.status(400).json({Error:err.message})
+}
+})
+app.post('/signup',async(req, res)=>{
+    // console.log(req.body);
+    try{
+        const name=req.body.name;
+        const email=req.body.email;
+        const password=req.body.password;
+        const age=req.body.age;
+        const gender=req.body.gender;
+        const weight=req.body.weight;
+        const height=req.body.height;
+        const image=req.body.image;
+
+            db.get(`Select * from USERS where email=$email`,{$email:email}, async(error, row)=>{
+                if(!error && row){
+                    // res.send("Email Id already Exists. Please Log in into registered account");
+                    alert('Email Id already Exists. Please Log in into registered account')
+                }
+                else{
+                    db.run(`INSERT INTO USERS(name,email,password,age,gender,weight,height,image) VALUES(?,?,?,?,?,?,?,?)`,[name,email, password,age,gender,weight, height,image], (err)=>{
+                        if(err){
+                            console.log(err);
+                            res.status(400).send("Some Error occurred");
+                        }
+                         res.redirect('/signin')
+                    });
+                }
+                
+            })      
+    }  
+    catch(err){
+        res.status(500).json({Error:err.message})
+        console.log(err);
+    }
 })
 app.get('/about', (req,res)=>{
     res.render('about')
@@ -61,7 +128,7 @@ app.get('/user_Dashboard_profile', (req,res)=>{
     res.render('user_Dashboard_profile')
 })
 
-app.use('/api/auth', require('./routes/auth'))
+// app.use('/api/auth', require('./routes/auth'))
 
 app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT}`)
