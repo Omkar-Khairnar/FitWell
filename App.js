@@ -32,8 +32,8 @@ app.get('/about', (req,res)=>{
 app.get('/reviews', (req,res)=>{
     res.render('reviews')
 })
-app.get('/classes', (req,res)=>{
-    res.render('classes')
+app.get('/centres', (req,res)=>{
+    res.render('centres')
 })
 app.get('/services', (req,res)=>{
     res.render('services')
