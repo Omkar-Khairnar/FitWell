@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -33,6 +34,8 @@ body{
  }
  .nav-item1 a{
      transition: 0.5s;
+     font-family: 'Alkatra', cursive;
+     /* font-size: 24px; */
  }
  .nav-item1 a:hover{
      color: #f36100;

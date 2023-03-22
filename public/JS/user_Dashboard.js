@@ -23,38 +23,24 @@ $(document).ready(function () {
 
 // BMI calculator
 
-const weightInput = document.getElementById('bmi-weight').innerText;
-const heightInput = document.getElementById('bmi-height').innerText;
+// const weightInput = document.getElementById('bmi-weight').innerText;
+// const heightInput = document.getElementById('bmi-height').innerText;
 const resultDiv = document.getElementById('bmi-value');
-const commentdiv = document.getElementsByClassName('bmi-comment');
+// const bmi_val = document.getElementById('bmi-value');
 
-function calculateBMI() {
+function calculateBMI() { 
 
-  const weight = parseFloat(weightInput);
-  const height = parseFloat(heightInput) / 100; // convert to meters
+  const weight = parseFloat(80);
+  const height = parseFloat(180) / 100; // convert to meters
 
   const bmi = (weight / (height * height));
-  let comment;
-  if(bmi < 18.5){
-    comment = "Under Weight";
-  }else if(bmi < 25){
-    comment= "Noraml weight";
-
-  }else if(bmi < 30){
-    comment = "Overweight";
-  }else{
-    comment = "Obesity";
-  }
 
 
   resultDiv.innerHTML = `${bmi.toFixed(2)}`;
-  commentdiv.innerHTML = comment;
+  resultDiv.style.fontSize="30px";
+  resultDiv.style.textAlign ="center";
+//   resultDiv.style.
 }
-
-
-
-
-
 
 //Put a Review
 
