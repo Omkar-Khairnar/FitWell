@@ -1,7 +1,8 @@
 const connectToMongo=require('./db')
 const express=require('express')
 var cors=require('cors')
-const db = require("./data/sqlite_db");
+const db1 = require("./data/sqlite_db_user");
+const db2 = require("./data/sqlite_db_admin");
 // connectToMongo();
 
 let alert=require('alert')
@@ -31,7 +32,7 @@ app.post('/signin',(req,res)=>{
     try{    
         const email=req.body.email;
         const password=req.body.password;
-        db.get(`Select * from USERS where email=$email and password=$password`,{$email: email,$password: password} , (error, row)=>{
+        db1.get(`Select * from USERS where email=$email and password=$password`,{$email: email,$password: password} , (error, row)=>{
             if(row){
                 const userdetails={
                     name:row.name,
@@ -71,13 +72,13 @@ app.post('/signup',async(req, res)=>{
         const height=req.body.height;
         const image=req.body.image;
 
-            db.get(`Select * from USERS where email=$email`,{$email:email}, async(error, row)=>{
+            db1.get(`Select * from USERS where email=$email`,{$email:email}, async(error, row)=>{
                 if(!error && row){
                     // res.send("Email Id already Exists. Please Log in into registered account");
                     alert('Email Id already Exists. Please Log in into registered account')
                 }
                 else{
-                    db.run(`INSERT INTO USERS(name,email,password,age,gender,weight,height,image) VALUES(?,?,?,?,?,?,?,?)`,[name,email, password,age,gender,weight, height,image], (err)=>{
+                    db1.run(`INSERT INTO USERS(name,email,password,age,gender,weight,height,image) VALUES(?,?,?,?,?,?,?,?)`,[name,email, password,age,gender,weight, height,image], (err)=>{
                         if(err){
                             console.log(err);
                             res.status(400).send("Some Error occurred");
@@ -92,6 +93,38 @@ app.post('/signup',async(req, res)=>{
         res.status(500).json({Error:err.message})
         console.log(err);
     }
+})
+
+app.get('/adminlogin', (req,res)=>{
+    res.render('adminlogin',{error:0})
+})
+app.post('/adminlogin',(req,res)=>{
+    try{    
+        const email=req.body.email;
+        const password=req.body.password;
+        // console.log(email +" "+ password);
+        db2.get(`Select * from ADMIN where email=$email and password=$password`,{$email: email,$password: password} , (error, row)=>{
+            if(row){
+                const userdetails={
+                    name:row.name,
+                    email:row.email,
+                    password:row.password,
+                }
+                 res.redirect('/admin_dashboard_home');
+            }
+            else if(!row){
+                res.render('adminlogin', {error: 1})
+            }
+            else{
+                console.log(error);
+                res.redirect('/adminlogin')
+            }
+    } )  
+}
+catch(err){
+    console.log(err);
+    res.status(400).json({Error:err.message})
+}
 })
 app.get('/about', (req,res)=>{
     res.render('about')
@@ -136,9 +169,31 @@ app.get('/user_Dashboard_profile', (req,res)=>{
 app.get('/user_dashboard_navbar', (req,res)=>{
     res.render('user_dashboard_navbar')
 })
-app.get('/admin_dashboard', (req,res)=>{
-    res.render('admin_dashboard')
+app.get('/user_dashboard_chat', (req,res)=>{
+    res.render('user_dashboard_chat')
 })
+app.get('/admin_dashboard_side_wrapper', (req,res)=>{
+    res.render('admin_dashboard_side_wrapper')
+})
+app.get('/admin_dashboard_top_wrapper', (req,res)=>{
+    res.render('admin_dashboard_top_wrapper')
+})
+app.get('/admin_dashboard_home', (req,res)=>{
+    res.render('admin_dashboard_home')
+})
+app.get('/admin_dashboard_customers', (req,res)=>{
+    res.render('admin_dashboard_customers')
+})
+app.get('/admin_dashboard_trainers', (req,res)=>{
+    res.render('admin_dashboard_trainers')
+}) 
+app.get('/admin_dashboard_payment', (req,res)=>{
+    res.render('admin_dashboard_payment')
+})
+app.get('/admin_Dashboard_order', (req,res)=>{
+    res.render('admin_Dashboard_order')
+})
+
 
 // app.use('/api/auth', require('./routes/auth'))
 

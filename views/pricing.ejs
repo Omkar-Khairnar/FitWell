@@ -31,8 +31,29 @@
         <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Poppins:ital,wght@1,100&display=swap" rel="stylesheet">
         <title> Premium | Fit Well</title>
     </head>
+    <style>
+        /* Scroll Effect */
+        .hidden {
+        position: relative;
+        transform: translateY(150px);
+        opacity: 0;
+        transition: all 2s ease;
+        filter: blur(5px);
+        }
+        .show {
+        opacity: 1;
+        transform: translateX(0px);
+        filter: blur(0);
+        }
+
+        @media (prefers-reduced-motion) {
+        .hidden {
+            transition:none;
+        }
+        }
+    </style>
     <body>
-        <div class="container1">
+        <div class="container1 hidden">
             <div class="title container">
                 <h3 id="title-0" class="my-3 ">OUR PLAN</h3>
                 <h2 id="title-1" class="my-2"> CHOOSE YOUR PRICING PLAN</h2>
@@ -86,6 +107,22 @@
             </div>
 
 
+            <script>
+                 window.addEventListener('scroll', reveal);
 
+                function reveal() {
+                    var reveals = document.querySelectorAll('.hidden');
+
+                    for (var i = 0; i < reveals.length; i++) {
+                        var windowHeight = window.innerHeight;
+                        var revealTop = reveals[i].getBoundingClientRect().top;
+                        var revealPoint = 150;
+
+                        if (revealTop < windowHeight - revealPoint) {
+                            reveals[i].classList.add('show');
+                      }
+                    }
+                };
+            </script>
         </body>
     </html>

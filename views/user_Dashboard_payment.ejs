@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>a</title>
+  <title>User Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" />
+  <link rel="stylesheet" href="./CSS/payment.css" />
   <link rel="stylesheet" href="./CSS/user_Dashboard.css" />
 </head>
 
@@ -22,28 +23,75 @@
   <!-- partial:index.partial.html -->
   <div class="dashboard">
     <%- include('user_dashboard_navbar.ejs'); %>
-    <div class="dashboard-app">
-      <header class="dashboard-toolbar">
-        <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
-        <a href="#" class="menu-toggle">
-          <i class="fas fa-right-from-bracket"></i>
-          Logout
-        </a>
-      </header>
-      <!-- User's Payment  -->
-      <div class="dashboard-content" id="dashboard-review-page">
-        <div class="container">
-          <div class="container-review">
+      <div class="dashboard-app">
+        <header class="dashboard-toolbar">
+          <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
+          <a href="#" class="menu-toggle">
+            <i class="fas fa-right-from-bracket"></i>
+            Logout
+          </a>
+        </header>
+        <!-- User's Payment  -->
+        <div class="dashboard-content" id="dashboard-payment-page">
+          <div class="container">
             <h1>Payment Page</h1>
+            <div class="table">
+              <table class="table table-striped">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Order Id</th>
+                    <th scope="col">Payment Method</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#54673</td>
+                    <th scope="row"><i class="fa-regular fa-credit-card"></i> Card</th>
+                    <td class="pay">Paid</td>
+                    <td>Subscription renewal</td>
+                    <td class="ded">-$120</td>
+                    <td>18-03-2023</td>
+                  </tr>
+                  <tr>
+                    <td>#46783</td>
+                    <th scope="row"><i class="fa-regular fa-credit-card"></i> Card</th>
+                    <td class="pay">Paid</td>
+                    <td>Subscription renewal</td>
+                    <td class="ded">-$9.99</td>
+                    <td>14-12-2022</td>
+                  </tr>
+                  <tr>
+                    <td>#46983</td>
+                    <th scope="row"><i class="fa-regular fa-credit-card"></i> Card</th>
+                    <td class="upay">Unpaid</td>
+                    <td>Nitro Protein Pack</td>
+                    <td class="ded">-$1499.99</td>
+                    <td>17-02-2022</td>
+                  </tr>
+                  <tr>
+                    <td>#46783</td>
+                    <th scope="row">Mass</th>
+                    <td class="pay">Paid</td>
+                    <td>Mass Gainer</td>
+                    <td class="add">+$60.00</td>
+                    <td>17-01-2022</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
           </div>
         </div>
       </div>
-    </div>
-    <!-- partial -->
-    <script src="https://kit.fontawesome.com/1b34bcf330.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="./JS/user_Dashboard.js"></script>
+      <!-- partial -->
+      <script src="https://kit.fontawesome.com/1b34bcf330.js" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="./JS/user_Dashboard.js"></script>
 </body>
 
 </html>
