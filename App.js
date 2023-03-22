@@ -181,7 +181,9 @@ app.get('/admin_dashboard_home', (req,res)=>{
 app.get('/admin_dashboard_payment', (req,res)=>{
     res.render('admin_dashboard_payment')
 })
-
+app.get('/admin_Dashboard_order', (req,res)=>{
+    res.render('admin_Dashboard_order')
+})
 
 
 // app.use('/api/auth', require('./routes/auth'))
