@@ -68,7 +68,7 @@ h1, .h1 {
   font-weight: normal;
 }
 
-.card {
+/* .card {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -78,7 +78,7 @@ h1, .h1 {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0;
-}
+} */
 
 .card-body {
   -webkit-box-flex: 1;
@@ -231,7 +231,7 @@ h1, .h1 {
   width: 36px;
   font-size: 19px;
   margin-left: -40px;
-  /* background-color: #d63d00   ; */
+  background-color: #d63d00   ;
 }
 
 .dashboard-nav-item:hover {
@@ -1246,9 +1246,9 @@ input[type="submit"]:hover {
   width: 300px;
 }
 
-.cardrow{
-    /* display: flex;
+/* .cardrow{
+    display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center; */
-}
+    justify-content: center;
+} */
