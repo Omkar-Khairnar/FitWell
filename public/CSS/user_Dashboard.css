@@ -231,7 +231,7 @@ h1, .h1 {
   width: 36px;
   font-size: 19px;
   margin-left: -40px;
-  /* background-color: #d63d00   ; */
+  background-color: #d63d00   ;
 }
 
 .dashboard-nav-item:hover {

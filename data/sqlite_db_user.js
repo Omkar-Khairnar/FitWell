@@ -1,7 +1,7 @@
 const sqlite = require("sqlite3");
 const createUserTable = require("../models/sqlite_users");
 
-const filePath = "./data/file1.db";
+const filePath = "./data/users.db";
 
 
     const db = new sqlite.Database(filePath, (error) => {
@@ -12,6 +12,6 @@ const filePath = "./data/file1.db";
 
     createUserTable(db);
     
-    console.log("sqlite database connected successfully");
+    console.log("User database connected successfully");
 
 module.exports = db;

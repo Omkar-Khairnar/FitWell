@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="./CSS/admin_dashboard.css" />
+    <link rel="stylesheet" href="./CSS/payment.css" />
+    <title>Responsive Admin Payment</title>
+</head>
+
+
+<body>
+    <div class="d-flex" id="wrapper">
+      <!-- Sidebar --><!-- /#sidebar-wrapper -->
+      <%- include('admin_dashboard_side_wrapper.ejs'); %>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          <!-- /#top-wrapper -->
+          <%- include('admin_dashboard_top_wrapper.ejs'); %>
+  
+            <div class="container-fluid px-4">
+
+                <div class="table">
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Order Id</th>
+                                <th scope="col">Payment Method</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#54673</td>
+                                <th scope="row"><i class="fa-regular fa-credit-card"></i> Card</th>
+                                <td class="pay">Paid</td>
+                                <td>Subscription renewal</td>
+                                <td class="ded">-$120</td>
+                                <td>18-03-2023</td>
+                            </tr>
+                            <tr>
+                                <td>#46783</td>
+                                <th scope="row"><i class="fa-regular fa-credit-card"></i> Card</th>
+                                <td class="pay">Paid</td>
+                                <td>Subscription renewal</td>
+                                <td class="ded">-$9.99</td>
+                                <td>14-12-2022</td>
+                            </tr>
+                            <tr>
+                                <td>#46983</td>
+                                <th scope="row"><i class="fa-regular fa-credit-card"></i> Card</th>
+                                <td class="upay">Unpaid</td>
+                                <td>Macbook Pro 13"</td>
+                                <td class="ded">-$1499.99</td>
+                                <td>17-02-2022</td>
+                            </tr>
+                            <tr>
+                                <td>#46783</td>
+                                <th scope="row"> Income</th>
+                                <td class="pay">Paid</td>
+                                <td>Invoice No:37401</td>
+                                <td class="add">+$60.00</td>
+                                <td>17-01-2022</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+  
+            
+        </div>
+    </div>
+  
+  
+    <!-- /#page-content-wrapper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      var el = document.getElementById("wrapper");
+      var toggleButton = document.getElementById("menu-toggle");
+  
+      toggleButton.onclick = function () {
+        el.classList.toggle("toggled");
+      };
+    </script>
+  </body>
+
+
+
+</html>

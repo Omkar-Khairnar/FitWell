@@ -48,6 +48,10 @@
     margin-bottom: 0;
     font-size: 20px;
 }
+.head img{
+    height: 100px;
+    /* background-color: azure  ; */
+}
 ul{
     list-style: none;
     margin: 0;
