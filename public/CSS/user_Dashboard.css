@@ -1086,6 +1086,9 @@ input[type="submit"]:hover {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+.challenge-how-it-work{
+  text-align: center;
+}
 .challenge-progress-box {
   height: 50px;
   width: 50px;
@@ -1279,6 +1282,9 @@ input[type="submit"]:hover {
 }
 
 .msg-header-img{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-radius: 50%;
   width: 40px;
   margin-left: 5%;
@@ -1287,7 +1293,8 @@ input[type="submit"]:hover {
 }
 
 .chatbox-active{
-  width: 120px;
+  display: flex;
+  /* width: 120px; */
   float: left;
   margin-top: 10px;
 }
@@ -1295,7 +1302,7 @@ input[type="submit"]:hover {
 .chatbox-active h4
 {
   font-size: 20px;
-  margin-left: 10px;
+  margin: 10px;
   color: #fff;
 }
 
@@ -1466,3 +1473,9 @@ input[type="submit"]:hover {
   border-radius: 20px;
 } */
 
+
+.chat-back-button{
+  background-color: #ff7b00;
+  color: black;
+
+}
