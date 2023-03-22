@@ -161,6 +161,7 @@ h1, .h1 {
   display: flex;
   width: 100%;
   justify-content: center;
+  background-color: #d63d00;
   
 }
 .dashboard-nav header .menu-toggle {
@@ -175,6 +176,7 @@ h1, .h1 {
   align-self: center;
   padding: 0%;
   margin: 0%;
+  background-color: #d63d00;
 }
 
 .dashboard-nav a {
@@ -222,16 +224,21 @@ h1, .h1 {
   align-items: center;
   letter-spacing: 0.02em;
   transition: ease-out 0.5s;
+  background-color: #d63d00   ;
 }
 
 .dashboard-nav-item i {
   width: 36px;
   font-size: 19px;
   margin-left: -40px;
+  /* background-color: #d63d00   ; */
 }
 
 .dashboard-nav-item:hover {
   background: rgba(255, 81, 0, 0.979);
+}
+.dashboard-nav-item i:hover{
+  background-color:rgba(255, 81, 0, 0.979); ;
 }
 
 .active {
@@ -386,6 +393,7 @@ h1, .h1 {
   height: 100%;
   width: 50%;
 }
+
 
 
 #bmi-value{

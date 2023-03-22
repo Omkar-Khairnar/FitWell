@@ -6,6 +6,7 @@
   <title>a</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" />
+  <link rel="stylesheet" href="./CSS/cart.css" />
   <link rel="stylesheet" href="./CSS/user_Dashboard.css" />
 </head>
 
@@ -30,9 +31,84 @@
       <!-- User Profile  -->
       <div class="dashboard-content" id="dashboard-review-page">
         <div class="container">
-          <div class="container-review">
-            <h1>This is Cart</h1>
-            </form>
+          <!-- <div class="container-review"> -->
+               <!-- <h2>FitWell cart</h2> -->
+            
+        <div class="parent-container">
+            <div class="cart-container">
+              <table>
+                <tr>
+                  <th>Product</th>
+                  <th>Quantity</th>
+                  <th>Subtotal</th>
+                </tr>
+                <hr />
+                <tr>
+                  <td>
+                    <div class="cart-info">
+                      <img src="./img/product_2-300x300.jpg" />
+                      <div>
+                        <p>Nitro Tech + ISO PRO <span>(combo offer)</span></p>
+                        <small>price :$35</small><br />
+                        <a href="#">Remove</a>
+                      </div>
+                    </div>
+                  </td>
+                  <td><input type="number" value="1" /></td>
+                  <td>$35</td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="cart-info">
+                      <img src="./img/product_1-300x300.jpg" />
+                      <div>
+                        <p>SYNTHA-6</p>
+                        <small>price :$40</small><br />
+                        <a href="#">Remove</a>
+                      </div>
+                    </div>
+                  </td>
+                  <td><input type="number" value="1" /></td>
+                  <td>$40</td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="total-price">
+              <h3>Price Details</h3>
+              <table>
+                <tr>
+                  <td>Sub total</td>
+                  <td>$75.00</td>
+                </tr>
+                <tr>
+                  <td>Discount 5%</td>
+                  <td>$5.00</td>
+                </tr>
+                <tr>
+                  <td>Delivery charges</td>
+                  <td>$5.00</td>
+                </tr>
+                <tr>
+                  <td>Total Amount</td>
+                  <td>$70.00</td>
+                  <br /><br />
+                </tr>
+                <td>
+                  <input
+                    id="checkbut"
+                    type="button"
+                    class="w3-button w3-black"
+                    value="Check Out"
+                  />
+                </td>
+              </table>
+            </div>
+          </div>
+          <a id="back" href="#">
+            <h4>⬅ Go back to Continue Shopping</h4>
+          </a> 
           </div>
         </div>
       </div>
