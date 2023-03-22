@@ -178,6 +178,9 @@ app.get('/admin_dashboard_top_wrapper', (req,res)=>{
 app.get('/admin_dashboard_home', (req,res)=>{
     res.render('admin_dashboard_home')
 })
+app.get('/admin_dashboard_payment', (req,res)=>{
+    res.render('admin_dashboard_payment')
+})
 
 
 
