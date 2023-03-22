@@ -31,4 +31,3 @@ Bucket -3
 Karthik Onteru (S20210010163)
 
 ```
-[Kartik Niranjan Patel](kartik.p21@iiits.in)
