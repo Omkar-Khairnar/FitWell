@@ -43,3 +43,7 @@ body{
      text-decoration-line: line-through;
      scale: 1.1;
  }
+ .navbarlogo img{
+    height: 70px;
+ }
+ 
