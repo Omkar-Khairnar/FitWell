@@ -1050,7 +1050,7 @@ input[type="submit"]:hover {
   }
 }
 
-.card {
+.card-workout {
   margin:  10px 10px;
   border: rgb(34, 22, 0) solid 2px;
   border-radius: 5px;
@@ -1220,7 +1220,10 @@ input[type="submit"]:hover {
   top: 20px;
   opacity: 0.1;
 }
-
+.l-bg-cherry {
+  background: linear-gradient(to right, #493240, #f09) !important;
+  color: #fff;
+}
 .l-bg-cyan {
   background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
   color: #fff;

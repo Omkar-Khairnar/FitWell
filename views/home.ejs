@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>FitWell-Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="./CSS/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/home.css">
   </head> 
-  <body>
+  <body onload="load()">
    
     <%- include('navbar'); %>
     <div class="sliderContainer" id="carousel">
@@ -40,7 +40,7 @@
   </div>
 
   <div  id="infobutton">
-      <button class="infohome">Wanna more Info?</button>
+      <button class="infohome"><a href="./about">Want More Info?</a></button>
   </div>
   <div class="sliderContainer" id="frontinfo">
       <div class="firstline">SHAPE YOUR BODY</div>
@@ -59,22 +59,22 @@
       <div class="resonToChoose-Item">
         <i class="fa-solid fa-dumbbell fa-2xl my-5"></i>
         <h5>MODERN EQUIPMENTS</h5>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis odit fugiat error rem blanditiis maiores impedit culpa beatae.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis.</p>
       </div>
       <div class="resonToChoose-Item">
       <i class="fa-brands fa-nutritionix fa-2xl my-5"></i> 
         <h5>HEALTHY NUTRITION PLAN</h5>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis odit fugiat error rem blanditiis maiores impedit culpa beatae.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciati.</p>
       </div>
       <div class="resonToChoose-Item">
         <i class="fa-solid fa-table  fa-2xl my-5"></i>
         <h5>TRAINING PLAN</h5>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis odit fugiat error rem blanditiis maiores impedit culpa beatae.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis.</p>
       </div>
       <div class="resonToChoose-Item">
         <i class="fa-solid fa-handshake-angle  fa-2xl my-5"></i>
         <h5>UNIQUE TO YOUR NEEDS</h5>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis odit fugiat error rem blanditiis maiores impedit culpa beatae.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis.</p>
       </div>
     </div>
   </div>
@@ -135,12 +135,19 @@
     <div class="appoint-img">
       <img src="https://ajay-dhangar.github.io/gym.com/img/gallery/gallery-1.jpg" alt="REGISTER_NOW_AND_GET_EXCITING_DEALS" class="REGISTER_NOW_AND_GET_EXCITING_DEALS">
     </div>
-    <div class="appoint-info container">
+    <div class="appoint-info container" >
       <div class="appoint-firstLine">
        <h2>REGISTER NOW AND GET EXCITING DEALS</h2> 
     </div>
-    <div class=" appoint-secondline">
-       <h4>THE BODY ACHIEVES WHAT THE MIND BELIEVES.</h4> 
+    <div class=" appoint-secondline"> 
+              <div class="col-sm">
+                 <p id='my101' class="fs-2 text-light">0</p>
+                 <p class="text-light">Total Members</p>
+              </div>
+              <div class="col-sm">
+                 <p id='my102' class="fs-2 text-light">0</p>
+                 <p class="text-light">Total Collaborators</p>
+                </div>
     </div>
     </div>
   </div>
@@ -151,7 +158,32 @@
 
      
 
-        
+
+      <script>
+      function animate(obj, initVal, lastVal, duration) {
+         let startTime = null;
+        let currentTime = Date.now();
+        const step = (currentTime ) => {
+       if (!startTime) {
+         startTime = currentTime ;
+      }
+      const progress = Math.min((currentTime - startTime)/ duration, 1);
+      obj.innerHTML = Math.floor(progress * (lastVal - initVal) + initVal);
+      if (progress < 1) {
+         window.requestAnimationFrame(step);
+      } else {
+            window.cancelAnimationFrame(window.requestAnimationFrame(step));
+         }
+      };
+         window.requestAnimationFrame(step);
+      }
+      let text1 = document.getElementById('my101');
+      let text2 = document.getElementById('my102');
+      const load = () => {
+         animate(text1, 0, 1011, 7000);
+         animate(text2, 0, 45, 7000);
+      }
+   </script> 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/8f8e3c7113.js" crossorigin="anonymous"></script>

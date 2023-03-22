@@ -66,9 +66,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    padding: 15px;
 }
 .resonToChoose-Item{
     width: 20rem;
+    padding: 10px;
 }
 .resonToChoose-Item h5{
     font-family: 'Secular One', sans-serif;
@@ -127,7 +129,7 @@
 .appoint-info{
    position: absolute;
    color: white;
-   top: 40%; 
+   top: 35%; 
    left: 10%;
    box-sizing: border-box;
    text-align: center;
@@ -135,13 +137,20 @@
 }
 .appoint-firstLine h2{
     font-family: 'Secular One', sans-serif;
-    font-size: 48px; 
+    font-size: 40px; 
     font-weight: 700;
 }
 .appoint-secondline{
-    font-family: 'Mulish', sans-serif;
+    font-family: 'Secular One', sans-serif;
     font-weight: 700;
+    display: flex;
+    justify-content: space-evenly;
 }
+.infohome a{
+    text-decoration: none;
+    color: white;
+}
+
 
 @media screen and  (max-width: 900px) {
     .container-fluid{
