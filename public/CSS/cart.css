@@ -1,6 +1,6 @@
 *{
     background-color: #fff;
-    color: rgb(10, 10, 10);
+    /* color: rgb(10, 10, 10); */
     /* font-family: 'Anton', sans-serif; */
     /* font-family: 'Edu NSW ACT Foundation', cursive; */
     font-family: 'Josefin Sans', sans-serif;
@@ -8,6 +8,8 @@
     
     
     }
+    
+    
     .cart-container{
         margin: 40px auto ;
         font-family: 'Poppins', sans-serif;
@@ -42,6 +44,10 @@
         margin-top: 100px;
         
         
+    }
+    .parent-container{
+        max-width: 992px;
+        /* background-color: #ff523b  ; */
     }
     
     th{
@@ -156,7 +162,7 @@
       }
       .parent-container{
         display: flex;
-        
+        /* flex-direction: column; */
       }
       @media only screen and (max-width:800px) {
         .parent-container{
