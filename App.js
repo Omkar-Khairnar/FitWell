@@ -136,6 +136,9 @@ app.get('/user_Dashboard_profile', (req,res)=>{
 app.get('/user_dashboard_navbar', (req,res)=>{
     res.render('user_dashboard_navbar')
 })
+app.get('/admin_dashboard', (req,res)=>{
+    res.render('admin_dashboard')
+})
 
 // app.use('/api/auth', require('./routes/auth'))
 
