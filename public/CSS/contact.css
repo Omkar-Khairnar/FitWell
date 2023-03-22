@@ -9,7 +9,7 @@
     width: 100vw;
 }
 .topbg{
-    position: relative;
+    position: relative; 
 }
 .toptitle{
     font-size: 58px;
@@ -179,4 +179,10 @@ tr td{
     .toptitle{
         left: 30%;
     }
+}
+.container{
+    margin-top: 8%;
+}
+.map iframe{
+    width: 50%;
 }
