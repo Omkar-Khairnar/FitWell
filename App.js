@@ -169,6 +169,9 @@ app.get('/user_Dashboard_profile', (req,res)=>{
 app.get('/user_dashboard_navbar', (req,res)=>{
     res.render('user_dashboard_navbar')
 })
+app.get('/user_dashboard_chat', (req,res)=>{
+    res.render('user_dashboard_chat')
+})
 app.get('/admin_dashboard_side_wrapper', (req,res)=>{
     res.render('admin_dashboard_side_wrapper')
 })
