@@ -149,7 +149,18 @@ input {
 	color: red;
 	display: none;
 }
-
+.logemailver{
+	color: red;
+	font-size: 15px;
+	display: none;
+	margin-top: 15px;
+}
+.logcheck{
+	color: red;
+	font-size: 15px;
+	margin-top: 15px;
+	/* display: none; */
+}
 @keyframes show {
 	0%, 49.99% {
 		opacity: 0;

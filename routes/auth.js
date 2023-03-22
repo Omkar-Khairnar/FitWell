@@ -93,7 +93,6 @@ router.post('/createuser',async(req, res)=>{
         const image=req.body.image;
 
             db.get(`Select * from USERS where email=$email`,{$email:email}, async(error, row)=>{
-                // console.log(row);
                 if(!error && row){
                     res.send("Email Id already Exists. Please Log in into registered account");
                 }
@@ -103,7 +102,7 @@ router.post('/createuser',async(req, res)=>{
                             console.log(err);
                             res.status(400).send("Some Error occurred");
                         }
-                         res.redirect('/')
+                         res.redirect('/signin')
                     });
                 }
                 
@@ -116,8 +115,8 @@ router.post('/createuser',async(req, res)=>{
 })
 
 //Login using sqlite database
-router.post('/login', async(req, res)=>{
-    try{
+router.post('/signin', async(req, res)=>{
+    try{    
             const email=req.body.email;
             const password=req.body.password;
             db.get(`Select * from USERS where email=$email and password=$password`,{$email: email,$password: password} , (error, row)=>{
@@ -132,14 +131,14 @@ router.post('/login', async(req, res)=>{
                         height:row.height,
                         image:row.image
                     }
-                     res.redirect('/about');
+                     res.redirect('/user_Dashboard_home');
                 }
                 else if(!row){
-                    res.status(404).json({message:"Please login with Valid Credentials."})
+                    res.render('signup_signin', {error: 1})
                 }
                 else{
                     console.log(error);
-                    res.status(400).json({Error:error});
+                    res.redirect('/signin')
                 }
         } )
        
