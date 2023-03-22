@@ -181,6 +181,12 @@ app.get('/admin_dashboard_top_wrapper', (req,res)=>{
 app.get('/admin_dashboard_home', (req,res)=>{
     res.render('admin_dashboard_home')
 })
+app.get('/admin_dashboard_customers', (req,res)=>{
+    res.render('admin_dashboard_customers')
+})
+app.get('/admin_dashboard_trainers', (req,res)=>{
+    res.render('admin_dashboard_trainers')
+}) 
 app.get('/admin_dashboard_payment', (req,res)=>{
     res.render('admin_dashboard_payment')
 })

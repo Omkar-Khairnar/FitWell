@@ -98,7 +98,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
   background-color: rgba(209, 111, 66, 0.979);;
 }
-   input[type=text] {
+   input[type=text],input[type=password] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -119,12 +119,12 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
     border-radius: 5px 5px 5px 5px;
     }
 
-input[type=text]:focus {
+input[type=text]:focus, input[type=password] {
   background-color: #fff;
   border-bottom: 2px solid rgba(255, 81, 0, 0.979);;
 }
 
-input[type=text]:placeholder {
+input[type=text]:placeholder, input[type=password] {
   color: #cccccc;
 }
 
@@ -250,7 +250,7 @@ input[type=text]:placeholder {
                       <span class="logcheck"></span>
                       <% } %>
                     <input type="text" id="login" class="fadeIn second" name="email" placeholder="Email">
-                    <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
+                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
                     <input type="submit" class="fadeIn fourth" value="Log In">
                   </form>
                 </div>
