@@ -110,7 +110,7 @@ app.post('/adminlogin',(req,res)=>{
                     email:row.email,
                     password:row.password,
                 }
-                 res.redirect('/user_Dashboard_home');
+                 res.redirect('/admin_dashboard_home');
             }
             else if(!row){
                 res.render('adminlogin', {error: 1})
