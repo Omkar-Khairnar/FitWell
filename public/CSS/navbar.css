@@ -27,9 +27,9 @@ body{
  .container-fluid1:hover{
      opacity: 0.8;
  }
- .container-fluid1 img{
+ .navbarlogo img{
      opacity: 1;
-     height: auto;
+     height: 5rem;
      width: auto;
  }
  .nav-item1 a{
@@ -43,7 +43,7 @@ body{
      text-decoration-line: line-through;
      scale: 1.1;
  }
- .navbarlogo img{
+ /* .navbarlogo img{
     height: 70px;
- }
- 
+ } */
+  

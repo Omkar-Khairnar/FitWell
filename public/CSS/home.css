@@ -56,7 +56,7 @@
     padding-bottom: 6%;
 }
 .reasonToChoose-firstLine{
-    color: #ea3209ef;
+    color: #ea3209ef; 
     font-family: 'Mulish', sans-serif; 
 }
 .reasonToChoose-secondLine{
@@ -77,7 +77,6 @@
 }
 .resonToChoose-Item i{
     color:#ea3209ef;
-   
 }
 .ourClasses{
     display: flex;
@@ -150,7 +149,25 @@
     text-decoration: none;
     color: white;
 }
-
+/* Scroll Effect */
+.hidden {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: all 2s ease;
+    filter: blur(5px);
+  }
+  .show {
+    opacity: 1;
+    transform: translateX(0px);
+    filter: blur(0);
+  }
+  
+  @media (prefers-reduced-motion) {
+    .hidden {
+      transition:none;
+    }
+  }
 
 @media screen and  (max-width: 900px) {
     .container-fluid{
