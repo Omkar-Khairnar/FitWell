@@ -224,26 +224,6 @@ h1, .h1 {
   transition: ease-out 0.5s;
 }
 
-.dashboard-nav-dropdown-item {
-  min-height: 40px;
-  padding: 8px 20px 8px 70px;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  transition: ease-out 0.5s;
-  background-color: rgb(185, 49, 0);
-}
-.dashboard-nav-dropdown-item h4{
-  margin-bottom: 0%;
-  padding-left: 5px;
-}
-.dashboard-nav-dropdown-item i{
-  height: 20px;
-  width: 20px;
-}
-
 .dashboard-nav-item i {
   width: 36px;
   font-size: 19px;
@@ -251,85 +231,21 @@ h1, .h1 {
 }
 
 .dashboard-nav-item:hover {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 81, 0, 0.979);
 }
 
 .active {
   background: rgba(0, 0, 0, 0);
 }
 
-.dashboard-nav-dropdown {
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
 
-.dashboard-nav-dropdown.show {
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.dashboard-nav-dropdown.show > .dashboard-nav-dropdown-toggle {
-  font-weight: bold;
-}
-
-.dashboard-nav-dropdown.show > .dashboard-nav-dropdown-toggle:after {
-  -webkit-transform: none;
-  -o-transform: none;
-  transform: none;
-}
-
-.dashboard-nav-dropdown.show > .dashboard-nav-dropdown-menu {
-  display: flex;
-}
-
-.dashboard-nav-dropdown-toggle:after {
-  content: "";
-  margin-left: auto;
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid rgba(81, 81, 81, 0.8);
-  -webkit-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
-
-.dashboard-nav .dashboard-nav-dropdown-toggle:after {
+.dashboard-nav :after {
   border-top-color: rgba(255, 255, 255, 0.72);
 }
 
-.dashboard-nav-dropdown-menu {
-  display: none;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.dashboard-nav-dropdown-item {
-  min-height: 40px;
-  padding: 8px 20px 8px 70px;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  transition: ease-out 0.5s;
-}
-
-.dashboard-nav-dropdown-item:hover {
-  background: rgba(202, 57, 0, 0.911);
-}
 
 .menu-toggle {
   position: relative;
-  /* width: 42px; */
   height: 42px;
   display: flex;
   margin: 0% 2%;
@@ -369,12 +285,6 @@ h1, .h1 {
   z-index: 1000;
 }
 
-.nav-item-divider {
-  height: 1px;
-  margin: 1px 0;
-  overflow: hidden;
-  background-color: rgba(236, 238, 239, 0.3);
-}
 
 @media (min-width: 992px) {
   .dashboard-app {
@@ -404,10 +314,10 @@ h1, .h1 {
       z-index: 1070;
   }
 
-  .dashboard-nav.mobile-show {
+  .dashboard-nav .mobile-show {
       display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+      flex-direction: column;
+      justify-content: space-between;
   }
 }
 
@@ -429,6 +339,13 @@ h1, .h1 {
 }
 
 
+
+
+
+
+
+
+/*   User dashboard Home */
 
 
 /* .container-profile-bmi {
@@ -490,7 +407,6 @@ h1, .h1 {
   width: 100%;
   border: 5px solid rgb(231, 65, 0);
   border-radius: 50%;
-  /* height: ; */
 }
 
 .bmi-comment {
@@ -535,6 +451,11 @@ h1, .h1 {
 }
 
 
+
+
+
+
+/*  User dashboard  Review */
 
 .container-review {
 	max-width: 600px;
@@ -722,6 +643,11 @@ input[type="submit"]:hover {
   }
 }
 
+
+
+
+
+/* User dashboard home time table */
 
 .class-timetable-section {
 	background: #dbdbdb;
@@ -930,7 +856,7 @@ input[type="submit"]:hover {
 
 
 
-/*  */
+/* User dashboard workout  */
   
 
 
@@ -1050,6 +976,8 @@ input[type="submit"]:hover {
   }
 }
 
+/* User dashboard workout and challenge */
+
 .card {
   margin:  10px 10px;
   border: rgb(34, 22, 0) solid 2px;
@@ -1143,7 +1071,6 @@ input[type="submit"]:hover {
 }
 .challenge-progress-tracking{
   display: flex;
-  /* grid-auto-flow: row; */
   position: inherit;
   margin: 10px;
   flex-wrap: wrap;
@@ -1190,6 +1117,14 @@ input[type="submit"]:hover {
     font-size: large;
   }
 }
+
+
+
+
+
+
+
+/*  User dashboard Home cards */
 
 .l-bg-blue-dark {
   background: linear-gradient(to right, #373b44, #4286f4) !important;
