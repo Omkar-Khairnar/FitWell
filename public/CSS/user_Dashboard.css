@@ -203,14 +203,14 @@ h1, .h1 {
   padding: 0%;
 }
 
-.dashboard-nav-list {
+/* .dashboard-nav-list {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
+} */
 
 .dashboard-nav-item {
   min-height: 50px;
@@ -1081,7 +1081,13 @@ input[type="submit"]:hover {
   width: 50px;
   border: 3px solid orangered;
   margin: 5px;
-  background-color: #a9a9a9;
+  position: relative;
+  /* background-color: #a9a9a9; */
+}
+
+.challenge-progress-box :hover{
+  cursor: pointer;
+  background-color: rgb(0, 255, 42);
 }
 
 .challenge-progrss-tracking-count{
@@ -1092,13 +1098,15 @@ input[type="submit"]:hover {
   vertical-align: middle;
   margin: 0%;
   padding: 2%;
-  margin-top: 5px;
+  position: relative;
   font-weight: bold;
 }
+
 .challenge-progress-tracking-check {
+  display: block;
   position: absolute;
-  height: 100%;
-  width: 100%;
+  height: 50px;
+  width: 50px;
 }
 .challenge-effects-container{
   display: flex;
