@@ -1,6 +1,6 @@
 :root {
-  --main-bg-color: #009d63;
-  --main-text-color: #009d63;
+  --main-bg-color: rgb(253, 111, 60);
+  --main-text-color:  rgb(253, 111, 60);
   --second-text-color: #bbbec5;
   --second-bg-color: #c1efde;
 }
@@ -20,7 +20,7 @@
 }
 
 .second-text {
-  /* color: var(--second-text-color); */
+  color: var(--second-text-color);
   color: #d63d00;
 }
 
@@ -30,7 +30,7 @@
 
 .secondary-bg {
   background-color: var(--second-bg-color);
-}
+} 
 
 .rounded-full {
   border-radius: 100%;
@@ -45,7 +45,6 @@ background-color: #d63d00;
   background-color: #ebf3ff;
   color: rgb(0, 0, 0);
   opacity: 1;
-  /* background-image: linear-gradient(black); */
 }
 
 
@@ -90,17 +89,7 @@ background-color: #d63d00;
   border: none;
   padding: 15px 30px;
 }
-.list-group-item :hover{
 
-  background-color: #009d63;
-}
-
-.list-group-item.active {
-  background-color: transparent;
-  color: var(--main-text-color);
-  font-weight: bold;
-  border: none;
-}
 
 @media (min-width: 900px) {
   #sidebar-wrapper {
