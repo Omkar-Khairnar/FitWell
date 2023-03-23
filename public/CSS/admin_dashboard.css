@@ -55,6 +55,7 @@ background-color: #d63d00;
   -moz-transition: margin 0.25s ease-out;
   -o-transition: margin 0.25s ease-out;
   transition: margin 0.25s ease-out;
+  background-color: #d63d00;
 }
 
 #sidebar-wrapper .sidebar-heading {
