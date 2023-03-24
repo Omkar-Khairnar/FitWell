@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./CSS/pricing.css">
+        <!-- <link rel="stylesheet" href="./CSS/payment1.css"> -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
@@ -53,6 +54,8 @@
         }
     </style>
     <body>
+
+
         <div class="container1 hidden">
             <div class="title container">
                 <h3 id="title-0" class="my-3 ">OUR PLAN</h3>
@@ -71,7 +74,7 @@
                         <li>Weight losing classes</li>
                         <li>No time restriction</li>
                     </ul>
-                    <button> ENROLL NOW</button>
+                    <button id="enroll1"> ENROLL NOW</button>
                 </div>
 
                 <div class="price-col">
@@ -85,7 +88,7 @@
                         <li>Weight losing classes</li>
                         <li>No time restriction</li>
                     </ul>
-                    <button> ENROLL NOW</button>
+                    <button id="enroll2"> ENROLL NOW</button>
 
                 </div>
                 <div class="price-col">
@@ -99,13 +102,9 @@
                         <li>Weight losing classes</li>
                         <li>No time restriction</li>
                     </ul>
-                    <button> ENROLL NOW</button>
+                    <button id="enroll3"> ENROLL NOW</button>
                 </div>
-
-
-
             </div>
-
 
             <script>
                  window.addEventListener('scroll', reveal);
@@ -120,9 +119,11 @@
 
                         if (revealTop < windowHeight - revealPoint) {
                             reveals[i].classList.add('show');
-                      }
-                    }
+                }
+                }
                 };
+
+            
             </script>
         </body>
     </html>

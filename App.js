@@ -193,6 +193,12 @@ app.get('/admin_dashboard_payment', (req,res)=>{
 app.get('/admin_Dashboard_order', (req,res)=>{
     res.render('admin_Dashboard_order')
 })
+app.get('/payment', (req,res)=>{
+    res.render('payment')
+})
+app.get('/admin_dashboard_feedback', (req,res)=>{
+    res.render('admin_dashboard_feedback')
+})
 
 
 // app.use('/api/auth', require('./routes/auth'))
