@@ -2,7 +2,7 @@ function createUserTable(db) {
     // db.exec(`
     //     DROP TABLE if exists ADMIN;
     // `);
-    db.serialize(()=>{
+    db.serialize(()=>{ 
         db.exec(
             "CREATE TABLE if not exists ADMIN (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT,email TEXT , password TEXT)"
             );
