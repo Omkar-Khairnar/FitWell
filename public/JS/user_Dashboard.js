@@ -45,10 +45,10 @@ function calculateBMI() {
 //Put a Review
 
 const form = document.getElementById('review-form');
-const nameInput = document.getElementById('name');
+// const nameInput = document.getElementById('name');
 const ratingInput = document.getElementById('rating');
 const commentInput = document.getElementById('comment');
-const errorText = document.getElementsByClassName("error").innerText;
+// const errorText = document.getElementsByClassName("error").innerText;
 
 
 form.addEventListener('submit', e => {
