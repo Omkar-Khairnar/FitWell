@@ -7,7 +7,7 @@ signUpButton.addEventListener('click', () => {
 });
 
 signInButton.addEventListener('click', () => {
-	container.classList.remove("right-panel-active");
+	container.classList.remove("right-panel-active"); 
 });
 
 function Validation1(){

@@ -1,17 +1,15 @@
-const connectToMongo=require('./db')
-const express=require('express')
-var cors=require('cors')
+const express=require('express');
 const db1 = require("./data/sqlite_db_user");
 const db2 = require("./data/sqlite_db_admin");
-// connectToMongo();
 
 let alert=require('alert')
+
 const app=express();
 app.use(express.urlencoded({extended: true}))
 
 const PORT=5000;
 app.set('view engine', 'ejs');
-app.use(cors())
+
 app.use(express.static('public'))
 app.use(express.json());
 
@@ -29,7 +27,7 @@ app.get('/signin', (req,res)=>{
     res.render('signup_signin', {error: 0})
 })
 app.post('/signin',(req,res)=>{
-    try{    
+    try{ 
         const email=req.body.email;
         const password=req.body.password;
         db1.get(`Select * from USERS where email=$email and password=$password`,{$email: email,$password: password} , (error, row)=>{
@@ -61,7 +59,6 @@ catch(err){
 }
 })
 app.post('/signup',async(req, res)=>{
-    // console.log(req.body);
     try{
         const name=req.body.name;
         const email=req.body.email;
@@ -71,10 +68,8 @@ app.post('/signup',async(req, res)=>{
         const weight=req.body.weight;
         const height=req.body.height;
         const image=req.body.image;
-
             db1.get(`Select * from USERS where email=$email`,{$email:email}, async(error, row)=>{
                 if(!error && row){
-                    // res.send("Email Id already Exists. Please Log in into registered account");
                     alert('Email Id already Exists. Please Log in into registered account')
                 }
                 else{
@@ -102,7 +97,6 @@ app.post('/adminlogin',(req,res)=>{
     try{    
         const email=req.body.email;
         const password=req.body.password;
-        // console.log(email +" "+ password);
         db2.get(`Select * from ADMIN where email=$email and password=$password`,{$email: email,$password: password} , (error, row)=>{
             if(row){
                 const userdetails={
@@ -201,7 +195,6 @@ app.get('/admin_dashboard_feedback', (req,res)=>{
 })
 
 
-// app.use('/api/auth', require('./routes/auth'))
 
 app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT}`)

@@ -1,7 +1,7 @@
 const sqlite = require("sqlite3");
 const createUserTable = require("../models/sqlite_admin");
 
-const filePath = "./data/admin.db";
+const filePath = "./data/admin.db"; 
 
 
     const db = new sqlite.Database(filePath, (error) => {
