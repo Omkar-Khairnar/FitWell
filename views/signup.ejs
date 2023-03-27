@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>FitWell - SignUP</title>
-  <link rel="stylesheet" href="../scratch/signup.css" />
+  <link rel="stylesheet" href="../CSS/signup_signin.css" />
 </head>
 
 <body>
@@ -17,11 +17,11 @@
       <fieldset>
         <input type="text" id="namec" placeholder="Name" name="name" required />
         <span class="regemailver">Enter Valid Email Address.</span>
-        <input type="email" id="emailc" placeholder="Email" name="email" required />
+        <input type="text" id="emailc" placeholder="Email" name="email" required />
         <span class="regpassver">Enter minimum eight characters, at least one Uppercase and one Lowercase letter, one
           number and one special character:.</span>
         <input type="password" id="passwordc" placeholder="Password" name="password" required />
-        <span class="regagever">Age should be 15+</span>
+        <span class="regagever">Age should be between 15-100</span>
         <input type="number" id="agec" placeholder="Age" name="age" required>
       </fieldset>
       <fieldset>
@@ -33,6 +33,7 @@
       <button id="signupbtn" type="submit">SIGN UP</button>
     </form>
   </div>
+  <script src="./JS/signup.js"></script>
 </body>
 
 </html>

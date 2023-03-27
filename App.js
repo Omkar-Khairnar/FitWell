@@ -26,7 +26,7 @@ app.get('/products', (req,res)=>{
     res.render('products')
 })
 app.get('/signin', (req,res)=>{
-    res.render('signup_signin', {error: 0})
+    res.render('signin', {error: 0})
 })
 app.post('/signin',(req,res)=>{
     try{    
@@ -47,7 +47,7 @@ app.post('/signin',(req,res)=>{
                  res.redirect('/user_Dashboard_home');
             }
             else if(!row){
-                res.render('signup_signin', {error: 1})
+                res.render('signin', {error: 1})
             }
             else{
                 console.log(error);
@@ -60,6 +60,11 @@ catch(err){
     res.status(400).json({Error:err.message})
 }
 })
+
+app.get('/signup', (req,res)=>{
+    res.render('signup', {error: 0})
+})
+
 app.post('/signup',async(req, res)=>{
     // console.log(req.body);
     try{
@@ -76,6 +81,7 @@ app.post('/signup',async(req, res)=>{
                 if(!error && row){
                     // res.send("Email Id already Exists. Please Log in into registered account");
                     alert('Email Id already Exists. Please Log in into registered account')
+                    res.redirect('/signin')
                 }
                 else{
                     db1.run(`INSERT INTO USERS(name,email,password,age,gender,weight,height,image) VALUES(?,?,?,?,?,?,?,?)`,[name,email, password,age,gender,weight, height,image], (err)=>{
