@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>FitWell - SignUP</title>
+  <link rel="stylesheet" href="../scratch/signup.css" />
+</head>
+
+<body>
+  <h1>CREATE ACCOUNT</h1>
+  <div class="container">
+    
+  </div>
+  <div class="form-container sign-up-container">
+    <form name="regform" onchange="return Validation1()" method="POST" action="/signup">
+      <fieldset>
+        <input type="text" id="namec" placeholder="Name" name="name" required />
+        <span class="regemailver">Enter Valid Email Address.</span>
+        <input type="email" id="emailc" placeholder="Email" name="email" required />
+        <span class="regpassver">Enter minimum eight characters, at least one Uppercase and one Lowercase letter, one
+          number and one special character:.</span>
+        <input type="password" id="passwordc" placeholder="Password" name="password" required />
+        <span class="regagever">Age should be 15+</span>
+        <input type="number" id="agec" placeholder="Age" name="age" required>
+      </fieldset>
+      <fieldset>
+        <input type="text" id="genderc" placeholder="Gender" name="gender" required>
+        <input type="text" id="weightc" placeholder="Weight" name="weight" required>
+        <input type="text" id="heightc" placeholder="Height(in cm)" name="height" required>
+        <input class="profile-img" type="url" id="image" name="image" placeholder="Enter Profile Image Url">
+      </fieldset>
+      <button id="signupbtn" type="submit">SIGN UP</button>
+    </form>
+  </div>
+</body>
+
+</html>

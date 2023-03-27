@@ -1,0 +1,103 @@
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800'); */
+
+button[type="submit"] {
+  display: block;
+  width: 60%;
+  margin: 0 auto;
+  height: auto;
+  font-size: 1.1rem;
+  background-color: #ff7300;
+  border-color: rgb(30, 173, 42);
+  min-width: 300px;
+  
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    background-color: #fd5d00;
+    color: #000000;
+    font-family: Tahoma;
+    font-size: 16px;
+    background-image: radial-gradient(yellow, red);
+    /* background-image: linear-gradient( red,yellow); */
+  }
+
+  
+  h1, p {
+    margin: 20px 0px;
+    text-align: center;
+    margin-bottom: 0%;
+  }
+  h1{
+    color: wheat;
+    /* font-size: xx-large; */
+  }
+  span {
+    font-size: 12px;
+    color: red;
+  }
+  label {
+    font-weight: 600;
+    font-size: larger;
+  }
+  
+  form {
+    overflow-y: auto;
+    width: 50vw;
+    max-width: 500px;
+    min-width: 300px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+  }
+  .sign-up-container {
+    overflow-y: auto;
+    width: 50vw;
+    max-width: 550px;
+    min-width: 400px;
+    margin: 20px auto;
+    border: 5px solid rgb(255, 153, 0);
+    border-radius: 10px;
+    background-color: #ffffff;
+  }
+  
+  fieldset {
+    border: none
+  }
+
+  input,textarea {
+    background-color: #eee;
+    border: none;
+    padding: 10px 15px;
+    margin: 8px 0;
+    width: 95%;
+    font-size: medium;
+    border-radius: 5px;
+  }
+
+  .inline {
+    width: unset;
+    margin: 0 0.5em 0 0;
+    vertical-align: middle;
+  }
+
+  #image {
+    border: 1px solid black;
+  }
+
+  button {
+    border-radius: 10px;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+  }
+
+  button:active {
+    transform: scale(0.95);
+  }
+  
+
