@@ -3,7 +3,6 @@ const db1 = require("./data/sqlite_db_user");
 const db2 = require("./data/sqlite_db_admin");
 
 let alert=require('alert')
-
 const app=express();
 app.use(express.urlencoded({extended: true}))
 
@@ -60,7 +59,7 @@ catch(err){
 })
 
 app.get('/signup', (req,res)=>{
-    res.render('signup', {error: 0})
+    res.render('signup')
 })
 
 app.post('/signup',async(req, res)=>{

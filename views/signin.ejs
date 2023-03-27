@@ -4,27 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <title>FitWell - SignUP</title>
-  <link rel="stylesheet" href="../CSS/signup_signin.css" />
+  <link rel="stylesheet" href="./CSS/signup_signin.css" />
 </head>
 
 <body>
   <h1>LOGIN TO YOUR ACCOUNT</h1>
   <div class="container">
-    
+     
   </div>
   <div class="form-container sign-in-container">
     <form name="logform" onchange="return Validation2()" method="POST" action="/signin">
       <fieldset>
-        <span class="logemailver">Enter Valid Email Address.</span>
 		<% if(error == 1){ %>
 			<span class="logcheck">Please enter Valid Credentials.</span>
 		<% }else{ %>
 			<span class="logcheck"></span>
 			<% } %>
+      <br>
+      <span class="logemailver">Enter Valid Email Address.</span> 
         <input type="email" id="emaill" placeholder="Email" name="email" required />
-        <!-- <span class="regpassver">Your password has minimum of eight characters, at least one Uppercase and one Lowercase letter, one number and one special character:.</span> -->
-        <input type="password" id="passwordl" placeholder="Password" name="password" required />
-        
+        <input type="password" id="passwordl" placeholder="Password" name="password" required />  
       </fieldset>
       <button id="signinbtn" type="submit">SIGN IN</button>
 	  <fieldset>
