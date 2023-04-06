@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* background-color: black; */
+}
+
+.topbg img{
+    height: 50vh;
+    width: 100vw;
+}
+.topbg{
+    position: relative;
+}
+.toptitle{
+    font-size: 58px;
+    color: white;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    font-family: 'Anton', sans-serif;
+    font-stretch: extra-expanded;
+}
+.reasonToChoose{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding-top: 6%;
+    padding-bottom: 6%;
+}
+.reasonToChoose-firstLine{
+    color: #ea3209ef;
+    font-family: 'Mulish', sans-serif; 
+}
+.reasonToChoose-secondLine{
+    font-family: 'Secular One', sans-serif;
+}
+.resonToChoose-reasonItems{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.resonToChoose-Item{
+    width: 20rem;
+}
+.resonToChoose-Item h5{
+    font-family: 'Secular One', sans-serif;
+}
+.resonToChoose-Item i{
+    color:#ea3209ef;
+   
+}
+
+@media screen and (max-width: 600px) {
+    .toptitle{
+        left: 30%;
+    }
+}
+
+ 

@@ -5,48 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>FitWell-Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="./CSS/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/home.css">
   </head> 
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="https://ajay-dhangar.github.io/gym.com/img/logo.png" alt="">
-          </a>
-          <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 navbar-list-items">
-              <li class="nav-item mx-3">
-                <a class="nav-link " aria-current="page" href="#">HOME</a>
-              </li>
-              <li class="nav-item mx-3">
-                <a class="nav-link" href="#"></a>
-              </li>
-              <li class="nav-item mx-3">
-                <a class="nav-link" href="#">SERVICES</a>
-              </li>
-              <li class="nav-item mx-3">
-                <a class="nav-link" href="#">PRODUCTS</a>
-              </li>
-              <li class="nav-item mx-3">
-                <a class="nav-link" href="#">REVIEWS</a>
-              </li>
-              <li class="nav-item mx-3">
-                <a class="nav-link" href="#">CONTACT US</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
+  <body onload="load()">
+    <%- include('navbar'); %>
     <div class="sliderContainer" id="carousel">
       <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
+          <div class="carousel-inner"> 
               <div class="carousel-item active">
                   <img src="./img/corousel_itme1.png" class="s1" alt="slide 1">
               </div>
@@ -71,14 +39,14 @@
   </div>
 
   <div  id="infobutton">
-      <button class="infohome">Wanna more Info?</button>
+      <button class="infohome"><a href="./about">Want More Info?</a></button>
   </div>
   <div class="sliderContainer" id="frontinfo">
       <div class="firstline">SHAPE YOUR BODY</div>
       <div class="secondline">BE <span id="colorToOrange">STRONG</span> TRAINING <span id="colorToOrange">HARD</span > </div>
   </div>
 
-  <div class="reasonToChoose">
+  <div class="reasonToChoose hidden">
     <div class=" reasonToChoose-firstLine">
         <h3>WHY TO CHOOSE</h3>
     </div>
@@ -90,28 +58,28 @@
       <div class="resonToChoose-Item">
         <i class="fa-solid fa-dumbbell fa-2xl my-5"></i>
         <h5>MODERN EQUIPMENTS</h5>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis odit fugiat error rem blanditiis maiores impedit culpa beatae.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis.</p>
       </div>
       <div class="resonToChoose-Item">
       <i class="fa-brands fa-nutritionix fa-2xl my-5"></i> 
         <h5>HEALTHY NUTRITION PLAN</h5>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis odit fugiat error rem blanditiis maiores impedit culpa beatae.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciati.</p>
       </div>
       <div class="resonToChoose-Item">
         <i class="fa-solid fa-table  fa-2xl my-5"></i>
         <h5>TRAINING PLAN</h5>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis odit fugiat error rem blanditiis maiores impedit culpa beatae.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis.</p>
       </div>
       <div class="resonToChoose-Item">
         <i class="fa-solid fa-handshake-angle  fa-2xl my-5"></i>
         <h5>UNIQUE TO YOUR NEEDS</h5>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis odit fugiat error rem blanditiis maiores impedit culpa beatae.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit nihil perspiciatis.</p>
       </div>
     </div>
   </div>
 
 
-  <div class="ourClasses ">
+  <div class="ourClasses hidden">
     <div class="ourClasses-lines my-3">
       <div class=" ourClasses-firstLine">
         <h3>OUR CLASSES</h3>
@@ -123,14 +91,14 @@
   
   <div class="ouClasses-cards">
     <div class="card border-0 my-3" style="width: 20rem;">
-      <img src="https://ajay-dhangar.github.io/gym.com/img/classes/class-1.jpg" class="card-img-top" alt="...">
+      <img src="/img/home2.jpg" class="card-img-top" alt="...">
       <div class="card-body bg-black">
         <span class="card-desc-1">STRENGTH</span> <br>  
         <span class="card-desc-2">WEIGHTLIFTING</span>
       </div>
     </div>
     <div class="card border-0 my-3" style="width: 20rem;">
-      <img src="https://ajay-dhangar.github.io/gym.com/img/classes/class-2.jpg" class="card-img-top" alt="...">
+      <img src="/img/home3.jpg" class="card-img-top" alt="...">
       <div class="card-body bg-black">
         <span class="card-desc-1">CARDIO</span> <br>  
         <span class="card-desc-2">INDOOR EXERCISES</span>      </div>
@@ -157,30 +125,81 @@
         <span class="card-desc-2">KETBELL POWER</span>
       </div>
     </div>
-  </div>
+  </div> 
   </div>
 
-  <div class="appointment">
+ 
+
+  <div class="appointment hidden">
     <div class="appoint-img">
-      <img src="https://ajay-dhangar.github.io/gym.com/img/gallery/gallery-1.jpg" alt="">
+      <img src="/img/home1.jpg" alt="REGISTER_NOW_AND_GET_EXCITING_DEALS" class="REGISTER_NOW_AND_GET_EXCITING_DEALS">
     </div>
-    <div class="appoint-info container">
+    <div class="appoint-info container" >
       <div class="appoint-firstLine">
        <h2>REGISTER NOW AND GET EXCITING DEALS</h2> 
     </div>
-    <div class=" appoint-secondline">
-       <h4>THE BODY ACHIEVES WHAT THE MIND BELIEVES.</h4> 
+    <div class=" appoint-secondline"> 
+              <div class="col-sm">
+                 <p id='my101' class="fs-2 text-light">0</p>
+                 <p class="text-light">Total Members</p>
+              </div>
+              <div class="col-sm">
+                 <p id='my102' class="fs-2 text-light">0</p>
+                 <p class="text-light">Total Collaborators</p>
+                </div>
     </div>
     </div>
-    
   </div>
-      
+   
+  <%- include('pricing'); %>
+    
+  <%- include('footer'); %>
 
      
 
-        
 
-     <script src="../JavaScript files/home.js"></script>  
+      <script>
+      function animate(obj, initVal, lastVal, duration) {
+         let startTime = null;
+        let currentTime = Date.now();
+        const step = (currentTime ) => {
+       if (!startTime) {
+         startTime = currentTime ;
+      }
+      const progress = Math.min((currentTime - startTime)/ duration, 1);
+      obj.innerHTML = Math.floor(progress * (lastVal - initVal) + initVal);
+      if (progress < 1) {
+         window.requestAnimationFrame(step);
+      } else {
+            window.cancelAnimationFrame(window.requestAnimationFrame(step));
+         }
+      };
+         window.requestAnimationFrame(step);
+      }
+      let text1 = document.getElementById('my101');
+      let text2 = document.getElementById('my102');
+      const load = () => { 
+         animate(text1, 0, 1011, 7000);
+         animate(text2, 0, 45, 7000);
+      }
+      // Scroll Effect
+      window.addEventListener('scroll', reveal);
+
+      function reveal() {
+          var reveals = document.querySelectorAll('.hidden');
+
+          for (var i = 0; i < reveals.length; i++) {
+              var windowHeight = window.innerHeight;
+              var revealTop = reveals[i].getBoundingClientRect().top;
+              var revealPoint = 150;
+
+              if (revealTop < windowHeight - revealPoint) {
+                  reveals[i].classList.add('show');
+              }
+          }
+      };
+   </script> 
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/8f8e3c7113.js" crossorigin="anonymous"></script>
   </body>

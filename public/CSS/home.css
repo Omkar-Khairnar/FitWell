@@ -4,45 +4,10 @@
     /* background-color: black; */
 }
 
-.navbar{
-    padding  : 0;
-    font-weight: bold;
-   
-}
-.navbar-collapse ul a{
-    color: rgb(223, 212, 212);
-    
-}
+
 #carousel{
-    background-color: black;
-    
+    background-color: black;   
 }
-.container-fluid{
-   background-color: black;
-   height: 5vw;
-   opacity: 0.5;
-   font-family: 'Mulish', sans-serif;
-   font-weight: 700;
-}
-
-.container-fluid:hover{
-    opacity: 0.8;
-}
-.container-fluid img{
-    opacity: 1;
-    height: auto;
-    width: auto;
-}
-.nav-item a{
-    transition: 0.5s;
-}
-.nav-item a:hover{
-    color: #f36100;
-    /* transform: rotateY(180deg); */
-    text-decoration-line: line-through;
-    scale: 1.1;
-}
-
 .sliderContainer img{
     height: 100vh;
     width: 100vw;
@@ -91,7 +56,7 @@
     padding-bottom: 6%;
 }
 .reasonToChoose-firstLine{
-    color: #ea3209ef;
+    color: #ea3209ef; 
     font-family: 'Mulish', sans-serif; 
 }
 .reasonToChoose-secondLine{
@@ -101,16 +66,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    padding: 15px;
 }
 .resonToChoose-Item{
     width: 20rem;
+    padding: 10px;
 }
 .resonToChoose-Item h5{
     font-family: 'Secular One', sans-serif;
 }
 .resonToChoose-Item i{
     color:#ea3209ef;
-   
 }
 .ourClasses{
     display: flex;
@@ -128,9 +94,13 @@
     font-family: 'Mulish', sans-serif;
     font-stretch: extra-expanded;
     color: #f36100;
-}
+} 
 .ourClasses-secondLine{
     font-family: 'Secular One', sans-serif;
+}
+.REGISTER_NOW_AND_GET_EXCITING_DEALS{
+    width: 90%;
+    height: auto;
 }
 .card-desc-1{
     color: #f36100;
@@ -158,7 +128,7 @@
 .appoint-info{
    position: absolute;
    color: white;
-   top: 40%; 
+   top: 35%; 
    left: 10%;
    box-sizing: border-box;
    text-align: center;
@@ -166,13 +136,38 @@
 }
 .appoint-firstLine h2{
     font-family: 'Secular One', sans-serif;
-    font-size: 48px; 
+    font-size: 40px; 
     font-weight: 700;
 }
 .appoint-secondline{
-    font-family: 'Mulish', sans-serif;
+    font-family: 'Secular One', sans-serif;
     font-weight: 700;
+    display: flex;
+    justify-content: space-evenly;
 }
+.infohome a{
+    text-decoration: none;
+    color: white;
+}
+/* Scroll Effect */
+.hidden {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: all 2s ease;
+    filter: blur(5px);
+  }
+  .show {
+    opacity: 1;
+    transform: translateX(0px);
+    filter: blur(0);
+  }
+  
+  @media (prefers-reduced-motion) {
+    .hidden {
+      transition:none;
+    }
+  }
 
 @media screen and  (max-width: 900px) {
     .container-fluid{

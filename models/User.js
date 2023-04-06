@@ -25,6 +25,10 @@ const UserSchema= new Schema({
     gender:{
         type:String,
         required:true,
+    },
+    image:{
+        type:String,
+        default:"https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png",
     }
 })
 

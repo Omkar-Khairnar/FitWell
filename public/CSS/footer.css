@@ -3,12 +3,12 @@
     padding: 0;
     font-family: 'Ubuntu', sans-serif;
 }
-.container{
+.footercontainer{
     color: white;
     padding: 40px;
     padding-bottom: 10px;
     background-color: black;
-    display: flex;
+    display: flex; 
     flex-direction: column;
 }
 .info{
@@ -25,7 +25,7 @@
     margin-bottom: 3%;
 }
 .icon{
-   color: rgb(223, 129, 21);
+   color: orangered;
    margin-right: 10px;
    margin: 30px 10px;
 }
@@ -48,6 +48,10 @@
     margin-bottom: 0;
     font-size: 20px;
 }
+.head img{
+    height: 100px;
+    /* background-color: azure  ; */
+}
 ul{
     list-style: none;
     margin: 0;
@@ -67,6 +71,15 @@ ul li{
 }
 .block1{
     margin-top: 20px;
+}
+.block li a{
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.block li a:hover{
+    color: orangered;
 }
 @media screen and (max-width: 700px) {
     .info{

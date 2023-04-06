@@ -1,3 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(24, 24, 24);
+}
+
 .carousel-item img{
     height: 30vw;
 }
@@ -7,7 +15,8 @@
     justify-content: space-between;
 }
 .latestProducts{
-    margin-top: 3%;
+    /* margin-top: 3%; */
+    padding-top: 3%;
 }
 
 .title_LT {
@@ -15,6 +24,7 @@
     align-self: center;
     vertical-align: middle;
     margin: 0%;
+    font-size: 200%;
 }
 .latestTradings{
     padding-left: 15px;
@@ -28,10 +38,14 @@
 
 .latestProductsCategory{
     display: flex;
-    width: 300px;
+    /* width: 300px; */
+    margin-right: 20px;
     justify-content: space-between;
     align-items: center;
     color: rgb(248, 102, 48);
+    font-size: 100%;
+    
+
 }
 #latestProductsCategory{
     margin-right: 5px;
@@ -128,4 +142,50 @@
     background-color: rgba(214, 92, 10, 0.932);
     /* background-color: rgba(107, 32, 5, 0.24); */
     border: orangered;
+}
+
+
+.btn-decs-container{
+    border: 0px;
+    padding: 0px 0px;
+    margin: 0%;
+    background-color: #000;
+}
+
+.modal{
+    background-color: rgba(14, 13, 13, 0.788);
+}
+.modal-body{
+    background-color: rgb(31, 23, 23);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.modal-body h3{
+    color: white;
+}
+.modal-header{
+    background-color: orangered;
+    color: white;
+    border-bottom: 0px;
+}
+.modal-product-img{
+    display: flex;
+    justify-content: center;
+}
+
+.col{
+    margin: 15px 0px;
+}
+.card-img-top-modal {
+    padding-top: 20%;
+    align-self: center;
+    margin-left: 15%;
+}
+
+
+
+.decs-container:hover{
+    margin: 15px 0px;
+    border: 4px solid rgb(126, 34, 0);
 }

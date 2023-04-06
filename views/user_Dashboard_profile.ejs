@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>User Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" />
+  <link rel="stylesheet" href="./CSS/user_Dashboard.css" />
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <div class="dashboard">
+    <%- include('user_dashboard_navbar.ejs'); %>
+
+    <div class="dashboard-app">
+      <header class="dashboard-toolbar">
+        <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
+        <a href="/" class="menu-toggle">
+          <i class="fas fa-right-from-bracket"></i>
+          Logout
+        </a>
+      </header>
+
+      <!-- User's Payment  -->
+      <div class="dashboard-content" id="dashboard-review-page">
+        <div class="container">
+          <!-- EDIT HERE FOR PROFILE USER -->
+           <div class="container-review">
+            <h1>Profile Page</h1>  
+       
+            <div class="user-container" style="text-align: center; width: 400px; margin: auto; border: 1px dashed #ccc; padding: 20px;">
+              <img src="./img/trainers/team-1.jpg" alt="User photo" style="display: block; margin: 0 auto; width: 250px; height: 250px; border: 1px solid #ccc; border-radius: 50%;">
+              <h2 style="text-decoration: underline; margin-bottom: 10px;"><strong>Username:</strong> <span id="user-profile-name"></span></h2>
+              <p><strong>Height:</strong> <span style="text-decoration: underline;"> <span id="user-height"></span>170 cm</span></p>
+              <p><strong>Weight:</strong> <span style="text-decoration: underline;"> <span id="user-weight"></span>70 kg</span></p>
+              <p><strong>Email:</strong> <span style="text-decoration: underline;">user@example.com</span></p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <!-- partial -->
+  <script src="https://kit.fontawesome.com/1b34bcf330.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="./JS/user_Dashboard.js"></script>
+</body>
+
+</html>

@@ -4,39 +4,39 @@
     box-sizing: border-box;
     font-family: 'Oswald', sans-serif;  
 }
-
-.container{
+.container1{
     width: 100%;
     min-height: 100vh;
-    background-image:url(img/460940.jpg);
-    background-color: dimgray;
+    background-color: rgb(29, 29, 29);
 }
 
-.container h2{
+.container1 h2, h3{
     color: #fff;
     font-size: 32px;
-    padding: 50px 0;
     text-align: center;
 }
 .price-row{
-   width: 90%;
-   max-width: 1100px;
+   width: 80%;
+   max-width: 1000px;
+   margin-bottom: 10px;
    margin: auto;
    display: grid;
    grid-template-columns: repeat(auto-fit , minmax(250px ,1fr));
-   grid-gap: 25px;
+   grid-gap: 30px;
 }
 .price-col {
     font-size: 20px;
-background:#373737;
-padding: 10% 15%;
-border-radius: 10px;
-color: #fff;
-text-align: center;
+    background:#373737;
+    padding: 5% 10%;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+}
+.price-col:hover{
+    background: rgb(75, 71, 71);
 }
 .price-col p{
     font-size: 22px;
-
 }
 .price-col h3{
     font-size: 44px;
@@ -55,13 +55,13 @@ text-align: center;
 }
 .price-col ul{
     text-align: left;
-    margin: 5px 0;
+    margin: 15px 0;
     color: #ddd;
    list-style: none;
 
 }
 .price-col ul li{
-    margin: 15px 0;
+    margin: 10px 0;
 }
 .price-col ul li::before{
     content: '\2022';
@@ -71,13 +71,13 @@ text-align: center;
 }
 .price-col button{
     width: 100%;
-    padding: 14px 0;
+    padding: 10px 0;
     background: transparent;
     color: #fff;
-    font-size: 30px;
+    font-size: 21px;
     border: 1px solid coral;
     border-radius: 6px;
-    margin-top: 30px;
+    margin-top: 20px;
     cursor: pointer;
     transition: background 0.5s;
 }
