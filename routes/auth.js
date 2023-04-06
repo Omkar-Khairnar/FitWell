@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 const db=require('../data/sqlite_db')
-
+ 
 
 //Route 1: Sign Up(Create New User) :No Login required
 // router.post('/createuser',async(req, res)=>{
