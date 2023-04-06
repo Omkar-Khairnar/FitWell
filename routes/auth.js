@@ -3,8 +3,9 @@ const User=require('../models/User')
 const router=express.Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+require('dotenv').config()
  
-const JWT_SECRET="FFSD_FITWELL_PROJECT";
+
 
 //Route 1: Sign Up(Create New User) :No Login required
 router.post('/createuser',async(req, res)=>{
@@ -33,7 +34,7 @@ router.post('/createuser',async(req, res)=>{
             }
         }
 
-        var authtoken=jwt.sign(data, JWT_SECRET);
+        var authtoken=jwt.sign(data, process.env.JWT_SECRET);
         success=true;
 
         res.status(201).json({success:success, authtoken});
@@ -64,7 +65,7 @@ router.post('./login', async(req, res)=>{
                 id:user.id,
             }
         }
-        var authtoken=await jwt.sign(data, JWT_SECRET);
+        var authtoken=await jwt.sign(data, process.env.JWT_SECRET);
         if(authtoken){
             success=true;
         }
