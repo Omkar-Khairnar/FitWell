@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Timer: <span id="timer">0:00</span></p>
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+    <input id="inputMinutes" type="number" value="0" min="0" max="59" placeholder="Enter minutes">
+    <input id="inputSeconds" type="number" value="0" min="0" max="59" placeholder="Enter seconds">
+    <button id="setBtn">Set</button>
+    
+    
+    
+    
+<script>
+let intervalId;
+let timerElement = document.getElementById("timer");
+let startBtn = document.getElementById("startBtn");
+let stopBtn = document.getElementById("stopBtn");
+let inputMinutes = document.getElementById("inputMinutes");
+let inputSeconds = document.getElementById("inputSeconds");
+let setBtn = document.getElementById("setBtn");
+let minutes = 0;
+let seconds = 0;
+
+function startTimer() {
+  intervalId = setInterval(updateTimer, 1000);
+  startBtn.disabled = true;
+  stopBtn.disabled = false;
+}
+
+function stopTimer() {
+  clearInterval(intervalId);
+  startBtn.disabled = false;
+  stopBtn.disabled = true;
+}
+
+function updateTimer() {
+  seconds--;
+  if (seconds < 0) {
+    seconds = 59;
+    minutes--;
+  }
+  if (minutes < 0) {
+    clearInterval(intervalId);
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+    minutes = 0;
+    seconds = 0;
+    
+  }
+  timerElement.innerText = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  if(minutes===0 && seconds===0){
+    timerElement.innerText = "Times Up!";
+  }
+}
+
+function setTimer() {
+  minutes = parseInt(inputMinutes.value);
+  seconds = parseInt(inputSeconds.value);
+  timerElement.innerText = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
+
+startBtn.addEventListener("click", startTimer);
+stopBtn.addEventListener("click", stopTimer);
+setBtn.addEventListener("click", setTimer);
+
+</script>
+
+</body>
+</html>

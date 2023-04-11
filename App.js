@@ -171,6 +171,14 @@ app.get('/user_dashboard_navbar', (req,res)=>{
 app.get('/user_dashboard_chat', (req,res)=>{
     res.render('user_dashboard_chat')
 })
+app.get('/timer', (req,res)=>{
+    res.render('timer')
+})
+
+
+
+
+
 app.get('/admin_dashboard_side_wrapper', (req,res)=>{
     res.render('admin_dashboard_side_wrapper')
 })
