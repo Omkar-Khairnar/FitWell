@@ -7,92 +7,218 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="./CSS/signup_signin.css" />
+
   <link rel="stylesheet" href="./CSS/admin_dashboard.css" />
   <title>Responsive Admin Dashboard</title>
 </head>
+<style>
+  /* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800'); */
+
+button[type='submit'] {
+  display: block;
+  width: 60%;
+  margin: 0 auto;
+  height: auto;
+  font-size: 1.1rem;
+  background-color: #ff7300;
+  border-color: rgb(30, 173, 42);
+  min-width: 300px;
+}
+
+body {
+  width: 100%;
+  height: 640px;
+  margin: 0;
+  background-color: #fd5d00;
+  color: #000000;
+  font-family: Tahoma;
+  font-size: 16px;
+  background-image: radial-gradient(orangered,black) ;
+  /* background-image: linear-gradient(orangered,black); */
+}
+
+
+p {
+  margin: 10px 0px;
+  text-align: center;
+  margin-bottom: 0%;
+}
+
+span {
+  font-size: 12px;
+  color: red;
+  /* display: none; */
+}
+
+.regemailver {
+  display: none;
+}
+
+label {
+  font-weight: 600;
+  font-size: larger;
+}
+
+form {
+  overflow-y: auto;
+  width: 50vw;
+  max-width: 500px;
+  min-width: 300px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+
+input,
+textarea {
+  background-color: #eee;
+  border: none;
+  padding: 10px 15px;
+  margin: 8px 0;
+  width: 95%;
+  font-size: medium;
+  border-radius: 5px;
+}
+
+
+#image {
+  border: 1px solid black;
+}
+
+button {
+  border-radius: 5px;
+  background-color: #ff8800;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+.modal {
+  background: #000000e1;
+}
+
+
+</style>
 
 <body>
   <div class="d-flex" id="wrapper">
     <!-- Sidebar --><!-- /#sidebar-wrapper -->
     <%- include('admin_dashboard_side_wrapper.ejs'); %>
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-      <!-- /#top-wrapper -->
-      <%- include('admin_dashboard_top_wrapper.ejs'); %>
-        <div class="container-fluid px-4 overflow-scroll">
-              <div class="row my-5">
-                <h3 class="fs-4 mb-3">Trainers Information</h3>
-                <div class="col">
-                  <table class="table bg-white rounded shadow-sm  table-hover">
-                    <thead>
-                      <tr>
-                        <th scope="col" width="50">Sr.</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">DOJ</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Salary</th>
-                        <th scope="col"></th>
-                        
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Omkar K.</td>
-                        <td>omkarkhairnar9441@gmail.com</td>
-                        <td>22Feb 2023</td>
-                        <td>Male</td>
-                        <td>Rs 60,000/-</td>
-                        <td><i class="fa-solid fa-trash"></i></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Mathan</td>
-                        <td>manthan12@gmail.com</td>
-                        <td>22March 2023</td>
-                        <td>Male</td>
-                        <td>Rs 40,000/-</td>
-                        <td><i class="fa-solid fa-trash"></i></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Gauravi</td>
-                        <td>gauravi.b@gmail.com</td>
-                        <td>14Feb 2023</td>
-                        <td>Female</td>
-                        <td>Rs 50,000/-</td>
-                        <td><i class="fa-solid fa-trash"></i></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Virendra</td>
-                        <td>viru.b@gmail.com</td>
-                        <td>14Feb 2022</td>
-                        <td>Male</td>
-                        <td>Rs 60,000/-</td>
-                        <td><i class="fa-solid fa-trash"></i></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <!-- /#top-wrapper -->
+        <%- include('admin_dashboard_top_wrapper.ejs'); %>
+          <div class="container-fluid px-4 overflow-scroll">
+            <button type="button" class="button my-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Add New Trainer
+            </button>
+
+            <div class="row my-5">
+              <h3 class="fs-4 mb-3">Trainers Information</h3>
+              <div class="col">
+                <table class="table bg-white rounded shadow-sm  table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col" width="50">Sr.</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">DOJ</th>
+                      <th scope="col">Gender</th>
+                      <th scope="col">Salary</th>
+                      <th scope="col"></th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Omkar K.</td>
+                      <td>omkarkhairnar9441@gmail.com</td>
+                      <td>22Feb 2023</td>
+                      <td>Male</td>
+                      <td>Rs 60,000/-</td>
+                      <td><i class="fa-solid fa-trash"></i></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Mathan</td>
+                      <td>manthan12@gmail.com</td>
+                      <td>22March 2023</td>
+                      <td>Male</td>
+                      <td>Rs 40,000/-</td>
+                      <td><i class="fa-solid fa-trash"></i></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Gauravi</td>
+                      <td>gauravi.b@gmail.com</td>
+                      <td>14Feb 2023</td>
+                      <td>Female</td>
+                      <td>Rs 50,000/-</td>
+                      <td><i class="fa-solid fa-trash"></i></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Virendra</td>
+                      <td>viru.b@gmail.com</td>
+                      <td>14Feb 2022</td>
+                      <td>Male</td>
+                      <td>Rs 60,000/-</td>
+                      <td><i class="fa-solid fa-trash"></i></td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+            </div>
 
-              <button class="btn-primary px-2 py-2">Add New Trainer</button>
-        </div>
-    
-  </div>
-  <!-- /#page-content-wrapper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://kit.fontawesome.com/8f8e3c7113.js" crossorigin="anonymous"></script>
-  <script>
-    var el = document.getElementById("wrapper");
-    var toggleButton = document.getElementById("menu-toggle");
 
-    toggleButton.onclick = function () {
-      el.classList.toggle("toggled");
-    };
-  </script>
+          </div>
+          <div class="modal" id="exampleModal">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+              <div class="modal-content">
+                <div class="modal-header align-self-center">
+                  <h3>Fill Out Appropriate Details of Trainer</h3>
+                  
+                </div>
+                <div class="modal-body">
+                  <div class="form-container sign-up-container">
+                    <form name="regform" onchange="return Validation1()" method="POST" action="/signup">
+                      <fieldset>
+                        <input type="text" id="namec" placeholder="Name" name="name" required />
+                        <span class="regemailver">Enter Valid Email Address.</span>
+                        <input type="text" id="emailc" placeholder="Email" name="email" required />
+                        <input type="text" id="genderc" placeholder="Gender" name="gender" required>
+                        <input type="number" id="salary-trainer" placeholder="Enter salary($)" name="salary-trainer" required>
+                        <input class="profile-img" type="url" id="image" name="image"
+                          placeholder="Enter Profile Image Url">
+                      </fieldset>
+                      <button id="signupbtn" type="submit">Add Trainer</button>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+      </div>
+      <!-- /#page-content-wrapper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://kit.fontawesome.com/8f8e3c7113.js" crossorigin="anonymous"></script>
+      <script>
+        var el = document.getElementById("wrapper");
+        var toggleButton = document.getElementById("menu-toggle");
+
+        toggleButton.onclick = function () {
+          el.classList.toggle("toggled");
+        };
+      </script>
 </body>
 
 </html>

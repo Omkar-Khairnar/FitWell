@@ -10,25 +10,24 @@
 <body>
   <h1>LOGIN TO YOUR ACCOUNT</h1> 
   <div class="container">
-     
+
   </div>
   <div class="form-container sign-in-container">
     <form name="logform" onchange="return Validation2()" method="POST" action="/signin">
       <fieldset>
-		<% if(error == 1){ %>
-			<span class="logcheck">Please enter Valid Credentials.</span>
-		<% }else{ %>
-			<span class="logcheck"></span>
-			<% } %>
-      <br>
-      <span class="logemailver">Enter Valid Email Address.</span> 
-        <input type="email" id="emaill" placeholder="Email" name="email" required />
-        <input type="password" id="passwordl" placeholder="Password" name="password" required />  
+        <% if(error==1){ %>
+          <span class="logcheck">Please enter Valid Credentials.</span>
+          <% }else{ %>
+            <span class="logcheck"></span>
+            <% } %>
+              <br>
+              <span class="logemailver">Enter Valid Email Address.</span>
+              <input type="email" id="emaill" placeholder="Email" name="email" required />
+              <input type="password" id="passwordl" placeholder="Password" name="password" required />
       </fieldset>
       <button id="signinbtn" type="submit">SIGN IN</button>
-	  <fieldset>
-		<a class="new-user-signup" href="/signup">New User ? SIGN UP here..!</a>
-	  </fieldset>
+
+      <a class="nevigate-to-signin-up" href="/signup">New User ? SIGN UP here..!</a>
     </form>
   </div>
   <script src="./JS/signup_signin.js"></script>

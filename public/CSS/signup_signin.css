@@ -1,6 +1,6 @@
 /* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800'); */
 
-button[type="submit"] {
+button[type='submit'] {
   display: block;
   width: 60%;
   margin: 0 auto;
@@ -9,132 +9,129 @@ button[type="submit"] {
   background-color: #ff7300;
   border-color: rgb(30, 173, 42);
   min-width: 300px;
-  
 }
 
 body {
-    width: 100%;
-    height: 611px;
-    margin: 0;
-    background-color: #fd5d00;
-    color: #000000;
-    font-family: Tahoma;
-    font-size: 16px;
-    /* background-image: radial-gradient(orangered,black) ; */
-    /* background-image: linear-gradient(orangered,black); */
-    background: black;
-  }
+  width: 100%;
+  height: 640px;
+  margin: 0;
+  background-color: #fd5d00;
+  color: #000000;
+  font-family: Tahoma;
+  font-size: 16px;
+  background-image: radial-gradient(orangered,black) ;
+  /* background-image: linear-gradient(orangered,black); */
+}
 
-  
-  h1, p {
-    margin: 20px 0px;
-    text-align: center;
-    margin-bottom: 0%;
-  }
-  h1{
-    color: wheat;
-    margin-top: 88px;
-  }
-  span {
-    font-size: 12px;
-    color: red;
-    /* display: none; */
-  }
-  .logemailver{
-    display: none;
-  }
-  .regemailver{
-    display: none;
-  }
-  .regpassver{
-    display: none;
-  }
-  .regagever{
-    display: none; 
-  }
-  label {
-    font-weight: 600;
-    font-size: larger;
-  }
-  
-  form {
-    overflow-y: auto;
-    width: 50vw;
-    max-width: 500px;
-    min-width: 300px;
-    margin: 0 auto;
-    padding-bottom: 10px;
-  }
-  .sign-up-container {
-    overflow-y: auto;
-    width: 50vw;
-    max-width: 550px;
-    min-width: 400px;
-    margin: 20px auto;
-    border: 5px solid rgb(255, 153, 0);
-    border-radius: 10px;
-    background-color: #ffffff;
-  }
-  
-  .sign-in-container {
-    overflow-y: auto;
-    width: 50vw;
-    height: 250px;
-    max-width: 550px;
-    min-width: 400px;
-    margin: 50px auto;
-    border: 5px solid rgb(255, 153, 0);
-    border-radius: 10px;
-    background-color: #ffffff;
-    vertical-align: middle;
-  }
-  .logcheck{
-    color: red;
-  }
-  
-  fieldset {
-    border: none
-  }
+h1,
+p {
+  margin: 10px 0px;
+  text-align: center;
+  margin-bottom: 0%;
+}
+h1 {
+  color: wheat;
+  margin-top: 50px;
+}
+span {
+  font-size: 12px;
+  color: red;
+  /* display: none; */
+}
+.logemailver {
+  display: none;
+}
 
-  input,textarea {
-    background-color: #eee;
-    border: none;
-    padding: 10px 15px;
-    margin: 8px 0;
-    width: 95%;
-    font-size: medium;
-    border-radius: 5px;
-  }
+.regemailver {
+  display: none;
+}
+.regpassver {
+  display: none;
+}
+.regagever {
+  display: none;
+}
+label {
+  font-weight: 600;
+  font-size: larger;
+}
 
-  .inline {
-    width: unset;
-    margin: 0 0.5em 0 0;
-    vertical-align: middle;
-  }
+form {
+  overflow-y: auto;
+  width: 50vw;
+  max-width: 500px;
+  min-width: 300px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+.sign-up-container {
+  overflow-y: auto;
+  width: 50vw;
+  max-width: 550px;
+  min-width: 400px;
+  margin: 20px auto;
+  border: 5px solid rgb(255, 153, 0);
+  border-radius: 10px;
+  background-color: #ffffff;
+}
 
-  #image {
-    border: 1px solid black;
-  }
+.sign-in-container {
+  overflow-y: auto;
+  width: 50vw;
+  height: 250px;
+  max-width: 550px;
+  min-width: 400px;
+  margin: 50px auto;
+  border: 5px solid rgb(255, 153, 0);
+  border-radius: 10px;
+  background-color: #ffffff;
+  vertical-align: middle;
+}
+.logcheck {
+  color: red;
+}
 
-  button {
-    border-radius: 10px;
-    border: 1px solid #FF4B2B;
-    background-color: #FF4B2B;
-    color: #FFFFFF;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
-  }
+fieldset {
+  border: none;
+}
 
-  button:active {
-    transform: scale(0.95);
-  }
+input,
+textarea {
+  background-color: #eee;
+  border: none;
+  padding: 10px 15px;
+  margin: 8px 0;
+  width: 95%;
+  font-size: medium;
+  border-radius: 5px;
+}
 
-    a {
-	width: 100%;
-	margin-left: 30%;
-  }
+.inline {
+  width: unset;
+  margin: 0 0.5em 0 0;
+  vertical-align: middle;
+}
 
-  
+#image {
+  border: 1px solid black;
+}
 
+button {
+  border-radius: 10px;
+  border: 1px solid #ff4b2b;
+  background-color: #ff4b2b;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.nevigate-to-signin-up {
+  width: 100%;
+  margin-left: 25%;
+}
