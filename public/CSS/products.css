@@ -50,17 +50,12 @@ body{
 #latestProductsCategory{
     margin-right: 5px;
     margin-left: 5px;
-}
-#latestProductsCategory:hover{
-    /* background-color: aqua; */
-    cursor: pointer;
-    font-size: x-large;
-}
-
-#latestProductsCategory{
     background-color: rgb(26, 22, 22);
     border-radius: 2px;
 }
+
+
+
 .fa{
     align-items: center;
     color: rgb(247, 133, 92);
@@ -175,17 +170,20 @@ body{
 }
 
 .col{
-    margin: 15px 0px;
+    margin: 15px 10px;
+    /* padding: 0%; */
 }
 .card-img-top-modal {
     padding-top: 20%;
     align-self: center;
     margin-left: 15%;
 }
+.col:hover{
+    border: 3px solid yellow;
+}
 
 
-
-.decs-container:hover{
+/* .decs-container:hover{
     margin: 15px 0px;
     border: 4px solid rgb(126, 34, 0);
-}
+} */

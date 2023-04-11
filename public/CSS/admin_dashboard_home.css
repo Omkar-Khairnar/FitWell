@@ -12,3 +12,8 @@
 .recent-5-orders h3{
   font-weight: bolder;
 }
+
+.addNewProductForm {
+  display: flex;
+  flex-direction: column;
+}

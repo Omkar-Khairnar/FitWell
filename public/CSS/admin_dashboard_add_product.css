@@ -1,0 +1,62 @@
+button[type="submit"] {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+    height: auto;
+    font-size: 1.1rem;
+    background-color: #ff7300;
+    min-width: 300px;
+    
+  }
+
+  label {
+    font-weight: 600;
+    font-size: larger;
+  }
+  
+  form {
+    overflow-y: auto;
+    /* width: 50vw; */
+    max-width: 500px;
+    min-width: 300px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .add-product-container {
+    overflow-y: auto;
+    width: 50vw;
+    max-width: 550px;
+    min-width: 400px;
+    margin: 20px auto;
+    border: 5px solid rgb(255, 153, 0);
+    border-radius: 10px;
+    background-color: #ffffff;
+  }
+  
+
+  input,textarea,select {
+    background-color: #eee;
+    border: none;
+    padding: 10px 15px;
+    margin: 8px 0;
+    width: 95%;
+    font-size: medium;
+    border-radius: 5px;
+  }
+
+  button {
+    border-radius: 10px;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+  }
+
+  button:active {
+    transform: scale(0.95);
+  }

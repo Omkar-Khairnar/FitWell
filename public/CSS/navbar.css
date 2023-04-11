@@ -46,4 +46,12 @@ body{
  /* .navbarlogo img{
     height: 70px;
  } */
-  
+
+
+ .btn {
+    color: rgb(255, 255, 255);
+    font-family: 'Alkatra', cursive;
+}
+.btn:hover {
+    color: #f36100;
+}
