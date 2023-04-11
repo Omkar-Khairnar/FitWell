@@ -17,9 +17,9 @@
     <div class="dashboard-app">
       <header class="dashboard-toolbar">
         <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
-        <a href="/" class="menu-toggle">
+        <a href="/userlogout" class="menu-toggle">
           <i class="fas fa-right-from-bracket"></i>
-          Logout
+          Logout 
         </a>
       </header>
 
@@ -31,11 +31,11 @@
             <h1>Profile Page</h1>  
        
             <div class="user-container" style="text-align: center; width: 400px; margin: auto; border: 1px dashed #ccc; padding: 20px;">
-              <img src="./img/trainers/team-1.jpg" alt="User photo" style="display: block; margin: 0 auto; width: 250px; height: 250px; border: 1px solid #ccc; border-radius: 50%;">
-              <h2 style="text-decoration: underline; margin-bottom: 10px;"><strong>Username:</strong> <span id="user-profile-name"></span></h2>
-              <p><strong>Height:</strong> <span style="text-decoration: underline;"> <span id="user-height"></span>170 cm</span></p>
-              <p><strong>Weight:</strong> <span style="text-decoration: underline;"> <span id="user-weight"></span>70 kg</span></p>
-              <p><strong>Email:</strong> <span style="text-decoration: underline;">user@example.com</span></p>
+              <img src=<%=userDetails.image%> alt="User photo" style="display: block; margin: 0 auto; width: 250px; height: 250px; border: 1px solid #ccc; border-radius: 50%;">
+              <h2 style="text-decoration: underline; margin-bottom: 10px;"><strong>Username:<%=userDetails.name%></strong> <span id="user-profile-name"></span></h2>
+              <p><strong>Height:<%=userDetails.height%></strong> <span style="text-decoration: underline;"> <span id="user-height"></span></span></p>
+              <p><strong>Weight:<%=userDetails.weight%>kg</strong> <span style="text-decoration: underline;"> <span id="user-weight"></span></span></p>
+              <p><strong>Email:<%=userDetails.email%></strong> <span style="text-decoration: underline;"></span></p>
             </div>
         </div>
       </div>

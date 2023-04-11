@@ -1,6 +1,7 @@
 const mongoose=require('mongoose')
 mongoose.set('strictQuery', false);
-const mongoURI='mongodb+srv://Omkar_FitWell:Omkar158@fitwelldatabase.njyspot.mongodb.net/Fitwell?retryWrites=true&w=majority'
+require('dotenv').config()
+const mongoURI=process.env.mongoURI
 
 const connectToMongo=()=>{
     mongoose
@@ -9,7 +10,7 @@ const connectToMongo=()=>{
       useUnifiedTopology: true,
       // useCreateIndex: true,
     })
-    .then(() => console.log('Database connected!'))
+    .then(() => console.log('MongoDB Database connected!'))
     .catch((err) => console.log(err))
 }
 

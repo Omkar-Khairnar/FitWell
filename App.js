@@ -1,21 +1,34 @@
 const express=require('express');
-const db1 = require("./data/sqlite_db_user");
-const db2 = require("./data/sqlite_db_admin");
-
-let alert=require('alert')
+const connectToMongo=require('./db')
 const app=express();
-app.use(express.urlencoded({extended: true}))
-
+let alert=require('alert')
 const PORT=5000;
-app.set('view engine', 'ejs');
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const User=require('./models/User')
+const session=require('express-session')
+const cookieParser=require('cookie-parser')
+require('dotenv').config();
 
+//Connection to MongoDB
+connectToMongo();
+app.set('view engine', 'ejs');
+app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
 app.use(express.json());
-
+app.use(cookieParser());
+app.use(session({
+    secret: process.env.JWT_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { 
+        // secure: true,
+        maxAge:86400000, //1 Day expiry
+    }
+  })) 
 app.get('/', (req,res)=>{
-   res.render('home') 
+   res.render('home')  
 })
-
 app.get('/footer', (req,res)=>{
     res.render('footer')
 })
@@ -25,106 +38,16 @@ app.get('/products', (req,res)=>{
 app.get('/signin', (req,res)=>{
     res.render('signin', {error: 0})
 })
-app.post('/signin',(req,res)=>{
-    try{ 
-        const email=req.body.email;
-        const password=req.body.password;
-        db1.get(`Select * from USERS where email=$email and password=$password`,{$email: email,$password: password} , (error, row)=>{
-            if(row){
-                const userdetails={
-                    name:row.name,
-                    email:row.email,
-                    password:row.password,
-                    age:row.age,
-                    gender:row.gender,
-                    weight:row.weight,
-                    height:row.height,
-                    image:row.image
-                }
-                 res.redirect('/user_Dashboard_home');
-            }
-            else if(!row){
-                res.render('signin', {error: 1})
-            }
-            else{
-                console.log(error);
-                res.redirect('/signin')
-            }
-    } )  
-}
-catch(err){
-    console.log(err);
-    res.status(400).json({Error:err.message})
-}
-})
+
 
 app.get('/signup', (req,res)=>{
     res.render('signup')
 })
 
-app.post('/signup',async(req, res)=>{
-    try{
-        const name=req.body.name;
-        const email=req.body.email;
-        const password=req.body.password;
-        const age=req.body.age;
-        const gender=req.body.gender;
-        const weight=req.body.weight;
-        const height=req.body.height;
-        const image=req.body.image;
-            db1.get(`Select * from USERS where email=$email`,{$email:email}, async(error, row)=>{
-                if(!error && row){
-                    alert('Email Id already Exists. Please Log in into registered account')
-                    res.redirect('/signin')
-                }
-                else{
-                    db1.run(`INSERT INTO USERS(name,email,password,age,gender,weight,height,image) VALUES(?,?,?,?,?,?,?,?)`,[name,email, password,age,gender,weight, height,image], (err)=>{
-                        if(err){
-                            console.log(err);
-                            res.status(400).send("Some Error occurred");
-                        }
-                         res.redirect('/signin')
-                    });
-                }
-                
-            })      
-    }  
-    catch(err){
-        res.status(500).json({Error:err.message})
-        console.log(err);
-    }
-})
-
 app.get('/adminlogin', (req,res)=>{
     res.render('adminlogin',{error:0})
 })
-app.post('/adminlogin',(req,res)=>{
-    try{    
-        const email=req.body.email;
-        const password=req.body.password;
-        db2.get(`Select * from ADMIN where email=$email and password=$password`,{$email: email,$password: password} , (error, row)=>{
-            if(row){
-                const userdetails={
-                    name:row.name,
-                    email:row.email,
-                    password:row.password,
-                }
-                 res.redirect('/admin_dashboard_home');
-            }
-            else if(!row){
-                res.render('adminlogin', {error: 1})
-            }
-            else{
-                console.log(error);
-                res.redirect('/adminlogin')
-            }
-    } )  
-}
-catch(err){
-    console.log(err);
-    res.status(400).json({Error:err.message})
-}
-})
+
 app.get('/about', (req,res)=>{
     res.render('about')
 })
@@ -140,9 +63,12 @@ app.get('/services', (req,res)=>{
 app.get('/contact', (req,res)=>{
     res.render('contact')
 })
-
 app.get('/user_Dashboard_home', (req,res)=>{
-    res.render('user_Dashboard_home')
+    if(!req.session.userDetails){
+        return res.redirect('/signin')
+    }
+    const userDetails=req.session.userDetails;
+    res.render('user_Dashboard_home',{userDetails})
 })
 app.get('/user_Dashboard_myorders', (req,res)=>{
     res.render('user_Dashboard_myorders')
@@ -163,14 +89,15 @@ app.get('/user_Dashboard_challenges', (req,res)=>{
     res.render('user_dashboard_challenges')
 })
 app.get('/user_Dashboard_profile', (req,res)=>{
-    res.render('user_Dashboard_profile')
+    const userDetails=req.session.userDetails;
+    res.render('user_Dashboard_profile', {userDetails})
 })
 app.get('/user_dashboard_navbar', (req,res)=>{
     res.render('user_dashboard_navbar')
 })
-app.get('/user_dashboard_chat', (req,res)=>{
-    res.render('user_dashboard_chat')
-})
+// app.get('/user_dashboard_chat', (req,res)=>{
+//     res.render('user_dashboard_chat')
+// })
 app.get('/admin_dashboard_side_wrapper', (req,res)=>{
     res.render('admin_dashboard_side_wrapper')
 })
@@ -198,9 +125,103 @@ app.get('/payment', (req,res)=>{
 app.get('/admin_dashboard_feedback', (req,res)=>{
     res.render('admin_dashboard_feedback')
 })
+app.get('/userlogout', async(req,res)=>{
+    req.session.destroy();
+    return res.redirect('/');
+})
 
 
+app.post('/signup',async(req, res)=>{
+    let success=false;
+    try{
+        let prevuser=await User.findOne({email:req.body.email})
+        if(prevuser){
+            alert('Email Id already Exists. Please Log in into registered account');
+           return  res.redirect('/signin')
+        }
+         
+        const pass=req.body.password;
+        const salt=await bcrypt.genSaltSync(10);
+        const secpass=await bcrypt.hashSync(pass, salt);
 
+        let user=await User.create({
+            name:req.body.name,
+            email:req.body.email,
+            password:secpass,
+            age:req.body.age,
+            gender:req.body.gender,
+            weight:req.body.weight,
+            height:req.body.height,
+            image:req.body.image,
+        })
+        const data={
+            user:{
+                id:user.id,
+            }
+        }
+        var authtoken=jwt.sign(data, process.env.JWT_SECRET);
+        success=true;
+        // res.status(200).json({messag:'User Created Successfully'})
+        res.redirect('/signin')
+    }
+    catch(err){
+        res.status(500).json({Error:err.message})
+        console.log(err);
+    }
+})
+
+app.post('/signin', async(req, res)=>{
+    var email=req.body.email;
+    var password=req.body.password;
+    let success=false;
+try{
+    console.log(email);
+    let user=await User.findOne({email:email});
+    if(!user){
+       return  res.render('signin', {error: 1})
+    }
+    const comparePassword=await bcrypt.compare(password, user.password);
+
+    if(!comparePassword){
+       return res.render('signin', {error: 1})      
+    }
+    const data={
+        user:{
+            id:user.id,
+        }
+    }
+    var authtoken=await jwt.sign(data, process.env.JWT_SECRET);
+    if(authtoken){
+        success=true;
+    }
+    // res.cookie('jwtoken',authtoken,{
+    //     expires:new Date(Date.now()+86400000),
+    //     httpOnly:true,
+    // })
+    const userDetails={
+        id:user._id,
+        name:user.name,
+        email:user.email,
+        age:user.age,
+        gender:user.gender,
+        weight:user.weight,
+        height:user.height,
+        image:user.image,
+        DateOfJoin:user.DateOfJoin,
+    }
+    req.session.userDetails=userDetails;
+    req.session.save(); 
+   return res.redirect('/user_Dashboard_home')
+}
+catch(err){
+    console.log(err);
+    res.status(400).json({Error:err})
+}
+}) 
+
+// app.use('/api/userauth', require('./routes/userAuth'))
+// app.use('/api/adminauth', require('./routes/adminAuth'))
 app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT}`)
   })
+

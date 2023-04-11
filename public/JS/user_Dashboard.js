@@ -17,30 +17,33 @@ $(document).ready(function () {
         }
     });
 });
+  
 
 
 
+// // BMI calculator
 
-// BMI calculator
+// // const weightInput = document.getElementById('bmiweight').innerHTML;
+// // const heightInput = document.getElementById('bmiheight').innerHTML;
+// const resultDiv = document.getElementById('bmi-value');
+// // const bmi_val = document.getElementById('bmi-value');
 
-// const weightInput = document.getElementById('bmi-weight').innerText;
-// const heightInput = document.getElementById('bmi-height').innerText;
-const resultDiv = document.getElementById('bmi-value');
-// const bmi_val = document.getElementById('bmi-value');
-
-function calculateBMI() { 
-
-  const weight = parseFloat(80);
-  const height = parseFloat(180) / 100; // convert to meters
-
-  const bmi = (weight / (height * height));
+// function calculateBMI() { 
+//     // console.log('<%-userDetails.weight%>');
+//     // console.log(heightInput);
+//     // let weightInput=<%=userDetails.weight%>
+//     // let heightInput='<%-userDetails.height%>'
+//   const weight = parseFloat(76);
+//   const height = parseFloat(185) / 100; // convert to meters
+//   console.log(weightInput);
+//   const bmi = (weight / (height * height));
 
 
-  resultDiv.innerHTML = `${bmi.toFixed(2)}`;
-  resultDiv.style.fontSize="30px";
-  resultDiv.style.textAlign ="center";
-//   resultDiv.style.
-}
+//   resultDiv.innerHTML = `${bmi.toFixed(2)}`;
+//   resultDiv.style.fontSize="30px";
+//   resultDiv.style.textAlign ="center";
+// //   resultDiv.style.
+// }
 
 //Put a Review
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
   <meta charset="UTF-8" />
   <title>User Dashboard</title>
@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="./CSS/user_Dashboard.css" />
-</head>
+</head> 
 <body>
   <!-- partial:index.partial.html -->
   <div class="dashboard">
@@ -23,7 +23,7 @@
     <div class="dashboard-app">
       <header class="dashboard-toolbar">
         <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
-        <a href="/" class="menu-toggle">
+        <a href="/userlogout" class="menu-toggle">
           <i class="fas fa-right-from-bracket"></i>
           Logout
         </a>
@@ -53,12 +53,8 @@
                                         </h2>
                                     </div>
                                     <div class="col-4 text-right">
-                                        <!-- <span>12.5% <i class="fa fa-arrow-up"></i></span> -->
                                     </div>
                                 </div>
-                                <!-- <div class="progress mt-1 " data-height="8" style="height: 8px;">
-                                    <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -76,12 +72,8 @@
                                         </h3>
                                     </div>
                                     <div class="col-4 text-right">
-                                        <!-- <span>9.23% <i class="fa fa-arrow-up"></i></span> -->
                                     </div>
                                 </div>
-                                <!-- <div class="progress mt-1 " data-height="8" style="height: 8px;">
-                                    <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -99,7 +91,6 @@
                                         </h2>
                                     </div>
                                     <div class="col-4 text-right">
-                                        <!-- <span>10% <i class="fa fa-arrow-up"></i></span> -->
                                     </div>
                                 </div>
                                 
@@ -132,16 +123,17 @@
           <div class="topinfo">
             <div class="userdetails no-gutters">
               <div class="userimg card-body">
-                <img src="./img/trainers/team-3.jpg" alt="">
+                <img src=<%=userDetails.image%> alt="">
               </div>
-              <div class="userinfo ">
-                <h3>Hey, Omkar</h3>
-                <h4>Weight:75kg</h4>
-                <h4>Height:180cm</h4>
-                <h5>Subscription Expires On: 2nd April</h5>
+              <div class="userinfo "> 
+                <h3>Hey,<%=userDetails.name%>  </h3>
+                <h4>Weight:<span id="bmiweight"><%=userDetails.weight%></span>kg</h4>
+                <h4>Height:<span id="bmiweight"><%=userDetails.height%></span>cm</h4>
+                <% userDetails.expiry=userDetails.DateOfJoin+2629800000 %>
+                <h5>Subscription Expires On: <%=userDetails.expiry%></h5>
               </div>
             </div>
-            <div class="bmi" onclick="calculateBMI()">
+            <div class="bmi" >
               <div class="card bmicard mb-3" onclick="" style="max-width: 540px;">
                 <div class="row cardrow no-gutters">
                   <div class="col-md-4">
@@ -149,7 +141,12 @@
                   </div>
                  
                     <div class="card-body" id="bmi-value" >
-                      <h4 style="text-align: center;">Click Here To Get BMI</h4>
+                      <h4 style="text-align: center;">
+                        <% let weight=parseFloat(userDetails.weight); %>
+                        <% let height=parseFloat(userDetails.height)/100; %>
+                        <% const bmi = (weight / (height * height)).toFixed(2); userDetails.bmi=bmi;%>
+                         BMI:<%=userDetails.bmi%>
+                     </h4>
                     </div>
                   </div>
                 </div>
