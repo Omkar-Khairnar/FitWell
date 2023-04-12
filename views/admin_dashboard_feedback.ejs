@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="./CSS/admin_dashboard_home.css" />
   <title>Responsive Admin Dashboard</title>
 </head>
-
+ 
 <body>
   <div class="d-flex" id="wrapper">
     <!-- Sidebar --><!-- /#sidebar-wrapper -->
@@ -28,139 +28,33 @@
                   <table class="table bg-white rounded shadow-sm  table-hover">
                       <thead>
                           <tr>
-                              <th scope="col" width="50">FID</th>
-                              <th scope="col">UID</th>
-                              <th scope="col">User Name</th>
-                              <th scope="col">User E-Mail</th>
+                              <th scope="col" width="50">SrNo.</th>
+                              <!-- <th scope="col">UID</th> -->
+                              <th scope="col">UserName</th>
+                              <th scope="col">E-Mail</th>
                               <th scope="col">Subject</th>
-                              <th scope="col">FeedBack</th>
-                              <th scope="col">Sent On</th>
-                              <th scope="col">Action</th>
+                              <th scope="col">Message</th>
+                              <th scope="col">Contact</th>
+                              <!-- <th scope="col">Sent On</th> -->
+                              <!-- <th scope="col">Action</th> -->
                           </tr>
                       </thead>
                       <tbody>
+                        <%let count=1 %>
+                        <% feedbacks.forEach((feedback)=>{ %>
                           <tr>
-                              <th scope="row">1</th>
-                              <td>Whey Protein Isolate 2kg</td>
-                              <td>Shivang</td>
-                              <td>shivang@mail.com</td>
-                              <td>lorem</td>
-                              <td>lorem</td>
-                              <td>02-03-2023</td>
-                              <td>lorem</td>
+                            <th scope="row"><%=count%></th>
+                            <% count=count+1%>
+                            <td><%=feedback.name%></td>
+                            <td><%=feedback.email%></td>
+                            <td><%=feedback.subject%></td>
+                            <td><%=feedback.message%></td>
+                            <td><%=feedback.phone%></td>
+                            <!-- <td><i class="fa-solid fa-trash"></i></td> -->
                           </tr>
-                          <tr>
-                              <th scope="row">2</th>
-                              <td>Zumba Classes</td>
-                              <td>Damin</td>
-                              <td>damin@mail.com</td>
-                              <td>lorem</td>
-                              <td>lorem</td>
-                              <td>28-02-2023</td>
-                              <td>lorem</td>
-                          </tr>
-                          <tr>
-                              <th scope="row">3</th>
-                              <td>Fitwell's yearly membership</td>
-                              <td>jenny</td>
-                              <td>jenny@mail.com</td>
-                              <td>lorem</td>
-                              <td>lorem</td>
-                              <td>21-02-2023</td>
-                              <td>lorem</td>
-                          </tr>
-                          <tr>
-                              <th scope="row">4</th>
-                              <td>Zumba Classes</td>
-                              <td>damien</td>
-                              <td>damien@mail.com</td>
-                              <td>lorem</td>
-                              <td>lorem</td>
-                              <td>19-02-2023</td>
-                              <td>lorem</td>
-                          </tr>
-                          <tr>
-                              <th scope="row">5</th>
-                              <td>Whey Protein Isolate 2kg</td>
-                              <td>Omkar</td>
-                              <td>omkar@mail.com</td>
-                              <td>lorem</td>
-                              <td>lorem</td>
-                              <td>10-02-2023</td>
-                              <td>lorem</td>
-                          </tr>
-                          <tr>
-                              <th scope="row">6</th>
-                              <td>Fitwell yearly membership</td>
-                              <td>Kartik</td>
-                              <td>kartik@mail.com</td>
-                              <td>lorem</td>
-                              <td>lorem</td>
-                              <td>31-01-2023</td>
-                              <td>lorem</td>
-                          </tr>
-                          <tr>
-                              <th scope="row">7</th>
-                              <td>Fitwell's 1 on 1 Classes</td>
-                              <td>Chirag</td>
-                              <td>chirag@mail.com</td>
-                              <td>lorem</td>
-                              <td>lorem</td>
-                              <td>22-01-2023</td>
-                              <td>lorem</td>
-                          </tr>
-                          <tr>
-                              <th scope="row">8</th>
-                              <td>Whey Protein 1kg</td>
-                              <td>Karthik</td>
-                              <td>karthik@mail.com</td>
-                              <td>lorem</td>
-                              <td>lorem</td>
-                              <td>22-01-2023</td>
-                              <td>lorem</td>
-                          </tr>
-                          <tr>
-                              <th scope="row">9</th>
-                              <td>Fitwell yearly membership</td>
-                              <td>Nikunj</td>
-                              <td>nikunj@mail.com</td>
-                              <td>lorem</td>
-                              <td>lorem</td>
-                              <td>21-01-2023</td>
-                              <td>lorem</td>
-                          </tr>
-                          <tr>
-                              <th scope="row">10</th>
-                              <td>Vegan Protein Isolate</td>
-                              <td>Zico</td>
-                              <td>zico@mail.com</td>
-                              <td>lorem</td>
-                              <td>lorem</td>
-                              <td>19-01-2023</td>
-                              <td>lorem</td>
-                          </tr>
-                          <tr>
-                              <th scope="row">11</th>
-                              <td>Fitwell's Quarterly membership</td>
-                              <td>Faizan</td>
-                              <td>faizan@mail.com</td>
-                              <td>lorem</td>
-                              <td>lorem</td>
-                              <td>10-01-2023</td>
-                              <td>lorem</td>
-                          </tr>
-                          <tr>
-                              <th scope="row">12</th>
-                              <td>Fitwell's  yearly membership</td>
-                              <td>Tanya</td>
-                              <td>tanya@mail.com</td>
-                              <td>lorem</td>
-                              <td>lorem</td>
-                              <td>01-01-2023</td>
-                              <td>lorem</td>
-                          </tr>
+                        <% })%>
                       </tbody>
-                  </table>
+                  </table> 
               </div>
           </div>
 

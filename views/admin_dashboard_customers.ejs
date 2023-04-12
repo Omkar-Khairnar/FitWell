@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head> 
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="./CSS/admin_dashboard.css" />
   <title>Responsive Admin Dashboard</title>
 </head>
-
+ 
 <body>
   <div class="d-flex" id="wrapper">
     <!-- Sidebar --><!-- /#sidebar-wrapper -->
@@ -31,86 +31,27 @@
                         <th scope="col">Email</th>
                         <th scope="col">DOJ</th>
                         <th scope="col">Gender</th>
-                        <th scope="col">Type of Account</th>
+                        <th scope="col">Weight</th>
+                        <th scope="col">Height</th>
                         <th scope="col"></th>
                         
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Omkar K.</td>
-                        <td>omkarkhairnar9441@gmail.com</td>
-                        <td>22Feb 2023</td>
-                        <td>Male</td>
-                        <td>Premium</td>
-                        <td><i class="fa-solid fa-trash"></i></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Mathan</td>
-                        <td>manthan12@gmail.com</td>
-                        <td>22March 2023</td>
-                        <td>Male</td>
-                        <td>Single Class</td>
-                        <td><i class="fa-solid fa-trash"></i></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Gauravi</td>
-                        <td>gauravi.b@gmail.com</td>
-                        <td>14Feb 2023</td>
-                        <td>Female</td>
-                        <td>Advanced</td>
-                        <td><i class="fa-solid fa-trash"></i></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>Mayank</td>
-                        <td>mayankmadi@gmail.com</td>
-                        <td>21Nov 2022</td>
-                        <td>Male</td>
-                        <td>Advance</td>
-                        <td><i class="fa-solid fa-trash"></i></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>Omkar K.</td>
-                        <td>omkarkhairnar9441@gmail.com</td>
-                        <td>22Feb 2023</td>
-                        <td>Male</td>
-                        <td>Premium</td>
-                        <td><i class="fa-solid fa-trash"></i></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">6</th>
-                        <td>Mathan</td>
-                        <td>manthan12@gmail.com</td>
-                        <td>22March 2023</td>
-                        <td>Male</td>
-                        <td>Single Class</td>
-                        <td><i class="fa-solid fa-trash"></i></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">7</th>
-                        <td>Gauravi</td>
-                        <td>gauravi.b@gmail.com</td>
-                        <td>14Feb 2023</td>
-                        <td>Female</td>
-                        <td>Advanced</td>
-                        <td><i class="fa-solid fa-trash"></i></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">8</th>
-                        <td>Mayank</td>
-                        <td>mayankmadi@gmail.com</td>
-                        <td>21Nov 2022</td>
-                        <td>Male</td>
-                        <td>Advance</td>
-                        <td><i class="fa-solid fa-trash"></i></td>
-                      </tr>
-                
-                      
+                      <%let count=1 %>
+                      <% users.forEach((user)=>{ %>
+                        <tr>
+                          <th scope="row"><%=count%></th>
+                          <% count=count+1%>
+                          <td><%=user.name%></td>
+                          <td><%=user.email%></td>
+                          <td><%=user.DateOfJoin%></td>
+                          <td><%=user.gender%></td>
+                          <td><%=user.weight%></td>
+                          <td><%=user.height%></td>
+                          <td><i class="fa-solid fa-trash"></i></td>
+                        </tr>
+                      <% })%>
                       
                     </tbody>
                   </table>
@@ -119,7 +60,6 @@
         </div>
     
   </div>
-  <!-- /#page-content-wrapper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/8f8e3c7113.js" crossorigin="anonymous"></script>
 

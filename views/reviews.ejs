@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./CSS/reviews.css">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 </head>
-
+ 
 <body>
     <%- include('navbar'); %>
 
@@ -20,53 +20,31 @@
     </div>
 
 
-<section id="testim" class="testim">
+<section id="testim" class="testim"> 
                 <div class="wrap">
                     <span id="right-arrow" class="arrow right fa fa-chevron-right"></span>
                     <span id="left-arrow" class="arrow left fa fa-chevron-left "></span>
                     <ul id="testim-dots" class="dots">
-                        <li class="dot active"></li><!--
-                        --><li class="dot"></li><!--
-                        --><li class="dot"></li><!--
-                        --><li class="dot"></li><!--
-                        --><li class="dot"></li>
-                    </ul>
-                    <div id="testim-content" class="cont">
+                        <% reviews.forEach((review)=>{ %>
+                            <li class="dot "></li>
+                        <% }) %>   
                         
+                    </ul>
+                    <div id="testim-content" class="cont">    
+                     <% reviews.forEach((review)=>{ %>
                         <div class="active">
-                            <div class="img"><img src="./img/customers/cust1.png" alt=""></div>
-                            <h2>Lorem P. Ipsum</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>                    
+                            <div class="img"><img src=<%=review.image%> alt=""></div>
+                            <h2><%=review.name%></h2>
+                            <p><%=review.comment%></p>                    
                         </div>
+                     <% }) %>
+                        
     
-                        <div>
-                            <div class="img"><img src="./img/customers/cust7.png" alt=""></div>
-                            <h2>Mr. Lorem Ipsum</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>                    
-                        </div>
-    
-                        <div>
-                            <div class="img"><img src="./img/customers/cust9.png" alt=""></div>
-                            <h2>Lorem Ipsum</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>                    
-                        </div>
-    
-                        <div>
-                            <div class="img"><img  src="./img/customers/cust6.png" alt=""></div>
-                            <h2>Lorem De Ipsum</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>                    
-                        </div>
-    
-                        <div>
-                            <div class="img"><img src="./img/customers/cust5.png" alt=""></div>
-                            <h2>Ms. Lorem R. Ipsum</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>                    
-                        </div>
+                        
     
                     </div>
     
                 </div>
-    <!--         </div> -->
         </section>
     
     <script src="https://use.fontawesome.com/1744f3f671.js"></script>

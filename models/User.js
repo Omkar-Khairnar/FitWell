@@ -23,7 +23,7 @@ const UserSchema= new Schema({
         required:true,
     },
     gender:{  
-        type:String,
+        type:String, 
         required:true,
     },
     weight:{

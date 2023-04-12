@@ -6,6 +6,9 @@ const PORT=5000;
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const User=require('./models/User')
+const ReviewSchema=require('./models/review')
+const TrainerSchema=require('./models/Trainer')
+const ContactFormSchema=require('./models/contactform')
 const session=require('express-session')
 const cookieParser=require('cookie-parser')
 require('dotenv').config();
@@ -21,7 +24,7 @@ app.use(session({
     secret: process.env.JWT_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { 
+    cookie: {  
         // secure: true,
         maxAge:86400000, //1 Day expiry
     }
@@ -51,8 +54,14 @@ app.get('/adminlogin', (req,res)=>{
 app.get('/about', (req,res)=>{
     res.render('about')
 })
-app.get('/reviews', (req,res)=>{
-    res.render('reviews')
+app.get('/reviews', async(req,res)=>{
+    try{
+        const reviews=await ReviewSchema.find();
+        return res.render('reviews',{reviews})       
+    }
+    catch(err){
+        res.status(404).json({Error:err})
+    }
 })
 app.get('/centres', (req,res)=>{
     res.render('centres')
@@ -95,20 +104,15 @@ app.get('/user_Dashboard_profile', (req,res)=>{
 app.get('/user_dashboard_navbar', (req,res)=>{
     res.render('user_dashboard_navbar')
 })
-// app.get('/user_dashboard_chat', (req,res)=>{
-//     res.render('user_dashboard_chat')
-// })
-// app.get('/user_dashboard_chat', (req,res)=>{
-//     res.render('user_dashboard_chat')
-// })
+app.get('/user_dashboard_chat', (req,res)=>{
+    res.render('user_dashboard_chat')
+})
+app.get('/user_dashboard_chat', (req,res)=>{
+    res.render('user_dashboard_chat')
+})
 app.get('/timer', (req,res)=>{
     res.render('timer')
 })
-
-
-
-
-
 app.get('/admin_dashboard_side_wrapper', (req,res)=>{
     res.render('admin_dashboard_side_wrapper')
 })
@@ -118,10 +122,24 @@ app.get('/admin_dashboard_top_wrapper', (req,res)=>{
 app.get('/admin_dashboard_home', (req,res)=>{
     res.render('admin_dashboard_home')
 })
-app.get('/admin_dashboard_customers', (req,res)=>{
-    res.render('admin_dashboard_customers')
+app.get('/admin_dashboard_customers', async(req,res)=>{
+    try{
+        const users=await User.find();
+        return res.render('admin_dashboard_customers',{users})      
+    }
+    catch(err){
+        res.status(404).json({Error:err})
+    }
+    
 })
-app.get('/admin_dashboard_trainers', (req,res)=>{
+app.get('/admin_dashboard_trainers', async(req,res)=>{
+    try{
+        const trainers=await TrainerSchema.find();
+        return res.render('admin_dashboard_trainers',{trainers})
+    }
+    catch(err){
+        res.status(404).json({Error:err})
+    }
     res.render('admin_dashboard_trainers')
 }) 
 app.get('/admin_dashboard_payment', (req,res)=>{
@@ -136,8 +154,14 @@ app.get('/admin_Dashboard_order', (req,res)=>{
 app.get('/payment', (req,res)=>{
     res.render('payment')
 })
-app.get('/admin_dashboard_feedback', (req,res)=>{
-    res.render('admin_dashboard_feedback')
+app.get('/admin_dashboard_feedback', async(req,res)=>{
+    try{
+        const feedbacks=await ContactFormSchema.find();
+        return res.render('admin_dashboard_feedback', {feedbacks})     
+    }
+    catch(err){
+        res.status(404).json({Error:err})
+    }
 })
 app.get('/userlogout', async(req,res)=>{
     req.session.destroy();
@@ -220,6 +244,7 @@ try{
         DateOfJoin:user.DateOfJoin,
     }
     req.session.userDetails=userDetails;
+    req.session.userjwtoken=authtoken;
     req.session.save(); 
    return res.redirect('/user_Dashboard_home')
 }
@@ -229,8 +254,11 @@ catch(err){
 }
 }) 
 
-// app.use('/api/userauth', require('./routes/userAuth'))
-// app.use('/api/adminauth', require('./routes/adminAuth'))
+
+app.use('/useractions', require('./routes/userActions'))
+app.use('/adminactions', require('./routes/adminActions'))
+// app.use('/user_Dashboard', require('./routes/'))
+
 app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT}`)
   })
