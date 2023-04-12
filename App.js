@@ -208,10 +208,6 @@ try{
     if(authtoken){
         success=true;
     }
-    // res.cookie('jwtoken',authtoken,{
-    //     expires:new Date(Date.now()+86400000),
-    //     httpOnly:true,
-    // })
     const userDetails={
         id:user._id,
         name:user.name,

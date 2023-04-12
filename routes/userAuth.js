@@ -77,7 +77,7 @@ router.post('/signin', async(req, res)=>{
             httpOnly:true,
         })
         res.render('/user_Dashboard_home')
-    }
+    } 
     catch(err){
         console.log(err);
         res.status(400).json({Error:err.message})

@@ -3,20 +3,24 @@ const Schema=mongoose.Schema;
 
 const ProductSchema=new Schema({
     image:{
-        type:String,
+        type:String, 
         required:true,
     },
-    title:{
+    name:{
         type:String,
-        required:true,
-    },
-    amount:{
-        type:Number,
-        required:true,
+        required:true, 
     },
     description:{
         type:String,
         default:"Healthy Gym Product",
+    },
+    price:{
+        type:Number,
+        required:true,
+    },
+    category:{
+        type:String,
+        required:true,
     },
    
 })
