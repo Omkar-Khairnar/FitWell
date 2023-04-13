@@ -158,9 +158,7 @@ app.get('/user_dashboard_navbar', (req, res) => {
 // app.get('/user_dashboard_chat', (req,res)=>{
 //     res.render('user_dashboard_chat')
 // })
-// app.get('/user_dashboard_chat', (req,res)=>{
-//     res.render('user_dashboard_chat')
-// })
+
 app.get('/timer', (req, res) => {
     res.render('timer')
 })
@@ -310,8 +308,9 @@ app.post('/signin', async (req, res) => {
 }
 });
 
-// app.use('/api/userauth', require('./routes/userAuth'))
-// app.use('/api/adminauth', require('./routes/adminAuth'))
+app.use('/useractions', require('./routes/userActions'))
+app.use('/adminactions', require('./routes/adminActions'))
+// app.use('/user_Dashboard', require('./routes/'))
 app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT}`)
 })
