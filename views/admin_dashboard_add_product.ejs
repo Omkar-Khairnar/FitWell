@@ -23,37 +23,36 @@
 
                     <div class="container-fluid">
                         <div class="form-container add-product-container">
-                            <form name="addProduct" method="POST">
+                            <form name="addProduct" action="/newProduct" method="POST" enctype="multipart/form-data">
 
-                                <label for="new-product-name">Product Name
-                                    <input type="text" id="new-product-name" placeholder="Product Name" name="name"
-                                        value="" required />
+                                <label for="name">Product Name
+                                    <input type="text" id="name" placeholder="Product Name" name="name" value=""
+                                        required />
                                 </label>
-                                <label for="new-product-desc">Description
-                                    <textarea type="text" id="new-product-desc"
-                                        placeholder="Enter Description of new Product" name="description"
-                                        required></textarea>
+                                <label for="description">Description
+                                    <textarea type="text" id="description" placeholder="Enter Description of new Product"
+                                        name="description" required></textarea>
                                 </label>
-                                <label for="new-product-price">Price
-                                    <input type="number" min="1" id="new-product-price" value=""
+                                <label for="price">Price
+                                    <input type="number" min="1" id="price" value=""
                                         placeholder="Enter Product Price($)" name="price" required />
                                 </label>
-                                <label for="new-product-category">Category of the Product</label>
-                                <select name="category" id="new-product-category">
+                                <label for="category">Category of the Product</label>
+                                <select name="category" id="category">
                                     <!-- <option value="">Select Category</option> -->
-                                    <option value="whey-protein">Whey Proteins</option>
-                                    <option value="weight-gainer">Weight Gainer</option>
-                                    <option value="repair-recovery">Recovery & Repair</option>
-                                    <option value="nutrients">Vitamins</option>
-                                    <option value="energy">Energy & Endurance</option>
+                                    <option value="Energy & Endurance">Energy & Endurance</option>
+                                    <option value="Recovery & Repair">Recovery & Repair</option>
+                                    <option value="Weight Gainer">Weight Gainer</option>
+                                    <option value="Whey Proteins">Whey Proteins</option>
+                                    <option value="Nutrients">Nutrients</option>
                                 </select>
-                                <label for="product-image">Product Image
-                                    <input class="product-img" type="file" value="" id="product-image"
-                                        name="product-image" placeholder="Upload Image">
+                                <label for="productImage">Product Image
+                                    <input class="product-img" type="file" value="" id="productImage" name="productImage"
+                                        placeholder="Upload Image">
                                 </label>
-
+        
                                 <button id="add-product-btn" type="submit">Add Preduct</button>
-                                
+        
                             </form>
                         </div>
                     </div>

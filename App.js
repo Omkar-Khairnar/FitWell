@@ -1,19 +1,25 @@
-const express=require('express');
-const connectToMongo=require('./db')
-const app=express();
-let alert=require('alert')
-const PORT=5000;
+const express = require('express');
+const connectToMongo = require('./db')
+const app = express();
+let alert = require('alert')
+const PORT = 5000;
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const User=require('./models/User')
-const session=require('express-session')
-const cookieParser=require('cookie-parser')
+const User = require('./models/User')
+const session = require('express-session')
+const cookieParser = require('cookie-parser')
+var bodyParser = require('body-parser');
+var path = require('path');
+var fs = require('fs');
+var multer = require('multer');
+var productSchema = require('./models/product')
+
 require('dotenv').config();
 
 //Connection to MongoDB
 connectToMongo();
 app.set('view engine', 'ejs');
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(express.json());
 app.use(cookieParser());
@@ -21,78 +27,123 @@ app.use(session({
     secret: process.env.JWT_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { 
+    cookie: {
         // secure: true,
-        maxAge:86400000, //1 Day expiry
+        maxAge: 86400000, //1 Day expiry
     }
-  })) 
-app.get('/', (req,res)=>{
-   res.render('home')  
+}))
+
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/uploads/products')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+
+var upload = multer({ storage: storage });
+
+app.post('/newProduct',upload.single('productImage'),(req,res) =>  {
+    // var cat = req.body.category;
+    var obj = {
+        name : req.body.name,
+        description : req.body.description,
+        price : req.body.price,
+        category : req.body.category,
+        img : {
+            data: fs.readFileSync(path.join(__dirname + '/public/uploads/products/'+ req.file.filename)),
+            contentType: 'image/png'
+        }
+    }
+    productSchema.create(obj).then((err,item) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            // item.save();
+            res.redirect('/admin_dashboard_add_product');
+            console.log("great job !!");
+        }
+    });
+});
+
+
+
+app.get('/', (req, res) => {
+    res.render('home')
 })
-app.get('/footer', (req,res)=>{
+app.get('/footer', (req, res) => {
     res.render('footer')
 })
-app.get('/products', (req,res)=>{
-    res.render('products')
+app.get('/products', (req, res) => {
+    productSchema.find({})
+    .then((data, err)=>{
+        if(err){
+            console.log(err);
+        }
+        res.render('products',{itemsProduct: data})
+    })
 })
-app.get('/signin', (req,res)=>{
-    res.render('signin', {error: 0})
+app.get('/signin', (req, res) => {
+    res.render('signin', { error: 0 })
 })
 
 
-app.get('/signup', (req,res)=>{
+app.get('/signup', (req, res) => {
     res.render('signup')
 })
 
-app.get('/adminlogin', (req,res)=>{
-    res.render('adminlogin',{error:0})
+app.get('/adminlogin', (req, res) => {
+    res.render('adminlogin', { error: 0 })
 })
 
-app.get('/about', (req,res)=>{
+app.get('/about', (req, res) => {
     res.render('about')
 })
-app.get('/reviews', (req,res)=>{
+app.get('/reviews', (req, res) => {
     res.render('reviews')
 })
-app.get('/centres', (req,res)=>{
+app.get('/centres', (req, res) => {
     res.render('centres')
 })
-app.get('/services', (req,res)=>{
+app.get('/services', (req, res) => {
     res.render('services')
 })
-app.get('/contact', (req,res)=>{
+app.get('/contact', (req, res) => {
     res.render('contact')
 })
-app.get('/user_Dashboard_home', (req,res)=>{
-    if(!req.session.userDetails){
+app.get('/user_Dashboard_home', (req, res) => {
+    if (!req.session.userDetails) {
         return res.redirect('/signin')
     }
-    const userDetails=req.session.userDetails;
-    res.render('user_Dashboard_home',{userDetails})
+    const userDetails = req.session.userDetails;
+    res.render('user_Dashboard_home', { userDetails })
 })
-app.get('/user_Dashboard_myorders', (req,res)=>{
+app.get('/user_Dashboard_myorders', (req, res) => {
     res.render('user_Dashboard_myorders')
 })
-app.get('/user_Dashboard_payment', (req,res)=>{
+app.get('/user_Dashboard_payment', (req, res) => {
     res.render('user_Dashboard_payment')
 })
-app.get('/user_Dashboard_reviews', (req,res)=>{
+app.get('/user_Dashboard_reviews', (req, res) => {
     res.render('user_Dashboard_reviews')
 })
-app.get('/user_Dashboard_cart', (req,res)=>{
+app.get('/user_Dashboard_cart', (req, res) => {
     res.render('user_Dashboard_cart')
 })
-app.get('/user_dashboard_workout', (req,res)=>{
+app.get('/user_dashboard_workout', (req, res) => {
     res.render('user_dashboard_workout')
 })
-app.get('/user_Dashboard_challenges', (req,res)=>{
+app.get('/user_Dashboard_challenges', (req, res) => {
     res.render('user_dashboard_challenges')
 })
-app.get('/user_Dashboard_profile', (req,res)=>{
-    const userDetails=req.session.userDetails;
-    res.render('user_Dashboard_profile', {userDetails})
+app.get('/user_Dashboard_profile', (req, res) => {
+    const userDetails = req.session.userDetails;
+    res.render('user_Dashboard_profile', { userDetails })
 })
-app.get('/user_dashboard_navbar', (req,res)=>{
+app.get('/user_dashboard_navbar', (req, res) => {
     res.render('user_dashboard_navbar')
 })
 // app.get('/user_dashboard_chat', (req,res)=>{
@@ -101,7 +152,7 @@ app.get('/user_dashboard_navbar', (req,res)=>{
 // app.get('/user_dashboard_chat', (req,res)=>{
 //     res.render('user_dashboard_chat')
 // })
-app.get('/timer', (req,res)=>{
+app.get('/timer', (req, res) => {
     res.render('timer')
 })
 
@@ -109,129 +160,129 @@ app.get('/timer', (req,res)=>{
 
 
 
-app.get('/admin_dashboard_side_wrapper', (req,res)=>{
+app.get('/admin_dashboard_side_wrapper', (req, res) => {
     res.render('admin_dashboard_side_wrapper')
 })
-app.get('/admin_dashboard_top_wrapper', (req,res)=>{
+app.get('/admin_dashboard_top_wrapper', (req, res) => {
     res.render('admin_dashboard_top_wrapper')
 })
-app.get('/admin_dashboard_home', (req,res)=>{
+app.get('/admin_dashboard_home', (req, res) => {
     res.render('admin_dashboard_home')
 })
-app.get('/admin_dashboard_customers', (req,res)=>{
+app.get('/admin_dashboard_customers', (req, res) => {
     res.render('admin_dashboard_customers')
 })
-app.get('/admin_dashboard_trainers', (req,res)=>{
+app.get('/admin_dashboard_trainers', (req, res) => {
     res.render('admin_dashboard_trainers')
-}) 
-app.get('/admin_dashboard_payment', (req,res)=>{
+})
+app.get('/admin_dashboard_payment', (req, res) => {
     res.render('admin_dashboard_payment')
 })
-app.get('/admin_dashboard_add_product', (req,res)=>{
+app.get('/admin_dashboard_add_product', (req, res) => {
     res.render('admin_dashboard_add_product')
 })
-app.get('/admin_Dashboard_order', (req,res)=>{
+app.get('/admin_Dashboard_order', (req, res) => {
     res.render('admin_Dashboard_order')
 })
-app.get('/payment', (req,res)=>{
+app.get('/payment', (req, res) => {
     res.render('payment')
 })
-app.get('/admin_dashboard_feedback', (req,res)=>{
+app.get('/admin_dashboard_feedback', (req, res) => {
     res.render('admin_dashboard_feedback')
 })
-app.get('/userlogout', async(req,res)=>{
+app.get('/userlogout', async (req, res) => {
     req.session.destroy();
     return res.redirect('/');
 })
 
 
-app.post('/signup',async(req, res)=>{
-    let success=false;
-    try{
-        let prevuser=await User.findOne({email:req.body.email})
-        if(prevuser){
+app.post('/signup', async (req, res) => {
+    let success = false;
+    try {
+        let prevuser = await User.findOne({ email: req.body.email })
+        if (prevuser) {
             alert('Email Id already Exists. Please Log in into registered account');
-           return  res.redirect('/signin')
+            return res.redirect('/signin')
         }
-         
-        const pass=req.body.password;
-        const salt=await bcrypt.genSaltSync(10);
-        const secpass=await bcrypt.hashSync(pass, salt);
 
-        let user=await User.create({
-            name:req.body.name,
-            email:req.body.email,
-            password:secpass,
-            age:req.body.age,
-            gender:req.body.gender,
-            weight:req.body.weight,
-            height:req.body.height,
-            image:req.body.image,
+        const pass = req.body.password;
+        const salt = await bcrypt.genSaltSync(10);
+        const secpass = await bcrypt.hashSync(pass, salt);
+
+        let user = await User.create({
+            name: req.body.name,
+            email: req.body.email,
+            password: secpass,
+            age: req.body.age,
+            gender: req.body.gender,
+            weight: req.body.weight,
+            height: req.body.height,
+            image: req.body.image,
         })
-        const data={
-            user:{
-                id:user.id,
+        const data = {
+            user: {
+                id: user.id,
             }
         }
-        var authtoken=jwt.sign(data, process.env.JWT_SECRET);
-        success=true;
+        var authtoken = jwt.sign(data, process.env.JWT_SECRET);
+        success = true;
         // res.status(200).json({messag:'User Created Successfully'})
         res.redirect('/signin')
     }
-    catch(err){
-        res.status(500).json({Error:err.message})
+    catch (err) {
+        res.status(500).json({ Error: err.message })
         console.log(err);
     }
 })
 
-app.post('/signin', async(req, res)=>{
-    var email=req.body.email;
-    var password=req.body.password;
-    let success=false;
-try{
-    console.log(email);
-    let user=await User.findOne({email:email});
-    if(!user){
-       return  res.render('signin', {error: 1})
-    }
-    const comparePassword=await bcrypt.compare(password, user.password);
-
-    if(!comparePassword){
-       return res.render('signin', {error: 1})      
-    }
-    const data={
-        user:{
-            id:user.id,
+app.post('/signin', async (req, res) => {
+    var email = req.body.email;
+    var password = req.body.password;
+    let success = false;
+    try {
+        console.log(email);
+        let user = await User.findOne({ email: email });
+        if (!user) {
+            return res.render('signin', { error: 1 })
         }
+        const comparePassword = await bcrypt.compare(password, user.password);
+
+        if (!comparePassword) {
+            return res.render('signin', { error: 1 })
+        }
+        const data = {
+            user: {
+                id: user.id,
+            }
+        }
+        var authtoken = await jwt.sign(data, process.env.JWT_SECRET);
+        if (authtoken) {
+            success = true;
+        }
+        const userDetails = {
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            age: user.age,
+            gender: user.gender,
+            weight: user.weight,
+            height: user.height,
+            image: user.image,
+            DateOfJoin: user.DateOfJoin,
+        }
+        req.session.userDetails = userDetails;
+        req.session.save();
+        return res.redirect('/user_Dashboard_home')
     }
-    var authtoken=await jwt.sign(data, process.env.JWT_SECRET);
-    if(authtoken){
-        success=true;
+    catch (err) {
+        console.log(err);
+        res.status(400).json({ Error: err })
     }
-    const userDetails={
-        id:user._id,
-        name:user.name,
-        email:user.email,
-        age:user.age,
-        gender:user.gender,
-        weight:user.weight,
-        height:user.height,
-        image:user.image,
-        DateOfJoin:user.DateOfJoin,
-    }
-    req.session.userDetails=userDetails;
-    req.session.save(); 
-   return res.redirect('/user_Dashboard_home')
-}
-catch(err){
-    console.log(err);
-    res.status(400).json({Error:err})
-}
-}) 
+})
 
 // app.use('/api/userauth', require('./routes/userAuth'))
 // app.use('/api/adminauth', require('./routes/adminAuth'))
 app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT}`)
-  })
+})
 
