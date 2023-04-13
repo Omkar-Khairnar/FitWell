@@ -29,7 +29,7 @@
                         <th scope="col" width="50">Sr.</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
-                        <th scope="col">DOJ</th>
+                        <th scope="col">DOJ</th> 
                         <th scope="col">Gender</th>
                         <th scope="col">Weight</th>
                         <th scope="col">Height</th>
@@ -49,7 +49,10 @@
                           <td><%=user.gender%></td>
                           <td><%=user.weight%></td>
                           <td><%=user.height%></td>
-                          <td><i class="fa-solid fa-trash"></i></td>
+                          <form method="post" action="/adminactions/deleteuser">
+                            <input type="text" value=<%=user.id%> class="d-none" name="userid" >
+                            <td> <button type="submit" style="border: none;"><i class="fa-solid fa-trash" style="color:red; cursor: pointer;"></i></button></td>
+                          </form>
                         </tr>
                       <% })%>
                       

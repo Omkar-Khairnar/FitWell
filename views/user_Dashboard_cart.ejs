@@ -26,7 +26,7 @@
         <a href="/userlogout" class="menu-toggle">
           <i class="fas fa-right-from-bracket"></i>
           Logout
-        </a>
+        </a> 
       </header>
      
         <!-- User Profile  -->
@@ -36,38 +36,27 @@
               <table>
                 <tr>
                   <th>Product</th>
-                  <th>Quantity</th>
+                  <th>Category</th>
                   <th>Subtotal</th>
                 </tr>
-                <tr>
-                  <td>
-                    <div class="cart-info">
-                      <img src="./img/product_2-300x300.jpg" />
-                      <div>
-                        <h4>Nitro Tech </h4>
-                        <h5>price :$<span class="cart-product-price">35</span></h5><br />
-                        <a href="#">Remove</a>
+                <%let amount=0%>
+                <%for (var i = 0; i < products.length; i++) { %>
+                  <tr>
+                    <td>
+                      <div class="cart-info">
+                        <div>
+                          <img src="data:image/<%=products[i][0].img.contentType%>;base64, <%=products[i][0].img.data.toString('base64')%>" alt="">
+                          <h4><%=products[i][0].name%></h4>
+                          
+                          <%amount=amount+products[i][0].price%>
+                          <h5>price :Rs<span class="cart-product-price"><%=products[i][0].price%></span></h5><br />
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td><input type="number" value="1" min="1" max="59" /></td>
-                  <td>$35</td>
-                </tr>
-
-                <!-- <tr>
-                  <td>
-                    <div class="cart-info">
-                      <img src="./img/product_1-300x300.jpg" />
-                      <div>
-                        <p>SYNTHA-6</p>
-                        <small>price :$40</small><br />
-                        <a href="#">Remove</a>
-                      </div>
-                    </div>
-                  </td>
-                  <td><input type="number" value="1" /></td>
-                  <td>$40</td>
-                </tr> -->
+                    </td>
+                    <td><%=products[i][0].category%></td>
+                    <td>Rs<%=products[i][0].price%></td>
+                  </tr>
+                <%}%>               
               </table>
             </div>
 
@@ -79,19 +68,19 @@
                 </tr>
                 <tr>
                   <td>Sub total</td>
-                  <td>$75.00</td>
+                  <td>Rs<%=amount%>.00</td>
                 </tr>
                 <tr>
                   <td>Discount 5%</td>
-                  <td>$5.00</td>
+                  <td>- Rs<%=Math.floor((amount*5)/100)%>.00</td>
                 </tr>
                 <tr>
                   <td>Delivery charges</td>
-                  <td>$5.00</td>
+                  <td>+ Rs80.00</td>
                 </tr>
                 <tr>
                   <td>Total Amount</td>
-                  <td>$70.00</td>
+                  <td>= Rs<%=amount -Math.floor((amount*5)/100) +80 %></td>
                   <br /><br />
                 </tr>
                 <td>
@@ -164,19 +153,10 @@
                 </table>
 
                 <div class="buttons">
-                  <a href="/user_Dashboard_home"><button class="sumbit" type="button">Sure, Get me Started</button></a>
-
+                  <form method="post" action="/useractions/checkoutcart">
+                    <button class="" type="submit">Sure, Get me Started</button>
+                  </form>
                 </div>
-                <!-- <div class="payment-options">
-                        <p>Important Note:* Your order is incomplete unless you click on the "Sure, Get me Started" button
-                            above.</p>
-                        <h2>PAYMENT OPTIONS</h2>
-                        <img src="Images\flp-visa.png" alt="">
-                        <img src="Images\flp-master-card.png" alt="">
-                        <img src="Images\flp-maestro.png" alt="">
-                        <img src="Images\flp-american.png" alt="">
-                        <img src="Images\flp-net-banking.png" alt="">
-                    </div> -->
               </div>
 
             </div>

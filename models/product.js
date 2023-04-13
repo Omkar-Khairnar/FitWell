@@ -1,13 +1,12 @@
 const mongoose=require('mongoose')
 
 const productSchema=new mongoose.Schema({
-
     name:{
         type:String,
         // required:true, 
-    },
+    }, 
     description:{
-        type:String,
+        type:String, 
         default:"Healthy Gym Product",
     },
     price:{

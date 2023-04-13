@@ -1,6 +1,7 @@
 const express=require('express')
 const ContactUs=require('../models/contactform')
 const ReviewSchema=require('../models/review')
+const CartSchema=require('../models/Cart')
 const router=express.Router()
 require('dotenv').config()
 let alert=require('alert')
@@ -58,6 +59,41 @@ router.post('/putreview', async(req, res)=>{
     }
     catch(err){
         res.status(400).json({Error:err});
+    }
+})
+
+router.post('/addtocart',async(req,res)=>{
+    try{
+        if(!req.session.userDetails){
+            return res.redirect('/signin');
+        }
+        const productid=req.body.productid;
+        let product=await CartSchema.create({
+            user:req.session.userDetails.id,
+            productid:productid
+        })
+
+        const id=product.id;
+        if(id){
+            alert('Product added to cart Successfully.');
+            res.redirect('/products');
+        }
+
+    }
+    catch(err){
+        res.status(400).json({Error:err})
+    }
+})
+router.post('/checkoutcart',async(req,res)=>{
+    try{
+        const userid=req.session.userDetails.id;
+        await CartSchema.deleteMany({user:userid})
+
+        //Here this products should enter into order schema.
+        return res.redirect('/user_Dashboard_cart');  
+    }
+    catch(err){
+        console.log(err);
     }
 })
 

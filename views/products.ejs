@@ -96,15 +96,19 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer bg-black" style="display: flex; justify-content: space-between;font-size: larger;">
-                                            <p class="card-footer-price">Price : $ <span id="product-modal-price"><%= image.price %></span></p>
-                                            <button type="button" class="btn btn-secondary bg-dark">Add To Cart</button>
+                                            <p class="card-footer-price">Price : Rs <span id="product-modal-price"><%= image.price %></span></p>
+                                            <form method="post" action="/useractions/addtocart">
+                                                <input class="d-none" type="text" name="productid" value= <%=image._id%>>
+                                                <button type="submit" class="btn btn-secondary bg-dark">Add To Cart</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer" style="padding-left: 0%;padding-right: 0%;">
-                                <p class="card-footer-price">Price : $ <span id="product-modal-price"><%= image.price %></span></p>
-                                <button class="card-footer-AddToCart">Add To Cart</button>
+                                <p class="card-footer-price">Price : Rs  <span id="product-modal-price"><%= image.price %></span></p>
+                                <button class="card-footer-AddToCart" data-bs-toggle="modal"
+                                data-bs-target="#<%=image._id%>">Add To Cart</button>
                             </div>
                         </div>
                     </div>

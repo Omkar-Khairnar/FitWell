@@ -6,30 +6,26 @@ const CarttSchema=new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user',
       },
-    image:{
+    productid:{
         type:String,
         required:true,
-    },
-    Dateoforder:{
-        type:Date,
-        default:Date.now,
-    },
-    amount:{
-        type:Number,
-        required:true,
-    },
-    status:{
-        type:String,
-        default:"InProgress",
-    },
-    description:{
-        type:String,
-        default:"Healthy Gym Product",
-    },
-    address:{
-        type:String,
-        required:true,
-    }  
+    }, 
+    // image:{
+    //     type:String,
+    //     required:true,
+    // },
+    // DateofInclusion:{
+    //     type:Date,
+    //     default:Date.now,
+    // },
+    // price:{ 
+    //     type:Number,
+    //     required:true,
+    // },
+    // description:{
+    //     type:String,
+    //     default:"Healthy Gym Product",
+    // },
 })
 
 let cart=mongoose.model('cart',CarttSchema)

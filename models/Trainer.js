@@ -12,7 +12,7 @@ const TrainerSchema=new Schema({
     },
     gender:{
         type:String,
-        required:true,
+        required:true, 
     },
     email:{ 
         type:String,

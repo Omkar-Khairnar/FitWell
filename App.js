@@ -15,6 +15,7 @@ var multer = require('multer');
 var productSchema = require('./models/product');
 const ReviewSchema = require('./models/review');
 const TrainerSchema = require('./models/Trainer');
+const CartSchema = require('./models/Cart');
 const ContactFormSchema = require('./models/contactform');
 
 require('dotenv').config();
@@ -67,13 +68,11 @@ app.post('/newProduct',upload.single('productImage'),(req,res) =>  {
         else {
             // item.save();
             res.redirect('/admin_dashboard_add_product');
-            console.log("great job !!");
+            // console.log("great job !!");
         }
     });
 });
-
-
-
+ 
 app.get('/', (req, res) => {
     res.render('home')
 })
@@ -139,8 +138,21 @@ app.get('/user_Dashboard_payment', (req, res) => {
 app.get('/user_Dashboard_reviews', (req, res) => {
     res.render('user_Dashboard_reviews')
 })
-app.get('/user_Dashboard_cart', (req, res) => {
-    res.render('user_Dashboard_cart')
+app.get('/user_Dashboard_cart', async(req, res) => {
+    if (!req.session.userDetails) {
+        return res.redirect('/signin')
+    }
+    const userDetails = req.session.userDetails;
+    const userid=userDetails.id;
+    const productsinfo=await CartSchema.find({user:userid});
+    const products = []; 
+    await Promise.all(productsinfo.map(async (product) => {
+    const pid = product.productid;
+    const item = await productSchema.find({ _id: pid });
+    products.push(item);
+    })); 
+    
+    res.render('user_Dashboard_cart', { userDetails,products})
 })
 app.get('/user_dashboard_workout', (req, res) => {
     res.render('user_dashboard_workout')

@@ -130,7 +130,7 @@ button:active {
                       <th scope="col">Email</th>
                       <th scope="col">DOJ</th>
                       <th scope="col">Gender</th>
-                      <th scope="col">Salary</th>
+                      <th scope="col">Salary</th> 
                       <th scope="col"></th>
 
                     </tr>
@@ -146,7 +146,10 @@ button:active {
                         <td><%=trainer.gender%></td>
                         <td><%=trainer.salary%></td>
                         <td><%=trainer.DateOfJoin%></td>
-                        <td><i class="fa-solid fa-trash"></i></td>
+                        <form method="post" action="/adminactions/deletetrainer">
+                          <input type="text" value=<%=trainer._id%> class="d-none" name="trainerid" >
+                          <td> <button type="submit" style="border: none; background-color: white;"><i class="fa-solid fa-trash" style="color:red; cursor: pointer;"></i></button></td>
+                        </form>
                       </tr>
                     <% })%>
                     <!-- <tr>

@@ -50,7 +50,11 @@
                             <td><%=feedback.subject%></td>
                             <td><%=feedback.message%></td>
                             <td><%=feedback.phone%></td>
-                            <!-- <td><i class="fa-solid fa-trash"></i></td> -->
+                            <form method="post" action="/adminactions/deletefeedback">
+                              <input type="text" value=<%=feedback._id%> class="d-none" name="feedbackid" >
+                              <td> <button type="submit" style="border: none; background-color: white;"><i class="fa-solid fa-trash" style="color:red; cursor: pointer;"></i></button></td>
+                            </form>
+
                           </tr>
                         <% })%>
                       </tbody>
