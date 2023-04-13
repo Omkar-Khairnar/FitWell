@@ -12,7 +12,10 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var fs = require('fs');
 var multer = require('multer');
-var productSchema = require('./models/product')
+var productSchema = require('./models/product');
+const ReviewSchema = require('./models/review');
+const TrainerSchema = require('./models/Trainer');
+const ContactFormSchema = require('./models/contactform');
 
 require('dotenv').config();
 
@@ -79,12 +82,12 @@ app.get('/footer', (req, res) => {
 })
 app.get('/products', (req, res) => {
     productSchema.find({})
-    .then((data, err)=>{
-        if(err){
-            console.log(err);
-        }
-        res.render('products',{itemsProduct: data})
-    })
+        .then((data, err) => {
+            if (err) {
+                console.log(err);
+            }
+            res.render('products', { itemsProduct: data })
+        })
 })
 app.get('/signin', (req, res) => {
     res.render('signin', { error: 0 })
@@ -102,8 +105,14 @@ app.get('/adminlogin', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about')
 })
-app.get('/reviews', (req, res) => {
-    res.render('reviews')
+app.get('/reviews', async (req, res) => {
+    try {
+        const reviews = await ReviewSchema.find();
+        return res.render('reviews', { reviews })
+    }
+    catch (err) {
+        res.status(404).json({ Error: err })
+    }
 })
 app.get('/centres', (req, res) => {
     res.render('centres')
@@ -169,10 +178,24 @@ app.get('/admin_dashboard_top_wrapper', (req, res) => {
 app.get('/admin_dashboard_home', (req, res) => {
     res.render('admin_dashboard_home')
 })
-app.get('/admin_dashboard_customers', (req, res) => {
-    res.render('admin_dashboard_customers')
+app.get('/admin_dashboard_customers', async (req, res) => {
+    try {
+        const users = await User.find();
+        return res.render('admin_dashboard_customers', { users })
+    }
+    catch (err) {
+        res.status(404).json({ Error: err })
+    }
+
 })
-app.get('/admin_dashboard_trainers', (req, res) => {
+app.get('/admin_dashboard_trainers', async (req, res) => {
+    try {
+        const trainers = await TrainerSchema.find();
+        return res.render('admin_dashboard_trainers', { trainers })
+    }
+    catch (err) {
+        res.status(404).json({ Error: err })
+    }
     res.render('admin_dashboard_trainers')
 })
 app.get('/admin_dashboard_payment', (req, res) => {
@@ -187,8 +210,14 @@ app.get('/admin_Dashboard_order', (req, res) => {
 app.get('/payment', (req, res) => {
     res.render('payment')
 })
-app.get('/admin_dashboard_feedback', (req, res) => {
-    res.render('admin_dashboard_feedback')
+app.get('/admin_dashboard_feedback', async (req, res) => {
+    try {
+        const feedbacks = await ContactFormSchema.find();
+        return res.render('admin_dashboard_feedback', { feedbacks })
+    }
+    catch (err) {
+        res.status(404).json({ Error: err })
+    }
 })
 app.get('/userlogout', async (req, res) => {
     req.session.destroy();
@@ -274,11 +303,12 @@ app.post('/signin', async (req, res) => {
         req.session.save();
         return res.redirect('/user_Dashboard_home')
     }
+
     catch (err) {
-        console.log(err);
-        res.status(400).json({ Error: err })
-    }
-})
+    console.log(err);
+    res.status(400).json({ Error: err })
+}
+});
 
 // app.use('/api/userauth', require('./routes/userAuth'))
 // app.use('/api/adminauth', require('./routes/adminAuth'))
