@@ -4,12 +4,8 @@ const Schema=mongoose.Schema;
 const ReviewSchema=new Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
-    },
-    title:{
-        type:String,
-        default:"",
-    },
+        ref: 'user', 
+    }, 
     image:{
         type:String,
         default:"https://www.clipartmax.com/png/middle/91-915439_to-the-functionality-and-user-experience-of-our-site-red-person-icon.png",
@@ -18,7 +14,7 @@ const ReviewSchema=new Schema({
         type:String,
         default:"username",
     },
-    decription:{
+    comment:{
         type:String,
         required:true,
     }

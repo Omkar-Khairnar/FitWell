@@ -52,7 +52,6 @@ router.post('/createadmin',async(req, res)=>{
         if(prevadmin){
             alert('Email Id already Exists.');
         }
-         
         const pass=req.body.password;
         const salt=await bcrypt.genSaltSync(10);
         const secpass=await bcrypt.hashSync(pass, salt);
@@ -63,13 +62,11 @@ router.post('/createadmin',async(req, res)=>{
             password:secpass,
            
         })
-
         const data={
             admin:{
                 id:admin.id,
             }
         }
-
         var authtoken=jwt.sign(data, process.env.JWT_SECRET);
         success=true;
         // res.redirect('/signin')

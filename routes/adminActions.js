@@ -1,7 +1,7 @@
 const express=require('express')
 const Trainer=require('../models/Trainer')
 const Product=require('../models/product')
-const router=express.Router()
+const router=express.Router() 
 require('dotenv').config()
 let alert=require('alert')
 
@@ -15,13 +15,14 @@ router.post('/addTrainer', async(req,res)=>{
         const image=req.body.image;
     
         let trainer=await Trainer.create({
-            name,
-            email,
-            salary,
-            image,
-            gender
+            name:name,
+            email:email,
+            salary:salary,
+            image:image,
+            gender:gender
         })
-        alert("Trainer Added Successfully.")
+        // alert("Trainer Added Successfully.")
+        res.redirect('/admin_dashboard_trainers');
     }
     catch(err){
         res.send(400).json({err})
@@ -37,3 +38,5 @@ router.post('/addproduct', async(req,res)=>{
         res.send(400).json({err})
     }
 })
+
+module.exports=router

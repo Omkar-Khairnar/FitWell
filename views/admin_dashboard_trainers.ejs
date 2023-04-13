@@ -136,7 +136,20 @@ button:active {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <%let count=1 %>
+                    <% trainers.forEach((trainer)=>{ %>
+                      <tr>
+                        <th scope="row"><%=count%></th>
+                        <% count=count+1%>
+                        <td><%=trainer.name%></td>
+                        <td><%=trainer.email%></td>
+                        <td><%=trainer.gender%></td>
+                        <td><%=trainer.salary%></td>
+                        <td><%=trainer.DateOfJoin%></td>
+                        <td><i class="fa-solid fa-trash"></i></td>
+                      </tr>
+                    <% })%>
+                    <!-- <tr>
                       <th scope="row">1</th>
                       <td>Omkar K.</td>
                       <td>omkarkhairnar9441@gmail.com</td>
@@ -144,8 +157,8 @@ button:active {
                       <td>Male</td>
                       <td>Rs 60,000/-</td>
                       <td><i class="fa-solid fa-trash"></i></td>
-                    </tr>
-                    <tr>
+                    </tr> -->
+                    <!-- <tr>
                       <th scope="row">2</th>
                       <td>Mathan</td>
                       <td>manthan12@gmail.com</td>
@@ -171,7 +184,7 @@ button:active {
                       <td>Male</td>
                       <td>Rs 60,000/-</td>
                       <td><i class="fa-solid fa-trash"></i></td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
               </div>
@@ -183,18 +196,18 @@ button:active {
             <div class="modal-dialog modal-dialog-scrollable modal-lg">
               <div class="modal-content">
                 <div class="modal-header align-self-center">
-                  <h3>Fill Out Appropriate Details of Trainer</h3>
+                  <h3>Fill Out Appropriate Details of Trainer</h3> 
                   
                 </div>
                 <div class="modal-body">
                   <div class="form-container sign-up-container">
-                    <form name="regform" onchange="return Validation1()" method="POST" action="/signup">
+                    <form name="regform" onchange="return Validation1()" method="POST" action="/adminactions/addTrainer">
                       <fieldset>
                         <input type="text" id="namec" placeholder="Name" name="name" required />
                         <span class="regemailver">Enter Valid Email Address.</span>
                         <input type="text" id="emailc" placeholder="Email" name="email" required />
                         <input type="text" id="genderc" placeholder="Gender" name="gender" required>
-                        <input type="number" id="salary-trainer" placeholder="Enter salary($)" name="salary-trainer" required>
+                        <input type="number" id="salary-trainer" placeholder="Enter salary($)" name="salary" required>
                         <input class="profile-img" type="url" id="image" name="image"
                           placeholder="Enter Profile Image Url">
                       </fieldset>

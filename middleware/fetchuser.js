@@ -1,14 +1,16 @@
 const jwt = require('jsonwebtoken')
-const JWT_SECRET = 'FFSD_FITWELL_PROJECT'
- 
+require('dotenv').config();
+const JWT_SECRET = process.env.JWT_SECRET;
+
 const fetchuser = (req, res, next) => {
   // GEt the user from jwt token and adding it to req
   try {
-    const token = req.header('auth-token')
+    const token = req.session.userjwtoken;
+    console.log(token);
     if (!token) {
       return res
         .status(401)
-        .json({ error: 'Please Authenticate using valid token.' })
+        .json({ error: 'Token not available.'})
     }
     const data = jwt.verify(token, JWT_SECRET)
     req.user = data.user
