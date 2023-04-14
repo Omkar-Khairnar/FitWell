@@ -46,7 +46,7 @@
       <div class="secondline">BE <span id="colorToOrange">STRONG</span> TRAINING <span id="colorToOrange">HARD</span > </div>
   </div>
 
-  <div class="reasonToChoose hidden">
+  <div class="reasonToChoose ">
     <div class=" reasonToChoose-firstLine">
         <h3>WHY TO CHOOSE</h3>
     </div>
@@ -79,7 +79,7 @@
   </div>
 
 
-  <div class="ourClasses hidden">
+  <div class="ourClasses ">
     <div class="ourClasses-lines my-3">
       <div class=" ourClasses-firstLine">
         <h3>OUR CLASSES</h3>
@@ -130,7 +130,7 @@
 
  
 
-  <div class="appointment hidden">
+  <div class="appointment ">
     <div class="appoint-img">
       <img src="/img/home1.jpg" alt="REGISTER_NOW_AND_GET_EXCITING_DEALS" class="REGISTER_NOW_AND_GET_EXCITING_DEALS">
     </div>
@@ -150,13 +150,8 @@
     </div>
     </div>
   </div>
-   
   <%- include('pricing'); %>
-    
   <%- include('footer'); %>
-
-     
-
 
       <script>
       function animate(obj, initVal, lastVal, duration) {
@@ -174,7 +169,7 @@
             window.cancelAnimationFrame(window.requestAnimationFrame(step));
          }
       };
-         window.requestAnimationFrame(step);
+        window.requestAnimationFrame(step);
       }
       let text1 = document.getElementById('my101');
       let text2 = document.getElementById('my102');
@@ -183,21 +178,21 @@
          animate(text2, 0, 45, 7000);
       }
       // Scroll Effect
-      window.addEventListener('scroll', reveal);
+      // window.addEventListener('scroll', reveal);
 
-      function reveal() {
-          var reveals = document.querySelectorAll('.hidden');
+      // function reveal() {
+      //     var reveals = document.querySelectorAll('.hidden');
 
-          for (var i = 0; i < reveals.length; i++) {
-              var windowHeight = window.innerHeight;
-              var revealTop = reveals[i].getBoundingClientRect().top;
-              var revealPoint = 150;
+      //     for (var i = 0; i < reveals.length; i++) {
+      //         var windowHeight = window.innerHeight;
+      //         var revealTop = reveals[i].getBoundingClientRect().top;
+      //         var revealPoint = 150;
 
-              if (revealTop < windowHeight - revealPoint) {
-                  reveals[i].classList.add('show');
-              }
-          }
-      };
+      //         if (revealTop < windowHeight - revealPoint) {
+      //             reveals[i].classList.add('show');
+      //         }
+      //     }
+      // };
    </script> 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

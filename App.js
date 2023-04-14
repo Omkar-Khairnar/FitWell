@@ -16,6 +16,7 @@ var productSchema = require('./models/product');
 const ReviewSchema = require('./models/review');
 const TrainerSchema = require('./models/Trainer');
 const CartSchema = require('./models/Cart');
+const OrderSchema = require('./models/Order');
 const ContactFormSchema = require('./models/contactform');
 
 require('dotenv').config();
@@ -129,8 +130,14 @@ app.get('/user_Dashboard_home', (req, res) => {
     const userDetails = req.session.userDetails;
     res.render('user_Dashboard_home', { userDetails })
 })
-app.get('/user_Dashboard_myorders', (req, res) => {
-    res.render('user_Dashboard_myorders')
+app.get('/user_Dashboard_myorders', async(req, res) => {
+    if (!req.session.userDetails) {
+        return res.redirect('/signin')
+    }
+    const userDetails = req.session.userDetails;
+    const userid=userDetails.id;
+    const orders=await OrderSchema.find({user:userid});
+    res.render('user_Dashboard_myorders', {orders})
 })
 app.get('/user_Dashboard_payment', (req, res) => {
     res.render('user_Dashboard_payment')
@@ -151,6 +158,7 @@ app.get('/user_Dashboard_cart', async(req, res) => {
     const item = await productSchema.find({ _id: pid });
     products.push(item);
     })); 
+    req.session.products=products;
     
     res.render('user_Dashboard_cart', { userDetails,products})
 })
@@ -158,14 +166,14 @@ app.get('/user_dashboard_workout', (req, res) => {
     res.render('user_dashboard_workout')
 })
 app.get('/user_Dashboard_challenges', (req, res) => {
-    res.render('user_dashboard_challenges')
+    res.render('user_dashboard_challenges') 
 })
 app.get('/user_Dashboard_profile', (req, res) => {
     const userDetails = req.session.userDetails;
     res.render('user_Dashboard_profile', { userDetails })
 })
 app.get('/user_dashboard_navbar', (req, res) => {
-    res.render('user_dashboard_navbar')
+    res.render('user_dashboard_navbar') 
 })
 // app.get('/user_dashboard_chat', (req,res)=>{
 //     res.render('user_dashboard_chat')
@@ -174,11 +182,6 @@ app.get('/user_dashboard_navbar', (req, res) => {
 app.get('/timer', (req, res) => {
     res.render('timer')
 })
-
-
-
-
-
 app.get('/admin_dashboard_side_wrapper', (req, res) => {
     res.render('admin_dashboard_side_wrapper')
 })
@@ -214,8 +217,15 @@ app.get('/admin_dashboard_payment', (req, res) => {
 app.get('/admin_dashboard_add_product', (req, res) => {
     res.render('admin_dashboard_add_product')
 })
-app.get('/admin_Dashboard_order', (req, res) => {
-    res.render('admin_Dashboard_order')
+app.get('/admin_Dashboard_order', async(req, res) => {
+    try{
+        const orders=await OrderSchema.find();
+        res.render('admin_Dashboard_order',{orders})
+    }
+    catch(err){
+        res.status(400).json({Error:err})
+    }
+    
 })
 app.get('/payment', (req, res) => {
     res.render('payment')

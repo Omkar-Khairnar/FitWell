@@ -2,6 +2,7 @@ const express=require('express')
 const ContactUs=require('../models/contactform')
 const ReviewSchema=require('../models/review')
 const CartSchema=require('../models/Cart')
+const OrderSchema=require('../models/Order')
 const router=express.Router()
 require('dotenv').config()
 let alert=require('alert')
@@ -14,7 +15,7 @@ router.post('/contactus', async(req,res)=>{
         const phone=req.body.phone;
         const subject=req.body.subject;
         const message=req.body.message;
-        // const date=req.body.name;
+        // const date=req.body.name; 
         const data=await ContactUs.create({
             name:name,
             email:email,
@@ -79,22 +80,36 @@ router.post('/addtocart',async(req,res)=>{
             res.redirect('/products');
         }
 
-    }
+    } 
     catch(err){
         res.status(400).json({Error:err})
     }
 })
 router.post('/checkoutcart',async(req,res)=>{
     try{
-        const userid=req.session.userDetails.id;
+        const userDetails=req.session.userDetails;
+        const userid=userDetails.id;
         await CartSchema.deleteMany({user:userid})
 
         //Here this products should enter into order schema.
+        const address=req.body.address;
+        const finalamount=req.body.finalamount;
+        const products=req.session.products;
+        products.forEach(async(item) => {
+            await OrderSchema.create({
+                user:userid,
+                name:item[0].name,
+                image:item[0].img,
+                amount:finalamount,
+                description:item[0].description,
+                address:address
+            })
+            // console.log("order with price added:" + item[0].price);
+        });
         return res.redirect('/user_Dashboard_cart');  
     }
     catch(err){
         console.log(err);
     }
 })
-
 module.exports=router
