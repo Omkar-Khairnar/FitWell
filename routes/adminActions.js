@@ -2,6 +2,7 @@ const express=require('express')
 const Trainer=require('../models/Trainer')
 const Product=require('../models/product')
 const User=require('../models/User')
+const OrderSchema=require('../models/Order')
 const Feedback=require('../models/contactform')
 const router=express.Router() 
 require('dotenv').config()
@@ -51,8 +52,18 @@ router.post('/deletetrainer', async(req,res)=>{
         res.send(400).json({err})
     }
 })
-router.post('/deletefeedback', async(req,res)=>{
+router.post('/deleteorder', async(req,res)=>{
     try{
+        const orderid=req.body.orderid;
+        let order=await OrderSchema.findByIdAndDelete(orderid);
+        res.redirect('/admin_dashboard_order')
+    }
+    catch(err){
+        res.send(400).json({err})
+    }
+})
+router.post('/deletefeedback', async(req,res)=>{
+    try{ 
         const feedbackid=req.body.feedbackid;
         let feedback=await Feedback.findByIdAndDelete(feedbackid);
         res.redirect('/admin_dashboard_feedback')
@@ -61,5 +72,6 @@ router.post('/deletefeedback', async(req,res)=>{
         res.send(400).json({err})
     }
 })
+
 
 module.exports=router

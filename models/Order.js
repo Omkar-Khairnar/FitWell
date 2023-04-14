@@ -6,12 +6,15 @@ const OrderSchema=new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user',
       },
-    image:{
+    name:{
         type:String,
-        required:true,
+      },
+    image:{
+        data: Buffer,
+        contentType: String,
     },
     Dateoforder:{
-        type:Date,
+        type:Date, 
         default:Date.now,
     },
     amount:{
