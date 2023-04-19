@@ -12,7 +12,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var fs = require('fs');
 var multer = require('multer');
-var productSchema = require('./models/product');
+var ProductSchema = require('./models/product');
 const ReviewSchema = require('./models/review');
 const TrainerSchema = require('./models/Trainer');
 const CartSchema = require('./models/Cart');
@@ -80,14 +80,22 @@ app.get('/', (req, res) => {
 app.get('/footer', (req, res) => {
     res.render('footer')
 })
-app.get('/products', (req, res) => {
-    productSchema.find({})
-        .then((data, err) => {
-            if (err) {
-                console.log(err);
-            }
-            res.render('products', { itemsProduct: data })
-        })
+app.get('/products', async(req, res) => {
+    // productSchema.find({})
+    //     .then((data, err) => {
+    //         if (err) {
+    //             console.log(err);
+    //         }
+    //         res.render('products', { itemsProduct: data })
+    //     });
+    
+    const itemsProduct = await ProductSchema.find({});
+    const NutrientsCategory = await ProductSchema.find({category : 'Nutrients'});
+    const ProteinCategory = await ProductSchema.find({category : 'Whey Proteins'});
+    const EnergyCategory = await ProductSchema.find({category : 'Energy & Endurance'});
+    const RecoveryCategory = await ProductSchema.find({category : 'Recovery & Repair'});
+    res.render('products', { itemsProduct, NutrientsCategory, ProteinCategory, EnergyCategory, RecoveryCategory})
+
 })
 app.get('/signin', (req, res) => {
     res.render('signin', { error: 0 })
