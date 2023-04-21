@@ -1,27 +1,61 @@
-// 
-document.addEventListener("DOMContentLoaded", function () {
-    var cards = document.querySelector(".allProduct");
-    // var cards = document.querySelector(".allProduct", ".allProduct1", ".allProduct2", ".allProduct3", ".allProduct4");
+var latestProduct = document.querySelector("#latestPro");
+var left1 = document.querySelector("#arrowLeft1");
+var right1 = document.querySelector("#arrowRight1");
+document.addEventListener("DOMContentLoaded", scrollProduct(latestProduct, left1, right1));
+
+
+var wheyProducts = document.querySelector("#wheyPro");
+var left2 = document.querySelector("#arrowLeft2");
+var right2 = document.querySelector("#arrowRight2");
+document.addEventListener("DOMContentLoaded", scrollProduct(wheyProducts, left2, right2));
+
+
+var vitaminProducts = document.querySelector("#vitaminPro");
+var left3 = document.querySelector("#arrowLeft3");
+var right3 = document.querySelector("#arrowRight3");
+document.addEventListener("DOMContentLoaded", scrollProduct(vitaminProducts, left3, right3));
+
+
+var energyProducts = document.querySelector("#energyPro");
+var left4 = document.querySelector("#arrowLeft4");
+var right4 = document.querySelector("#arrowRight4");
+document.addEventListener("DOMContentLoaded", scrollProduct(energyProducts, left4, right4));
+
+
+var repairProducts = document.querySelector("#repairPro");
+var left5 = document.querySelector("#arrowLeft5");
+var right5 = document.querySelector("#arrowRight5");
+document.addEventListener("DOMContentLoaded", scrollProduct(repairProducts, left5, right5));
+
+
+
+
+
+function scrollProduct (cards, left, right) {
     var cardWidth = parseInt(window.getComputedStyle(document.querySelector(".card")).getPropertyValue("width"));
     var cardMargin = parseInt(window.getComputedStyle(document.querySelector(".card")).getPropertyValue("margin-right"));
-    var cardsWidth = (cards.querySelectorAll(".card").length * (cardWidth + cardMargin)) -  cardMargin  ;
+    var cardsWidth = (cards.querySelectorAll(".card").length * (cardWidth + cardMargin));
     var position = 0;
 
-    var left = document.querySelector(".arrow-right");
-    left.addEventListener("click", function () {
-        if (position > -cardsWidth ) {
+    right.addEventListener("click", function () {
+        if (position > -cardsWidth + cards.offsetWidth) {
             position -= cardWidth*3 ;
             cards.style.transform = "translateX(" + position + "px)";
         }
     });
 
-    document.querySelector(".arrow-left").addEventListener("click", function () {
+    left.addEventListener("click", function () {
         if (position < 0) {
             position += cardWidth*3 ;
             cards.style.transform = "translateX(" + position + "px)";
         }
     });
-});
+}
+
+
+
+
+
 
 
 
