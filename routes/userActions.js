@@ -151,4 +151,38 @@ router.put('/updateprofile', async(req, res)=>{
     }
  })
 
+ router.post('/enroll',async(req,res)=>{
+    try{
+        const type=req.body.enrolltype;
+        const userDetails=req.session.userDetails;
+        if(!userDetails){
+            return res.redirect('/signin');
+        }
+        else{
+            const userid=userDetails.id;
+            const user=await UserSchema.find({_id:userid});
+            if(type == 'enroll1'){
+                const date=new Date(Date.now()+30*24*60*60*1000);
+                const res=await UserSchema.findByIdAndUpdate(userid,{expirydate:date});
+                req.session.userDetails.expirydate=date;
+            }
+            else if(type == 'enroll2'){
+                const date=new Date(Date.now()+6*30*24*60*60*1000);
+                const res=await UserSchema.findByIdAndUpdate(userid,{expirydate:date});
+                req.session.userDetails.expirydate=date;
+
+            }
+            else{
+                const date=new Date(Date.now()+12*30*24*60*60*1000);
+                const res=await UserSchema.findByIdAndUpdate(userid,{expirydate:date});
+                req.session.userDetails.expirydate=date;
+            }
+            return res.redirect('/user_Dashboard_home')
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
+ })
+
 module.exports=router

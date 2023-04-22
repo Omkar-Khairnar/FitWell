@@ -51,15 +51,14 @@
         .hidden {
             transition:none;
         }
-        }
+        } 
     </style>
     <body>
-        <div class="container1 hidden">
-            <div class="title container">
+        <div class="container1 my-4">
+            <div class="title container my-3">
                 <h3 id="title-0" class="my-3 ">OUR PLAN</h3>
                 <h2 id="title-1" class="my-2"> CHOOSE YOUR PRICING PLAN</h2>
             </div>
-            
             <div class="price-row">
                 <div class="price-col">
                     <p>SINGLE CLASS</p>
@@ -72,9 +71,11 @@
                         <li>Weight losing classes</li>
                         <li>No time restriction</li>
                     </ul>
-                    <button id="enroll1"> ENROLL NOW</button>
+                    <form method="post" action="/userActions/enroll">
+                      <input type="text" value="enroll1" class="d-none" name="enrolltype">
+                     <button type="submit" id="enroll1"> ENROLL NOW</button>
+                    </form>
                 </div>
-
                 <div class="price-col">
                     <p> ADVANCED </p>
                     <h2 id="title">6 Month unlimited</h2>
@@ -86,8 +87,10 @@
                         <li>Weight losing classes</li>
                         <li>No time restriction</li>
                     </ul>
-                    <button id="enroll2"> ENROLL NOW</button>
-
+                    <form method="post" action="/userActions/enroll">
+                        <input type="text" value="enroll2" class="d-none" name="enrolltype">
+                       <button type="submit" id="enroll"> ENROLL NOW</button>
+                    </form>
                 </div>
                 <div class="price-col">
                     <P>PREMIUM</P>
@@ -100,7 +103,10 @@
                         <li>Weight losing classes</li>
                         <li>No time restriction</li>
                     </ul>
-                    <button id="enroll3"> ENROLL NOW</button>
+                    <form method="post" action="/userActions/enroll">
+                        <input type="text" value="enroll3" class="d-none" name="enrolltype">
+                       <button type="submit" id="enroll"> ENROLL NOW</button>
+                    </form>
                 </div>
             </div>
 
