@@ -6,7 +6,16 @@ const OrderSchema=require('../models/Order')
 const Feedback=require('../models/contactform')
 const router=express.Router() 
 require('dotenv').config()
-let alert=require('alert')
+let alert=require('alert');
+var fs = require('fs');
+var multer = require('multer');
+var path = require('path');
+
+const ProductSchema = require('../models/product');
+const challengesSchema = require('../models/workoutChallenges')
+const WorkoutSchema = require('../models/HomeWorkout')
+
+
 
 //Adding Trainer to Database : Admin Login required
 router.post('/addTrainer', async(req,res)=>{
@@ -72,6 +81,94 @@ router.post('/deletefeedback', async(req,res)=>{
         res.send(400).json({err})
     }
 })
+
+
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+
+var upload = multer({ storage: storage });
+router.post('/newProduct', upload.single('productImage'), (req, res) => {
+    var obj = {
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        category: req.body.category,
+        img: {
+            data: fs.readFileSync(path.join(__dirname + '/../public/uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        }
+    }
+    ProductSchema.create(obj).then((err, item) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.redirect('/admin_dashboard_add_product');
+        }
+    });
+});
+router.post('/newChallenge', upload.single('challengeImg'), (req, res) => {
+    console.log("kartik :"+ fs.readFileSync(path.join(__dirname + '/../public/uploads/' + req.file.filename)));
+    var obj = {
+        description: req.body.ChallengeDescription,
+        img: {
+            data: fs.readFileSync(path.join(__dirname + '/../public/uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        }
+    }
+    challengesSchema.create(obj).then((err, item) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.redirect('/admin_dashboard_home');
+        }
+    });
+});
+
+var uploadsImages = multer({ storage: storage }).array('workoutImg', 5);
+router.post('/newWorkout', uploadsImages, (req, res) => {
+    var obj = {
+        description: req.body.WorkoutDescription,
+        img: {
+            img0: {
+                data: fs.readFileSync(path.join(__dirname + '/../public/uploads/' + req.files[0].filename)),
+                contentType: 'image/png'
+            },
+            img1: {
+                data: fs.readFileSync(path.join(__dirname + '/../public/uploads/' + req.files[1].filename)),
+                contentType: 'image/png'
+            },
+            img2: {
+                data: fs.readFileSync(path.join(__dirname + '/../public/uploads/' + req.files[2].filename)),
+                contentType: 'image/png'
+            },
+            img3: {
+                data: fs.readFileSync(path.join(__dirname + '/../public/uploads/' + req.files[3].filename)),
+                contentType: 'image/png'
+            },
+            img4: {
+                data: fs.readFileSync(path.join(__dirname + '/../public/uploads/' + req.files[4].filename)),
+                contentType: 'image/png'
+            }
+        }
+    }
+    WorkoutSchema.create(obj).then((err, item) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.redirect('/admin_dashboard_home');
+        }
+    });
+});
 
 
 module.exports=router

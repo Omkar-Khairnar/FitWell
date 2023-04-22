@@ -23,7 +23,7 @@
 
                     <div class="container-fluid">
                         <div class="form-container add-product-container">
-                            <form name="addProduct" action="/newProduct" method="POST" enctype="multipart/form-data">
+                            <form name="addProduct" action="/adminActions/newProduct" method="POST" enctype="multipart/form-data">
 
                                 <label for="name">Product Name
                                     <input type="text" id="name" placeholder="Product Name" name="name" value=""
@@ -46,7 +46,7 @@
                                     <option value="Whey Proteins">Whey Proteins</option>
                                     <option value="Nutrients">Nutrients</option>
                                 </select>
-                                <label for="productImage">Product Image
+                                <label for="productImage">Product Image [Image type : png(only)]
                                     <input class="product-img" type="file" value="" id="productImage" name="productImage"
                                         placeholder="Upload Image">
                                 </label>
