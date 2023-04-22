@@ -1470,12 +1470,14 @@ input[type="submit"]:hover {
 
 
 
-/* 
-profile css
-
-*/
-
-
-.d-inline-block{
-  float:left
+/* profile css */
+.container-profile {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #f7ebd1;
+	border-radius: 5px;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
 }
+
+
