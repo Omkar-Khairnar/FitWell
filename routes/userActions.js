@@ -3,8 +3,10 @@ const ContactUs=require('../models/contactform')
 const ReviewSchema=require('../models/review')
 const CartSchema=require('../models/Cart')
 const OrderSchema=require('../models/Order')
+const PaymentSchema=require('../models/payments')
+const UserSchema=require('../models/User')
 const router=express.Router()
-require('dotenv').config()
+require('dotenv').config() 
 let alert=require('alert')
 
 //submitting contact form :User login NOT required
@@ -96,7 +98,7 @@ router.post('/checkoutcart',async(req,res)=>{
         const finalamount=req.body.finalamount;
         const products=req.session.products;
         products.forEach(async(item) => {
-            await OrderSchema.create({
+            await OrderSchema.create({ 
                 user:userid,
                 name:item[0].name,
                 image:item[0].img,
@@ -106,10 +108,47 @@ router.post('/checkoutcart',async(req,res)=>{
             })
             // console.log("order with price added:" + item[0].price);
         });
+        await PaymentSchema.create({
+            user:userid,
+            amount:finalamount,
+        })
         return res.redirect('/user_Dashboard_cart');  
     }
     catch(err){
         console.log(err);
     }
 })
+
+router.put('/updateprofile', async(req, res)=>{
+    try{
+        const userDetails=req.session.userDetails;
+        const id=userDetails.id;
+        const name=req.body.name;
+        const age=req.body.age;
+        const weight=req.body.weight;
+        const height=req.body.height;
+        const image=req.body.image;
+
+        await UserSchema.findByIdAndUpdate({id},{name:name, age:age, weight:weight,
+        height:height,image:image});
+
+        return res.redirect('/user_Dashboard_profile')
+        
+    }
+    catch(err){
+        res.status(400).json({Error:err});
+    }
+})
+ router.post('/deleteorder', async(req,res)=>{
+    try{
+        const orderid=req.body.orderid;
+        await OrderSchema.findByIdAndDelete(orderid);
+        return res.redirect('/user_Dashboard_myorders')
+
+    }
+    catch(err){
+        console.log(err);
+    }
+ })
+
 module.exports=router

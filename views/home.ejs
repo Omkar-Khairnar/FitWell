@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./CSS/home.css">
   </head> 
   <body onload="load()">
-    <%- include('navbar'); %>
+    <%- include('navbar',{loginStatus}); %>
     <div class="sliderContainer" id="carousel">
       <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner"> 
@@ -132,7 +132,7 @@
 
   <div class="appointment ">
     <div class="appoint-img">
-      <img src="/img/home1.jpg" alt="REGISTER_NOW_AND_GET_EXCITING_DEALS" class="REGISTER_NOW_AND_GET_EXCITING_DEALS">
+      <img src="/img/home1.jpg" alt="REGISTER_NOW_AND_GET_EXCITING_DEALS" class="REGISTER_NOW_AND_GET_EXCITING_DEALS overflow-x-hidden" >
     </div>
     <div class="appoint-info container" >
       <div class="appoint-firstLine">

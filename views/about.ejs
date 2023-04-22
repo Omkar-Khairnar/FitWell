@@ -12,8 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
 
 </head> 
+<style>
+  .topbg img{
+    width: 100%;
+}
+</style>
 <body>
-    <%- include('navbar') %>
+  <%- include('navbar',{loginStatus}); %>
     <div class="topbg"> 
         <img src="/img/home1.jpg" alt="" srcset="" style="max-width: 100%;">
         <div class="toptitle">
@@ -52,7 +57,7 @@
       </div>
     </div>
 
-    <%- include('ourTeam'); %>
+    <%- include('ourTeam',{trainers}); %>
     
     <%- include('footer') %>
 </body>
