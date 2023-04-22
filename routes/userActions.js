@@ -151,4 +151,13 @@ router.put('/updateprofile', async(req, res)=>{
     }
  })
 
+ router.post('/enroll',async(req,res)=>{
+    try{
+        
+    }
+    catch(err){
+        console.log(err);
+    }
+ })
+
 module.exports=router

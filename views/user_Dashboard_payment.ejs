@@ -21,7 +21,7 @@
 </head>
 
 <body>
-  <!-- partial:index.partial.html -->
+  <!-- partial:index.partial.html --> 
   <div class="dashboard">
     <%- include('user_dashboard_navbar.ejs'); %>
       <div class="dashboard-app">
@@ -40,47 +40,25 @@
               <table class="table table-striped">
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col">Order Id</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Transaction ID</th>
                     <th scope="col">Payment Method</th>
-                    <th scope="col">Status</th>
                     <th scope="col">Description</th>
                     <th scope="col">Amount</th>
-                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>#54673</td>
-                    <th scope="row"><i class="fa-regular fa-credit-card"></i> Card</th>
-                    <td class="pay">Paid</td>
-                    <td>Subscription renewal</td>
-                    <td class="ded">-$120</td>
-                    <td>18-03-2023</td>
-                  </tr>
-                  <tr>
-                    <td>#46783</td>
-                    <th scope="row"><i class="fa-regular fa-credit-card"></i> Card</th>
-                    <td class="pay">Paid</td>
-                    <td>Subscription renewal</td>
-                    <td class="ded">-$9.99</td>
-                    <td>14-12-2022</td>
-                  </tr>
-                  <tr>
-                    <td>#46983</td>
-                    <th scope="row"><i class="fa-regular fa-credit-card"></i> Card</th>
-                    <td class="upay">Unpaid</td>
-                    <td>Nitro Protein Pack</td>
-                    <td class="ded">-$1499.99</td>
-                    <td>17-02-2022</td>
-                  </tr>
-                  <tr>
-                    <td>#46783</td>
-                    <th scope="row">Mass</th>
-                    <td class="pay">Paid</td>
-                    <td>Mass Gainer</td>
-                    <td class="add">+$60.00</td>
-                    <td>17-01-2022</td>
-                  </tr>
+                  <% payments.forEach((item)=>{ %>
+                    <tr id="row1">
+                      <td scope="row" id="payment-date1"><%=item.Dateoforder.toDateString()%></th>
+                      <td id="payment-transactionID1"><%=item._id%></td>
+                      <td id="payment-Method1"><%=item.paymentmethod%></td>
+                      <td id="payment-desc1">Debited</td>
+                      <td id="payment-amount1">Rs <%=item.amount%></td>
+                      <td id="payment-status1"><%=item.status%></td>
+                    </tr>
+                  <%}) %>
                 </tbody>
               </table>
             </div>

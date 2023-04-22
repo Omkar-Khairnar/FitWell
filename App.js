@@ -199,12 +199,15 @@ app.get('/contact', (req, res) => {
     }
     res.render('contact',{loginStatus})
 })
-app.get('/user_Dashboard_home', (req, res) => {
+app.get('/user_Dashboard_home', async(req, res) => {
     if (!req.session.userDetails) {
         return res.redirect('/signin')
     }
     const userDetails = req.session.userDetails;
-    res.render('user_Dashboard_home', { userDetails })
+    const userid=userDetails.id;
+    const Numoforders=await OrderSchema.count({user:userid});
+    const Numofreviews=await ReviewSchema.count({user:userid});
+    res.render('user_Dashboard_home', { userDetails,Numoforders,Numofreviews })
 })
 app.get('/user_Dashboard_myorders', async(req, res) => {
     if (!req.session.userDetails) {
@@ -215,8 +218,14 @@ app.get('/user_Dashboard_myorders', async(req, res) => {
     const orders=await OrderSchema.find({user:userid});
     res.render('user_Dashboard_myorders', {orders})
 })
-app.get('/user_Dashboard_payment', (req, res) => {
-    res.render('user_Dashboard_payment')
+app.get('/user_Dashboard_payment',async(req, res) => {
+    if (!req.session.userDetails) {
+        return res.redirect('/signin')
+    }
+    const userDetails = req.session.userDetails;
+    const userid=userDetails.id;
+    const payments=await PaymentSchema.find({user:userid});
+    res.render('user_Dashboard_payment',{payments});
 })
 app.get('/user_Dashboard_reviews', (req, res) => {
     res.render('user_Dashboard_reviews')
@@ -231,7 +240,7 @@ app.get('/user_Dashboard_cart', async(req, res) => {
     const products = []; 
     await Promise.all(productsinfo.map(async (product) => {
     const pid = product.productid;
-    const item = await productSchema.find({ _id: pid });
+    const item = await ProductSchema.find({ _id: pid });
     products.push(item);
     })); 
     req.session.products=products;
@@ -267,8 +276,19 @@ app.get('/admin_dashboard_side_wrapper', (req, res) => {
 app.get('/admin_dashboard_top_wrapper', (req, res) => {
     res.render('admin_dashboard_top_wrapper')
 })
-app.get('/admin_dashboard_home', (req, res) => {
-    res.render('admin_dashboard_home')
+app.get('/admin_dashboard_home', async(req, res) => {
+    try{
+        const payments= await PaymentSchema.find().sort({_id:-1}).limit(6);
+        const orders=await OrderSchema.find().sort({_id:-1}).limit(6);
+        const Numoftrainers=await TrainerSchema.count();
+        const Numofusers=await User.count();
+        const Numoforders=await OrderSchema.count();
+        res.render('admin_dashboard_home',{payments,orders,Numoftrainers,Numofusers,Numoforders});
+        
+    }
+    catch(err){
+        console.log(err);
+    }
 })
 app.get('/admin_dashboard_customers', async (req, res) => {
     try {
