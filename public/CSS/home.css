@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     /* background-color: black; */
+    
 }
 
 
@@ -99,8 +100,9 @@
     font-family: 'Secular One', sans-serif;
 }
 .REGISTER_NOW_AND_GET_EXCITING_DEALS{
-    width: 90%;
+    width:fit-content;
     height: auto;
+    overflow-x: hidden;
 }
 .card-desc-1{
     color: #f36100;
@@ -121,7 +123,7 @@
     position: relative;
 }
 .appoint-img img{
-    width: 100vw;
+    width: 100%;
     height: 70vh;
     opacity: 0.9;
 }
@@ -132,7 +134,7 @@
    left: 10%;
    box-sizing: border-box;
    text-align: center;
-   margin: auto;
+   /* margin: auto; */
 }
 .appoint-firstLine h2{
     font-family: 'Secular One', sans-serif;

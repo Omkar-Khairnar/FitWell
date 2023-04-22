@@ -12,7 +12,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var fs = require('fs');
 var multer = require('multer');
-var productSchema = require('./models/product');
+const ProductSchema = require('./models/product');
 const ReviewSchema = require('./models/review');
 const TrainerSchema = require('./models/Trainer');
 const CartSchema = require('./models/Cart');
@@ -85,21 +85,39 @@ app.get('/', (req, res) => {
     }
     res.render('home',{loginStatus})
 })
-
-app.get('/products', (req, res) => {
-    const userDetails=req.session.userDetails;
-    var loginStatus=1;
-    if(!userDetails){
-        loginStatus=0;
-    }
-    productSchema.find({})
-        .then((data, err) => {
-            if (err) {
-                console.log(err);
-            }
-            res.render('products', { itemsProduct: data,loginStatus })
-        })
+app.get('/footer', (req, res) => {
+    res.render('footer')
 })
+app.get('/productSearch', async(req, res) => {
+    res.render('productSearch')
+})
+app.get('/products', async(req, res) => {
+    
+    const LatestCategory= await ProductSchema.find().sort({_id:-1}).limit(18);
+    const NutrientsCategory = await ProductSchema.find({category : 'Nutrients'}).sort({price:1});
+    const ProteinCategory = await ProductSchema.find({category : 'Whey Proteins'}).sort({price:1});
+    const EnergyCategory = await ProductSchema.find({category : 'Energy & Endurance'}).sort({price:1});
+    const RecoveryCategory = await ProductSchema.find({category : 'Recovery & Repair'}).sort({price:1});
+    res.render('products', { LatestCategory, NutrientsCategory, ProteinCategory, EnergyCategory, RecoveryCategory})
+})
+app.post('/productSearchResult',async(req, res)=>{
+    const search = req.body.search;
+    searchQuery = { name: { $regex: search, $options: 'i' } }
+    const searchResult = await ProductSchema.find(searchQuery).sort({price:1});
+    const searchResultCount = await ProductSchema.find(searchQuery).sort({price:1}).count();
+    res.render('productSearch',{searchResult,searchResultCount});
+
+});
+// app.post('/productFiltersResult',async(req, res)=>{
+//     const search = req.body.filter;
+//     searchQuery = { name: { $regex: search, $options: 'i' } }
+//     const searchResult = await ProductSchema.find(searchQuery).sort({price:1});
+//     const searchResultCount = await ProductSchema.find(searchQuery).sort({price:1}).count();
+//     res.render('productSearch',{searchResult,searchResultCount});
+
+// });
+
+
 app.get('/signin', (req, res) => {
     res.render('signin', { error: 0 })
 })
