@@ -89,7 +89,12 @@ app.get('/footer', (req, res) => {
     res.render('footer')
 })
 app.get('/productSearch', async(req, res) => {
-    res.render('productSearch')
+    const userDetails=req.session.userDetails;
+    var loginStatus=1;
+    if(!userDetails){
+        loginStatus=0;
+    }
+    res.render('productSearch',{loginStatus})
 })
 app.get('/products', async(req, res) => {
     
@@ -97,15 +102,25 @@ app.get('/products', async(req, res) => {
     const NutrientsCategory = await ProductSchema.find({category : 'Nutrients'}).sort({price:1});
     const ProteinCategory = await ProductSchema.find({category : 'Whey Proteins'}).sort({price:1});
     const EnergyCategory = await ProductSchema.find({category : 'Energy & Endurance'}).sort({price:1});
-    const RecoveryCategory = await ProductSchema.find({category : 'Recovery & Repair'}).sort({price:1});
-    res.render('products', { LatestCategory, NutrientsCategory, ProteinCategory, EnergyCategory, RecoveryCategory})
+    const RecoveryCategory = await ProductSchema.find({category : 'Recovery & Repair'}).sort({price:1});        const userDetails=req.session.userDetails;
+    var loginStatus=1;
+    if(!userDetails){
+        loginStatus=0;
+    }
+
+    res.render('products', { LatestCategory, NutrientsCategory, ProteinCategory, EnergyCategory, RecoveryCategory,loginStatus})
 })
 app.post('/productSearchResult',async(req, res)=>{
     const search = req.body.search;
     searchQuery = { name: { $regex: search, $options: 'i' } }
     const searchResult = await ProductSchema.find(searchQuery).sort({price:1});
     const searchResultCount = await ProductSchema.find(searchQuery).sort({price:1}).count();
-    res.render('productSearch',{searchResult,searchResultCount});
+    const userDetails=req.session.userDetails;
+    var loginStatus=1;
+    if(!userDetails){
+        loginStatus=0;
+    }
+    res.render('productSearch',{searchResult,searchResultCount,loginStatus});
 
 });
 // app.post('/productFiltersResult',async(req, res)=>{
