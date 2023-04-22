@@ -128,3 +128,7 @@ th {
   background-color: rgb(228, 98, 51);
   font-weight: normal;
 }
+
+.payment-method, .details {
+  width: 100%;
+}
