@@ -6,9 +6,9 @@ const challengesSchema=new mongoose.Schema({
         data: Buffer,
         contentType: String,
     },
-    decription:{
+    description:{
         type:String,
     }
 })
-let challenges = mongoose.model('product',challengesSchema);
+let challenges = mongoose.model('challenge',challengesSchema);
 module.exports= challenges;

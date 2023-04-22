@@ -36,14 +36,14 @@
                 <div class="container">
                     <div class="row row-cols-2 row-cols-md-3 container-fluid">
 
-                        <div class="col-workout">
+                        <% allWorkouts.forEach(function(image) { %>
+                         <div class="col-workout">
                             <div class=" card-workout h-auto bg-dark">
                                 <button type="button" class="btn workout-img" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    <img src="./img/Workouts/1.0-damage-dealer-workout.jpg" class="card-img-top"
-                                        alt="p5" id="p5">
+                                    data-bs-target="#<%=image._id%>">
+                                    <img src="data:image/<%=image.img.img0.contentType%>;base64, <%=image.img.img0.data.toString('base64')%>" class="card-img-top" alt="p5" id="p5">
                                 </button>
-                                <div class="modal" id="exampleModal">
+                                <div class="modal" id="<%=image._id%>">
                                     <div class="modal-dialog modal-fullscreen">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -54,35 +54,29 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div class="workout-modal-body-border">
-                                                    <img src="./img/Workouts/1.0-damage-dealer-workout.jpg"
+                                                    <img src="data:image/<%=image.img.img0.contentType%>;base64, <%=image.img.img0.data.toString('base64')%>"
                                                         id="workout-img-main" alt="workout1">
                                                     <div class="workout-effects">
                                                         <div class="workout-effects-container">
                                                             <div class="workout-effect-1">
                                                                 <h2 class="workout-how-it-work">HOW IT WORKS</h2>
-                                                                <img src="./img/Workouts/1.1-damage-dealer-workout.jpg"
+                                                                <img src="data:image/<%=image.img.img1.contentType%>;base64, <%=image.img.img1.data.toString('base64')%>"
                                                                     id="workout-effects-1" alt="workout1.1"
                                                                     id="workout-effects-1.1">
                                                             </div>
                                                             <div class="workout-effect-234">
-                                                                <img src="./img/Workouts/1.2-focus-upperbody.jpg"
+                                                                <img src="data:image/<%=image.img.img2.contentType%>;base64, <%=image.img.img2.data.toString('base64')%>"
                                                                     alt="workout1.2" id="workout-effects-2">
-                                                                <img src="./img/Workouts/2.3-type-combat.jpg"
+                                                                <img src="data:image/<%=image.img.img3.contentType%>;base64, <%=image.img.img3.data.toString('base64')%>"
                                                                     alt="workout1.3" id="workout-effects-3">
-                                                                <img src="./img/Workouts/1.4-difficulty-3.jpg"
+                                                                <img src="data:image/<%=image.img.img4.contentType%>;base64, <%=image.img.img4.data.toString('base64')%>"
                                                                     alt="workout1.4" id="workout-effects-4">
                                                             </div>
 
 
                                                         </div>
                                                         <div class="workout-effect-explain">
-                                                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Expedita perferendis dignissimos, sit commodi error
-                                                                perspiciatis? Autem earum dolore, dicta, recusandae sunt
-                                                                sed vitae voluptatem quae natus totam corporis ducimus.
-                                                                Aliquid voluptates impedit quia, magnam perferendis
-                                                                fugit illum eaque tenetur iure tempora? Maxime earum
-                                                                magni natus iure odio quos, cupiditate ipsam.</h5>
+                                                            <h5><%=image.description%></h5>
                                                         </div>
 
                                                     </div>
@@ -96,424 +90,8 @@
 
                             </div>
                         </div>
-
-                        <div class="col-workout">
-                            <div class=" card-workout h-auto bg-dark">
-                                <button type="button" class="btn workout-img" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    <img src="./img/Workouts/2.0-still-here-still-kicking-workout.jpg"
-                                        class="card-img-top" alt="p5" id="p5">
-                                </button>
-                                <div class="modal" id="exampleModal">
-                                    <div class="modal-dialog modal-fullscreen">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-
-                                                <%- include('timer.ejs'); %>
-                                                <button type="button" class="button-close"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="workout-modal-body-border">
-                                                    <img src="./img/Workouts/2.0-still-here-still-kicking-workout.jpg"
-                                                        id="workout-img-main" alt="workout1">
-                                                    <div class="workout-effects">
-                                                        <div class="workout-effects-container">
-                                                            <div class="workout-effect-1">
-                                                                <h2 class="workout-how-it-work">HOW IT WORKS</h2>
-                                                                <img src="./img/Workouts/2.1-still-here-still-kicking-workout.jpg"
-                                                                    id="workout-effects-1" alt="workout1.1"
-                                                                    id="workout-effects-1.1">
-                                                            </div>
-                                                            <div class="workout-effect-234">
-                                                                <img src="./img/Workouts/2.2-focus-lowerbody.jpg"
-                                                                    alt="workout1.2" id="workout-effects-2">
-                                                                <img src="./img/Workouts/2.3-type-combat.jpg"
-                                                                    alt="workout1.3" id="workout-effects-3">
-                                                                <img src="./img/Workouts/2.4-difficulty-3.jpg"
-                                                                    alt="workout1.4" id="workout-effects-4">
-                                                            </div>
-                                                        </div>
-                                                        <div class="workout-effect-explain">
-                                                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Expedita perferendis dignissimos, sit commodi error
-                                                                perspiciatis? Autem earum dolore, dicta, recusandae sunt
-                                                                sed vitae voluptatem quae natus totam corporis ducimus.
-                                                                Aliquid voluptates impedit quia, magnam perferendis
-                                                                fugit illum eaque tenetur iure tempora? Maxime earum
-                                                                magni natus iure odio quos, cupiditate ipsam.</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-workout">
-                            <div class=" card-workout h-auto bg-dark">
-                                <button type="button" class="btn workout-img" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    <img src="./img/Workouts/3.0-military-abs-workout.jpg" class="card-img-top" alt="p5"
-                                        id="p5">
-                                </button>
-                                <div class="modal" id="exampleModal">
-                                    <div class="modal-dialog modal-fullscreen">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-
-                                                <%- include('timer.ejs'); %>
-                                                <button type="button" class="button-close"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="workout-modal-body-border">
-                                                    <img src="./img/Workouts/3.0-military-abs-workout.jpg"
-                                                        id="workout-img-main" alt="workout1">
-                                                    <div class="workout-effects">
-                                                        <div class="workout-effects-container">
-                                                            <div class="workout-effect-1">
-                                                                <h2 class="workout-how-it-work">HOW IT WORKS</h2>
-                                                                <img src="./img/Workouts/3.1-military-abs-workout.jpg"
-                                                                    id="workout-effects-1" alt="workout1.1"
-                                                                    id="workout-effects-1.1">
-                                                            </div>
-                                                            <div class="workout-effect-234">
-                                                                <img src="./img/Workouts/3.2-focus-abs.jpg"
-                                                                    alt="workout1.2" id="workout-effects-2">
-                                                                <img src="./img/Workouts/3.3-type-abs.jpg"
-                                                                    alt="workout1.3" id="workout-effects-3">
-                                                                <img src="./img/Workouts/3.4-difficulty-3.jpg"
-                                                                    alt="workout1.4" id="workout-effects-4">
-                                                            </div>
-
-
-                                                        </div>
-                                                        <div class="workout-effect-explain">
-                                                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Expedita perferendis dignissimos, sit commodi error
-                                                                perspiciatis? Autem earum dolore, dicta, recusandae sunt
-                                                                sed vitae voluptatem quae natus totam corporis ducimus.
-                                                                Aliquid voluptates impedit quia, magnam perferendis
-                                                                fugit illum eaque tenetur iure tempora? Maxime earum
-                                                                magni natus iure odio quos, cupiditate ipsam.</h5>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-workout">
-                            <div class=" card-workout h-auto bg-dark">
-                                <button type="button" class="btn workout-img" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    <img src="./img/Workouts/4.0-princess-can-save-herself-workout.jpg"
-                                        class="card-img-top" alt="p5" id="p5">
-                                </button>
-                                <div class="modal" id="exampleModal">
-                                    <div class="modal-dialog modal-fullscreen">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-
-                                                <%- include('timer.ejs'); %>
-                                                <button type="button" class="button-close"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="workout-modal-body-border">
-                                                    <img src="./img/Workouts/4.0-princess-can-save-herself-workout.jpg"
-                                                        id="workout-img-main" alt="workout1">
-                                                    <div class="workout-effects">
-                                                        <div class="workout-effects-container">
-                                                            <div class="workout-effect-1">
-                                                                <h2 class="workout-how-it-work">HOW IT WORKS</h2>
-                                                                <img src="./img/Workouts/4.1princess-can-save-herself-workout.jpg"
-                                                                    id="workout-effects-1" alt="workout1.1"
-                                                                    id="workout-effects-1.1">
-                                                            </div>
-                                                            <div class="workout-effect-234">
-                                                                <img src="./img/Workouts/4.2-focus-fullbody.jpg"
-                                                                    alt="workout1.2" id="workout-effects-2">
-                                                                <img src="./img/Workouts/4.3-type-strength.jpg"
-                                                                    alt="workout1.3" id="workout-effects-3">
-                                                                <img src="./img/Workouts/4.4-difficulty-4.jpg"
-                                                                    alt="workout1.4" id="workout-effects-4">
-                                                            </div>
-
-
-                                                        </div>
-                                                        <div class="workout-effect-explain">
-                                                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Expedita perferendis dignissimos, sit commodi error
-                                                                perspiciatis? Autem earum dolore, dicta, recusandae sunt
-                                                                sed vitae voluptatem quae natus totam corporis ducimus.
-                                                                Aliquid voluptates impedit quia, magnam perferendis
-                                                                fugit illum eaque tenetur iure tempora? Maxime earum
-                                                                magni natus iure odio quos, cupiditate ipsam.</h5>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-workout">
-                            <div class=" card-workout h-auto bg-dark">
-                                <button type="button" class="btn workout-img" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    <img src="./img/Workouts/1.0-damage-dealer-workout.jpg" class="card-img-top"
-                                        alt="p5" id="p5">
-                                </button>
-                                <div class="modal" id="exampleModal">
-                                    <div class="modal-dialog modal-fullscreen">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-
-                                                <%- include('timer.ejs'); %>
-                                                <button type="button" class="button-close"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="workout-modal-body-border">
-                                                    <img src="./img/Workouts/1.0-damage-dealer-workout.jpg"
-                                                        id="workout-img-main" alt="workout1">
-                                                    <div class="workout-effects">
-                                                        <div class="workout-effects-container">
-                                                            <div class="workout-effect-1">
-                                                                <h2 class="workout-how-it-work">HOW IT WORKS</h2>
-                                                                <img src="./img/Workouts/1.1-damage-dealer-workout.jpg"
-                                                                    id="workout-effects-1" alt="workout1.1"
-                                                                    id="workout-effects-1.1">
-                                                            </div>
-                                                            <div class="workout-effect-234">
-                                                                <img src="./img/Workouts/1.2-focus-upperbody.jpg"
-                                                                    alt="workout1.2" id="workout-effects-2">
-                                                                <img src="./img/Workouts/2.3-type-combat.jpg"
-                                                                    alt="workout1.3" id="workout-effects-3">
-                                                                <img src="./img/Workouts/1.4-difficulty-3.jpg"
-                                                                    alt="workout1.4" id="workout-effects-4">
-                                                            </div>
-
-
-                                                        </div>
-                                                        <div class="workout-effect-explain">
-                                                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Expedita perferendis dignissimos, sit commodi error
-                                                                perspiciatis? Autem earum dolore, dicta, recusandae sunt
-                                                                sed vitae voluptatem quae natus totam corporis ducimus.
-                                                                Aliquid voluptates impedit quia, magnam perferendis
-                                                                fugit illum eaque tenetur iure tempora? Maxime earum
-                                                                magni natus iure odio quos, cupiditate ipsam.</h5>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-workout">
-                            <div class=" card-workout h-auto bg-dark">
-                                <button type="button" class="btn workout-img" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    <img src="./img/Workouts/2.0-still-here-still-kicking-workout.jpg"
-                                        class="card-img-top" alt="p5" id="p5">
-                                </button>
-                                <div class="modal" id="exampleModal">
-                                    <div class="modal-dialog modal-fullscreen">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-
-                                                <%- include('timer.ejs'); %>
-                                                <button type="button" class="button-close"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="workout-modal-body-border">
-                                                    <img src="./img/Workouts/2.0-still-here-still-kicking-workout.jpg"
-                                                        id="workout-img-main" alt="workout1">
-                                                    <div class="workout-effects">
-                                                        <div class="workout-effects-container">
-                                                            <div class="workout-effect-1">
-                                                                <h2 class="workout-how-it-work">HOW IT WORKS</h2>
-                                                                <img src="./img/Workouts/2.1-still-here-still-kicking-workout.jpg"
-                                                                    id="workout-effects-1" alt="workout1.1"
-                                                                    id="workout-effects-1.1">
-                                                            </div>
-                                                            <div class="workout-effect-234">
-                                                                <img src="./img/Workouts/2.2-focus-lowerbody.jpg"
-                                                                    alt="workout1.2" id="workout-effects-2">
-                                                                <img src="./img/Workouts/2.3-type-combat.jpg"
-                                                                    alt="workout1.3" id="workout-effects-3">
-                                                                <img src="./img/Workouts/2.4-difficulty-3.jpg"
-                                                                    alt="workout1.4" id="workout-effects-4">
-                                                            </div>
-                                                        </div>
-                                                        <div class="workout-effect-explain">
-                                                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Expedita perferendis dignissimos, sit commodi error
-                                                                perspiciatis? Autem earum dolore, dicta, recusandae sunt
-                                                                sed vitae voluptatem quae natus totam corporis ducimus.
-                                                                Aliquid voluptates impedit quia, magnam perferendis
-                                                                fugit illum eaque tenetur iure tempora? Maxime earum
-                                                                magni natus iure odio quos, cupiditate ipsam.</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-workout">
-                            <div class=" card-workout h-auto bg-dark">
-                                <button type="button" class="btn workout-img" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    <img src="./img/Workouts/3.0-military-abs-workout.jpg" class="card-img-top" alt="p5"
-                                        id="p5">
-                                </button>
-                                <div class="modal" id="exampleModal">
-                                    <div class="modal-dialog modal-fullscreen">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-
-                                                <%- include('timer.ejs'); %>
-                                                <button type="button" class="button-close"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="workout-modal-body-border">
-                                                    <img src="./img/Workouts/3.0-military-abs-workout.jpg"
-                                                        id="workout-img-main" alt="workout1">
-                                                    <div class="workout-effects">
-                                                        <div class="workout-effects-container">
-                                                            <div class="workout-effect-1">
-                                                                <h2 class="workout-how-it-work">HOW IT WORKS</h2>
-                                                                <img src="./img/Workouts/3.1-military-abs-workout.jpg"
-                                                                    id="workout-effects-1" alt="workout1.1"
-                                                                    id="workout-effects-1.1">
-                                                            </div>
-                                                            <div class="workout-effect-234">
-                                                                <img src="./img/Workouts/3.2-focus-abs.jpg"
-                                                                    alt="workout1.2" id="workout-effects-2">
-                                                                <img src="./img/Workouts/3.3-type-abs.jpg"
-                                                                    alt="workout1.3" id="workout-effects-3">
-                                                                <img src="./img/Workouts/3.4-difficulty-3.jpg"
-                                                                    alt="workout1.4" id="workout-effects-4">
-                                                            </div>
-
-
-                                                        </div>
-                                                        <div class="workout-effect-explain">
-                                                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Expedita perferendis dignissimos, sit commodi error
-                                                                perspiciatis? Autem earum dolore, dicta, recusandae sunt
-                                                                sed vitae voluptatem quae natus totam corporis ducimus.
-                                                                Aliquid voluptates impedit quia, magnam perferendis
-                                                                fugit illum eaque tenetur iure tempora? Maxime earum
-                                                                magni natus iure odio quos, cupiditate ipsam.</h5>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-workout">
-                            <div class=" card-workout h-auto bg-dark">
-                                <button type="button" class="btn workout-img" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    <img src="./img/Workouts/4.0-princess-can-save-herself-workout.jpg"
-                                        class="card-img-top" alt="p5" id="p5">
-                                </button>
-                                <div class="modal" id="exampleModal">
-                                    <div class="modal-dialog modal-fullscreen">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-
-                                                <%- include('timer.ejs'); %>
-                                                <button type="button" class="button-close"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="workout-modal-body-border">
-                                                    <img src="./img/Workouts/4.0-princess-can-save-herself-workout.jpg"
-                                                        id="workout-img-main" alt="workout1">
-                                                    <div class="workout-effects">
-                                                        <div class="workout-effects-container">
-                                                            <div class="workout-effect-1">
-                                                                <h2 class="workout-how-it-work">HOW IT WORKS</h2>
-                                                                <img src="./img/Workouts/4.1princess-can-save-herself-workout.jpg"
-                                                                    id="workout-effects-1" alt="workout1.1"
-                                                                    id="workout-effects-1.1">
-                                                            </div>
-                                                            <div class="workout-effect-234">
-                                                                <img src="./img/Workouts/4.2-focus-fullbody.jpg"
-                                                                    alt="workout1.2" id="workout-effects-2">
-                                                                <img src="./img/Workouts/4.3-type-strength.jpg"
-                                                                    alt="workout1.3" id="workout-effects-3">
-                                                                <img src="./img/Workouts/4.4-difficulty-4.jpg"
-                                                                    alt="workout1.4" id="workout-effects-4">
-                                                            </div>
-
-
-                                                        </div>
-                                                        <div class="workout-effect-explain">
-                                                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                Expedita perferendis dignissimos, sit commodi error
-                                                                perspiciatis? Autem earum dolore, dicta, recusandae sunt
-                                                                sed vitae voluptatem quae natus totam corporis ducimus.
-                                                                Aliquid voluptates impedit quia, magnam perferendis
-                                                                fugit illum eaque tenetur iure tempora? Maxime earum
-                                                                magni natus iure odio quos, cupiditate ipsam.</h5>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-
+                        <% }) %>
+                        
 
 
 
