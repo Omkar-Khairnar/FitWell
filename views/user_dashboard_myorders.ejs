@@ -33,13 +33,11 @@
         <div class="dashboard-content" id="dashboard-order-page">
           <h1 class="past-order-heading">YOUR ORDERS</h1>
           <div class="container">
-            <div class="container-orders">
-
-              
+            <div class="container-orders"> 
               <% orders.forEach((order)=>{ %>
                 <div id="card-user-order" class="card text-center">
                   <div class="card-body">
-                    <div class="past-order-img">
+                    <div class="past-order-img" style="width: 30%;">
                       <img src="data:image/<%=order.image.contentType%>;base64, <%=order.image.data.toString('base64')%>" alt="order-item-img" id="past-order-item-img">
                     </div>
                     <div class="past-order-info-content mx-auto">
