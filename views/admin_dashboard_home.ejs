@@ -14,7 +14,7 @@
 
 <body>
   <div class="d-flex" id="wrapper">
-    <!-- Sidebar --><!-- /#sidebar-wrapper --> 
+    <!-- Sidebar --><!-- /#sidebar-wrapper -->
     <%- include('admin_dashboard_side_wrapper.ejs'); %>
       <!-- Page Content -->
       <div id="page-content-wrapper">
@@ -63,6 +63,85 @@
                 </div>
               </div>
 
+            </div>
+
+            <div class="challenge-workout my-4 d-flex justify-content-evenly">
+              <button type="button" class="button my-2" data-bs-toggle="modal" data-bs-target="#addChallenge">
+                Add New Challenge
+              </button>
+              <button type="button" class="button my-2" data-bs-toggle="modal" data-bs-target="#addWorkout">
+                Add New HomeWorkout
+              </button>
+            </div>
+
+            <div class="modal" id="addChallenge">
+              <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header align-self-center">
+                    <h3>Enter New Challenge</h3>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-container add-challenge-container">
+                      <form name="addNewChallenge" action="/newChallenge" method="POST" enctype="multipart/form-data">
+                        <label for="description">Description of Challenge
+                          <textarea type="text" id="description" placeholder="Enter Description of Challenge"
+                            name="ChallengeDescription" required></textarea>
+                        </label>
+                        <label for="challengeImg">Upload Image of Challenge
+                          <input class="product-img" type="file" id="challengeImg" name="challengeImg"
+                            placeholder="Upload Image">
+                        </label>
+                        <button id="add-challenge-btn" type="submit">Add Challenge</button>
+
+                      </form>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="modal" id="addWorkout">
+              <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header align-self-center">
+                    <h3>Enter New Workout</h3>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-container add-workout-container">
+                      <form name="addNewWorkout" action="/newWorkout" method="POST" enctype="multipart/form-data">
+                        <label for="description">Description of Workout
+                          <textarea type="text" id="description" placeholder="Enter Description of new Workout"
+                            name="WorkoutDescription" required></textarea>
+                        </label>
+                        <label for="workoutImg0">Upload Primary(main) Image of Workout
+                          <input class="product-img" type="file" id="workoutImg0" name="workoutImg0"
+                            placeholder="Upload Image">
+                        </label>
+                        <label for="workoutImg1">Upload Sub-Image 1
+                          <input class="product-img" type="file" id="workoutImg1" name="workoutImg1"
+                            placeholder="Upload Image">
+                        </label>
+                        <label for="workoutImg2">Upload Sub-Image 2
+                          <input class="product-img" type="file" id="workoutImg2" name="workoutImg2"
+                            placeholder="Upload Image">
+                        </label>
+                        <label for="workoutImg3">Upload Sub-Image 3
+                          <input class="product-img" type="file" id="workoutImg3" name="workoutImg3"
+                            placeholder="Upload Image">
+                        </label>
+                        <label for="workoutImg4">Upload Sub-Image 4
+                          <input class="product-img" type="file" id="workoutImg4" name="workoutImg4"
+                            placeholder="Upload Image">
+                        </label>
+
+                        <button id="add-workout-btn" type="submit">Add Workout</button>
+
+                      </form>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
             </div>
 
             <div class="recent-payment-conrainer">

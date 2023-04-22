@@ -41,7 +41,7 @@ app.use(session({
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'public/uploads/products')
+        cb(null, 'public/uploads')
     },
     filename: (req, file, cb) => {
         cb(null, file.fieldname + '-' + Date.now())
@@ -58,7 +58,7 @@ app.post('/newProduct',upload.single('productImage'),(req,res) =>  {
         price : req.body.price,
         category : req.body.category,
         img : {
-            data: fs.readFileSync(path.join(__dirname + '/public/uploads/products/'+ req.file.filename)),
+            data: fs.readFileSync(path.join(__dirname + '/public/uploads/'+ req.file.filename)),
             contentType: 'image/png'
         }
     }
@@ -69,6 +69,26 @@ app.post('/newProduct',upload.single('productImage'),(req,res) =>  {
         else {
             // item.save();
             res.redirect('/admin_dashboard_add_product');
+            // console.log("great job !!");
+        }
+    });
+});
+app.post('/newChallenge',upload.single('challengeImg'),(req,res) =>  {
+    // var cat = req.body.category;
+    var obj = {
+        description : req.body.description,
+        img : {
+            data: fs.readFileSync(path.join(__dirname + '/public/uploads/'+ req.file.filename)),
+            contentType: 'image/png'
+        }
+    }
+    productSchema.create(obj).then((err,item) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            // item.save();
+            res.redirect('/admin_dashboard_home');
             // console.log("great job !!");
         }
     });
@@ -85,11 +105,11 @@ app.get('/productSearch', async(req, res) => {
 })
 app.get('/products', async(req, res) => {
     
-    const LatestCategory= await ProductSchema.find().sort({_id:-1}).limit(18);
-    const NutrientsCategory = await ProductSchema.find({category : 'Nutrients'}).sort({price:1});
-    const ProteinCategory = await ProductSchema.find({category : 'Whey Proteins'}).sort({price:1});
-    const EnergyCategory = await ProductSchema.find({category : 'Energy & Endurance'}).sort({price:1});
-    const RecoveryCategory = await ProductSchema.find({category : 'Recovery & Repair'}).sort({price:1});
+    const LatestCategory= await ProductSchema.find().limit(15);
+    const NutrientsCategory = await ProductSchema.find({category : 'Nutrients'}).sort({_id:-1}).limit(15);
+    const ProteinCategory = await ProductSchema.find({category : 'Whey Proteins'}).sort({_id:-1}).limit(15);
+    const EnergyCategory = await ProductSchema.find({category : 'Energy & Endurance'}).sort({_id:-1}).limit(15);
+    const RecoveryCategory = await ProductSchema.find({category : 'Recovery & Repair'}).sort({_id:-1}).limit(15);
     res.render('products', { LatestCategory, NutrientsCategory, ProteinCategory, EnergyCategory, RecoveryCategory})
 })
 app.post('/productSearchResult',async(req, res)=>{
