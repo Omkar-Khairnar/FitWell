@@ -139,4 +139,16 @@ router.put('/updateprofile', async(req, res)=>{
         res.status(400).json({Error:err});
     }
 })
+ router.post('/deleteorder', async(req,res)=>{
+    try{
+        const orderid=req.body.orderid;
+        await OrderSchema.findByIdAndDelete(orderid);
+        return res.redirect('/user_Dashboard_myorders')
+
+    }
+    catch(err){
+        console.log(err);
+    }
+ })
+
 module.exports=router
