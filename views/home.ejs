@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./CSS/home.css">
   </head> 
   <body onload="load()">
-    <%- include('navbar'); %>
+    <%- include('navbar',{loginStatus}); %>
     <div class="sliderContainer" id="carousel">
       <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner"> 

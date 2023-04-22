@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -43,166 +43,18 @@
 
                                 </thead>
                                 <tbody>
+                                  <% payments.forEach((item)=>{ %>
                                     <tr id="row1">
-                                      <td scope="row" id="payment-date1">13-03-2003</th>
-                                      <td id="payment-transactionID1">1234567890</td>
-                                      <td id="payment-Method1">Card</td>
-                                      <td id="payment-desc1">Credit</td>
-                                      <td id="payment-amount1">$ 1234</td>
-                                      <td id="payment-status1">Complete</td>
+                                      <td scope="row" id="payment-date1"><%=item.Dateoforder.toDateString()%></th>
+                                      <td id="payment-transactionID1"><%=item._id%></td>
+                                      <td id="payment-Method1"><%=item.paymentmethod%></td>
+                                      <td id="payment-desc1"><%=item.description%></td>
+                                      <td id="payment-amount1">Rs <%=item.amount%></td>
+                                      <td id="payment-status1"><%=item.status%></td>
                                     </tr>
-                                    <tr id="row2">
-                                      <td scope="row" id="payment-date2">13-03-2003</th>
-                                      <td id="payment-transactionID2">5656565656</td>
-                                      <td id="payment-Method2">NFTI</td>
-                                      <td id="payment-desc2">Credit</td>
-                                      <td id="payment-amount2">$ 99994</td>
-                                      <td id="payment-status2">Complete</td>
-                                    </tr>
-                                    <tr id="row3">
-                                      <td scope="row" id="payment-date3">13-03-2003</th>
-                                      <td id="payment-transactionID3">1234567890</td>
-                                      <td id="payment-Method3">Card</td>
-                                      <td id="payment-desc3">Debit</td>
-                                      <td id="payment-amount3">$ 5234</td>
-                                      <td id="payment-status3">Processing</td>
-                                    </tr>
-                                    <tr id="row4">
-                                      <td scope="row" id="payment-date4">13-03-2003</th>
-                                      <td id="payment-transactionID4">1231111190</td>
-                                      <td id="payment-Method4">UPI</td>
-                                      <td id="payment-desc4">Credit</td>
-                                      <td id="payment-amount4">$ 124</td>
-                                      <td id="payment-status4">Complete</td>
-                                    </tr>
-                                    <tr id="row5">
-                                      <td scope="row" id="payment-date5">13-03-2003</th>
-                                      <td id="payment-transactionID5">1234567890</td>
-                                      <td id="payment-Method5">Card</td>
-                                      <td id="payment-desc5">Debit</td>
-                                      <td id="payment-amount5">$ 14</td>
-                                      <td id="payment-status5">Failed</td>
-                                    </tr>
-                                    <tr id="row1">
-                                      <td scope="row" id="payment-date1">13-03-2003</th>
-                                      <td id="payment-transactionID1">1234567890</td>
-                                      <td id="payment-Method1">Card</td>
-                                      <td id="payment-desc1">Credit</td>
-                                      <td id="payment-amount1">$ 1234</td>
-                                      <td id="payment-status1">Complete</td>
-                                    </tr>
-                                    <tr id="row2">
-                                      <td scope="row" id="payment-date2">13-03-2003</th>
-                                      <td id="payment-transactionID2">5656565656</td>
-                                      <td id="payment-Method2">NFTI</td>
-                                      <td id="payment-desc2">Credit</td>
-                                      <td id="payment-amount2">$ 99994</td>
-                                      <td id="payment-status2">Complete</td>
-                                    </tr>
-                                    <tr id="row3">
-                                      <td scope="row" id="payment-date3">13-03-2003</th>
-                                      <td id="payment-transactionID3">1234567890</td>
-                                      <td id="payment-Method3">Card</td>
-                                      <td id="payment-desc3">Debit</td>
-                                      <td id="payment-amount3">$ 5234</td>
-                                      <td id="payment-status3">Processing</td>
-                                    </tr>
-                                    <tr id="row4">
-                                      <td scope="row" id="payment-date4">13-03-2003</th>
-                                      <td id="payment-transactionID4">1231111190</td>
-                                      <td id="payment-Method4">UPI</td>
-                                      <td id="payment-desc4">Credit</td>
-                                      <td id="payment-amount4">$ 124</td>
-                                      <td id="payment-status4">Complete</td>
-                                    </tr>
-                                    <tr id="row5">
-                                      <td scope="row" id="payment-date5">13-03-2003</th>
-                                      <td id="payment-transactionID5">1234567890</td>
-                                      <td id="payment-Method5">Card</td>
-                                      <td id="payment-desc5">Debit</td>
-                                      <td id="payment-amount5">$ 14</td>
-                                      <td id="payment-status5">Failed</td>
-                                    </tr>
-                                    <tr id="row1">
-                                      <td scope="row" id="payment-date1">13-03-2003</th>
-                                      <td id="payment-transactionID1">1234567890</td>
-                                      <td id="payment-Method1">Card</td>
-                                      <td id="payment-desc1">Credit</td>
-                                      <td id="payment-amount1">$ 1234</td>
-                                      <td id="payment-status1">Complete</td>
-                                    </tr>
-                                    <tr id="row2">
-                                      <td scope="row" id="payment-date2">13-03-2003</th>
-                                      <td id="payment-transactionID2">5656565656</td>
-                                      <td id="payment-Method2">NFTI</td>
-                                      <td id="payment-desc2">Credit</td>
-                                      <td id="payment-amount2">$ 99994</td>
-                                      <td id="payment-status2">Complete</td>
-                                    </tr>
-                                    <tr id="row3">
-                                      <td scope="row" id="payment-date3">13-03-2003</th>
-                                      <td id="payment-transactionID3">1234567890</td>
-                                      <td id="payment-Method3">Card</td>
-                                      <td id="payment-desc3">Debit</td>
-                                      <td id="payment-amount3">$ 5234</td>
-                                      <td id="payment-status3">Processing</td>
-                                    </tr>
-                                    <tr id="row4">
-                                      <td scope="row" id="payment-date4">13-03-2003</th>
-                                      <td id="payment-transactionID4">1231111190</td>
-                                      <td id="payment-Method4">UPI</td>
-                                      <td id="payment-desc4">Credit</td>
-                                      <td id="payment-amount4">$ 124</td>
-                                      <td id="payment-status4">Complete</td>
-                                    </tr>
-                                    <tr id="row5">
-                                      <td scope="row" id="payment-date5">13-03-2003</th>
-                                      <td id="payment-transactionID5">1234567890</td>
-                                      <td id="payment-Method5">Card</td>
-                                      <td id="payment-desc5">Debit</td>
-                                      <td id="payment-amount5">$ 14</td>
-                                      <td id="payment-status5">Failed</td>
-                                    </tr>
-                                    <tr id="row1">
-                                      <td scope="row" id="payment-date1">13-03-2003</th>
-                                      <td id="payment-transactionID1">1234567890</td>
-                                      <td id="payment-Method1">Card</td>
-                                      <td id="payment-desc1">Credit</td>
-                                      <td id="payment-amount1">$ 1234</td>
-                                      <td id="payment-status1">Complete</td>
-                                    </tr>
-                                    <tr id="row2">
-                                      <td scope="row" id="payment-date2">13-03-2003</th>
-                                      <td id="payment-transactionID2">5656565656</td>
-                                      <td id="payment-Method2">NFTI</td>
-                                      <td id="payment-desc2">Credit</td>
-                                      <td id="payment-amount2">$ 99994</td>
-                                      <td id="payment-status2">Complete</td>
-                                    </tr>
-                                    <tr id="row3">
-                                      <td scope="row" id="payment-date3">13-03-2003</th>
-                                      <td id="payment-transactionID3">1234567890</td>
-                                      <td id="payment-Method3">Card</td>
-                                      <td id="payment-desc3">Debit</td>
-                                      <td id="payment-amount3">$ 5234</td>
-                                      <td id="payment-status3">Processing</td>
-                                    </tr>
-                                    <tr id="row4">
-                                      <td scope="row" id="payment-date4">13-03-2003</th>
-                                      <td id="payment-transactionID4">1231111190</td>
-                                      <td id="payment-Method4">UPI</td>
-                                      <td id="payment-desc4">Credit</td>
-                                      <td id="payment-amount4">$ 124</td>
-                                      <td id="payment-status4">Complete</td>
-                                    </tr>
-                                    <tr id="row5">
-                                      <td scope="row" id="payment-date5">13-03-2003</th>
-                                      <td id="payment-transactionID5">1234567890</td>
-                                      <td id="payment-Method5">Card</td>
-                                      <td id="payment-desc5">Debit</td>
-                                      <td id="payment-amount5">$ 14</td>
-                                      <td id="payment-status5">Failed</td>
-                                    </tr>
+                                  <%}) %>
+                                    
+                                   
                                   </tbody>
                             </table>
                         </div>
