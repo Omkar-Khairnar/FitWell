@@ -18,7 +18,7 @@
     crossorigin="anonymous"></script>
 </head>
 <style>
- 
+  
 </style>
 
 <body>
@@ -57,25 +57,30 @@
           </li>
         </ul>
       </div>
-      <div class="signinup">
-        <ul class="navbar-nav me-auto mb-2 navbar-list-items">
-          <li class="nav-item nav-item1 mx-2">
-            <a class="nav-link" href="./signin">SIGN IN</a>
-          </li>
-          <li class="nav-item nav-item1 mx-2">
-            <a class="nav-link" href="./signup">SIGN UP</a>
-          </li>
-        </ul>
-      </div>  
-      <div class="dropdown">
-        <button class="btn dropdown-toggle" style="color: aliceblue; border: none;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          My Account
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="./user_Dashboard_home">Dashboard</a></li>
-          <li><a class="dropdown-item" href="./user_Dashboard_cart">Cart</a></li>
-        </ul>
-      </div>
+      <% if(loginStatus==0){ %>
+        <div class="signinup">
+          <ul class="navbar-nav me-auto mb-2 navbar-list-items">
+            <li class="nav-item nav-item1 mx-2">
+              <a class="nav-link" href="./signin">SIGN IN</a>
+            </li>
+            <li class="nav-item nav-item1 mx-2">
+              <a class="nav-link" href="./signup">SIGN UP</a>
+            </li>
+          </ul>
+        </div>   
+      <% } else{ %>
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" style="color: aliceblue; border: none;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            My Account
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="./user_Dashboard_home">Dashboard</a></li>
+            <li><a class="dropdown-item" href="./user_Dashboard_cart">Cart</a></li>
+          </ul>
+        </div>
+      <%} %>
+
+
     </div>
   </nav>
 

@@ -111,54 +111,66 @@
             <div class="container">
               <div class="column-two">
                 <table class="details">
-                  <tr class="last">
+                  <tr class="last"> 
                     <th colspan="2">Review Your Details:</th>
                   </tr>
                   <tr>
                     <td>Name:</td>
-                    <td>XYZ</td>
+                    <td><h5><%=userDetails.name%></h5></td>
                   </tr>
                   <tr>
                     <td>Amount:</td>
-                    <td><i class="fi-xnsuxm-rupee"></i> 24,000</td>
+                    <td><i class="fi-xnsuxm-rupee"></i><h5>Rs <%=amount%></h5> </td>
                   </tr>
                   <tr>
-                    <td>GST(18%):</td>
-                    <td><i class="fi-xnsuxm-rupee"></i> 5,400</td>
+                    <td>Discount(5%):</td>
+                    <td><i class="fi-xnsuxm-rupee"></i><h5>- Rs <%=Math.floor((amount*5)/100)%></h5> </td>
+                  </tr>
+                  <tr>
+                    <td>Delivery Charges:</td>
+                    <td><i class="fi-xnsuxm-rupee"></i><h5>+ Rs 80</h5><td>
                   </tr>
 
                   <tr class="last">
                     <td>Total Amount:</td>
-                    <td><i class="fi-xnsuxm-rupee"></i> 30,000</td>
+                    <%let finalamount= amount -Math.floor((amount*5)/100) +80  %>
+                    <td><i class="fi-xnsuxm-rupee"></i><h4>Rs<%=amount -Math.floor((amount*5)/100) +80 %></h4></td>
                   </tr>
                 </table>
 
                 <table class="payment-method">
                   <tr class="last">
-                    <th>Select Your Payment Method:</th>
+                    <th>Enter Address and Payment Method:</th>
                   </tr>
-
                   <tr>
                     <td>
                       <input type="radio" name="payment-method" id="payment-method">
                       <label for="payment-method">Net Banking/Credit/Debit Card</label>
                     </td>
                   </tr>
-
                   <tr>
-                    <td>NOTE: After clicking the "Sure, Get me Started" button below, you will be redirected to the
-                      secure
-                      page of our online payment service partner.</td>
+                    <td>NOTE: After clicking the "Sure, Get me Started" button below, your order will be placed.
+                     </td>
                   </tr>
-                </table>
-
-                <div class="buttons">
+                <!-- <div class="buttons"> -->
                   <form method="post" action="/useractions/checkoutcart">
-                    <button class="" type="submit">Sure, Get me Started</button>
+                    <tr> 
+                      <td>
+                          <label for="address">Enter Address</label>
+                          <input type="text" id="address" name="address" placeholder="Enter Delivery Address" style="width:max-content; height: 30px;">
+                      </td>
+                    </tr>
+                    <input type="number" class="d-none" name="finalamount" value=<%=finalamount%>>
+                    <!-- <input name="products" class="d-none" value=<%=products%>> -->
+                    <tr>
+                      <td>
+                        <button class="btn-primary" type="submit" style="height: 30px;">Sure, Get me Started</button>
+                      </td>
+                    </tr>
                   </form>
-                </div>
+                <!-- </div> -->
+              </table>
               </div>
-
             </div>
           </section>
         </div>

@@ -26,97 +26,35 @@
         </div> 
 
 
-        <!-- <div class="slide_wrap">
-            <div class="slide_show">
-            <div class="slide_img">
-              <div class="slide"><img src="https://tistory4.daumcdn.net/tistory/2980705/skin/images/hover01.jpg" alt="이미지1"></div>
-              <div class="slide"><img src="https://tistory4.daumcdn.net/tistory/2980705/skin/images/hover02.jpg" alt="이미지2"></div>
-              <div class="slide"><img src="https://tistory4.daumcdn.net/tistory/2980705/skin/images/hover03.jpg" alt="이미지3"></div>
-              <div class="slide"><img src="https://tistory4.daumcdn.net/tistory/2980705/skin/images/hover04.jpg" alt="이미지4"></div>
-              <div class="slide"><img src="https://tistory4.daumcdn.net/tistory/2980705/skin/images/hover05.jpg" alt="이미지5"></div>
-              </div> 
-            </div>
-            <div class="slide_btn">
-              <a href="#" class="prev"><i class="fas fa-angle-left"></i></a>
-              <a href="#" class="next"><i class="fas fa-angle-right"></i></a>
-            </div>
-          </div>
-           -->
-
+     
 
 
 
 
     <div class="productsSection">
         <div class="row row-cols-2 row-cols-md-4 g-3">
+
+           <%trainers.forEach((item)=>{ %> 
             <div class="col">
                 <div class="card h-auto bg-dark">
                     <div class="decs-container">
-                        <img src="./img/trainers/team-5.jpg"
+                        <img src=<%=item.image%>
                             class="card-img-top" alt="p1" id="p1">
                     </div>
                     <div class="card-foot" style="padding-left: 0%;padding-right: 0%;">
-                        <h4 class="teamMateName">Lorem, ipsum dolor.</h4>
+                        <h4 class="teamMateName"><%=item.name%></h4>
                         <p class="teamJOb">Gym Trainer</p>
-                        <div class="socialMediaIcon">
+                        <!-- <div class="socialMediaIcon">
                             <img class="instagram-icon " src="https://img.icons8.com/metro/16/ffffff/instagram-new.png"/>
                             <img class="facebook-icon " src="https://img.icons8.com/metro/16/ffffff/facebook-new.png"/>
                             <img class="twitter-icon " src="https://img.icons8.com/officel/16/ffffff/twitter.png"//>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card h-auto bg-dark">
-                    <div class="decs-container">
-                        <img src="./img/trainers/team-5.jpg"
-                            class="card-img-top" alt="p1" id="p1">
-                    </div>
-                    <div class="card-foot" style="padding-left: 0%;padding-right: 0%;">
-                        <h4 class="teamMateName">Lorem, ipsum dolor.</h4>
-                        <p class="teamJOb">Gym Trainer</p>
-                        <div class="socialMediaIcon">
-                            <img class="instagram-icon " src="https://img.icons8.com/metro/16/ffffff/instagram-new.png"/>
-                            <img class="facebook-icon " src="https://img.icons8.com/metro/16/ffffff/facebook-new.png"/>
-                            <img class="twitter-icon " src="https://img.icons8.com/officel/16/ffffff/twitter.png"//>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-auto bg-dark">
-                    <div class="decs-container">
-                        <img src="./img/trainers/team-5.jpg"
-                            class="card-img-top" alt="p1" id="p1">
-                    </div>
-                    <div class="card-foot" style="padding-left: 0%;padding-right: 0%;">
-                        <h4 class="teamMateName">Lorem, ipsum dolor.</h4>
-                        <p class="teamJOb">Gym Trainer</p>
-                        <div class="socialMediaIcon">
-                            <img class="instagram-icon " src="https://img.icons8.com/metro/16/ffffff/instagram-new.png"/>
-                            <img class="facebook-icon " src="https://img.icons8.com/metro/16/ffffff/facebook-new.png"/>
-                            <img class="twitter-icon " src="https://img.icons8.com/officel/16/ffffff/twitter.png"//>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-auto bg-dark">
-                    <div class="decs-container">
-                        <img src="./img/trainers/team-5.jpg"
-                            class="card-img-top" alt="p1" id="p1">
-                    </div>
-                    <div class="card-foot" style="padding-left: 0%;padding-right: 0%;">
-                        <h4 class="teamMateName">Lorem, ipsum dolor.</h4>
-                        <p class="teamJOb">Gym Trainer</p>
-                        <div class="socialMediaIcon">
-                            <img class="instagram-icon " src="https://img.icons8.com/metro/16/ffffff/instagram-new.png"/>
-                            <img class="facebook-icon " src="https://img.icons8.com/metro/16/ffffff/facebook-new.png"/>
-                            <img class="twitter-icon " src="https://img.icons8.com/officel/16/ffffff/twitter.png"//>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           <% })  %> 
+            
+            
         </div>
     </div>
 </div>

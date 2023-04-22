@@ -1,18 +1,11 @@
 const mongoose=require('mongoose')
 const Schema=mongoose.Schema;
 
-const OrderSchema=new Schema({
+const PaymentSchema=new Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user',
       },
-    name:{
-        type:String,
-      },
-    image:{
-        data: Buffer,
-        contentType: String,
-    },
     Dateoforder:{
         type:Date, 
         default:Date.now,
@@ -21,20 +14,20 @@ const OrderSchema=new Schema({
         type:Number,
         required:true,
     },
-    status:{
+    paymentmethod:{
         type:String,
-        default:"InProgress",
+        default:"Card",
     },
     description:{
         type:String,
-        default:"Healthy Gym Product",
+        default:"Credit",
     },
-    address:{
+    status:{
         type:String,
-        required:true,
-    }  
+        default:"Completed",
+    }, 
 })
 
-let order=mongoose.model('order',OrderSchema)
+let payment=mongoose.model('payments',PaymentSchema)
 
-module.exports=order
+module.exports=payment

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitMe - Products</title>
+    <link rel="stylesheet" href="./CSS/products.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/1b34bcf330.css" crossorigin="anonymous">
+ 
+
+</head>
+><style>
+    .allProduct1 {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px 0;
+        transition: transform 1s ease-in-out;
+    }
+</style>
+
+<body>
+
+    <%- include('navbar',{loginStatus}); %>
+
+
+        <div class="sliderContainer">
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./img/slider/rev1.png" class="d-block w-100" alt="slide1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/slider/rev2.png" class="d-block w-100" alt="slide1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./img/slider/rev3.png" class="d-block w-100" alt="slide1">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="latestProducts">
+            <div class="latestProductsHeader">
+                <div class="latestTradings">
+                    <h3 class="title_LT">Our Products</h3>
+                    <i id="rightArrow" class="fa fa-solid fa-2x fa-angle-right" aria-hidden="true"></i>
+                </div>
+                <!-- <div class="filters">
+                    <form action="/productFiltersResult" name="filterForm" method="POST">
+                        <button type="submit">
+                        <select name="filter" id="filterID">
+                            <option value="">Select</option>
+                            <option value="pricelow">Lowest Price</option>
+                            <option value="pricehigh">Highest Price</option>
+                            <option value="nameAesc">Ascending Name</option>
+                            <option value="nameDesc">Descending Name</option>
+                            <option value="newfirst">Newest First</option>
+                        </select>
+                        </button>
+
+                    </form>
+                </div> -->
+                <div class="search-container">
+                    <form action="/productSearchResult" name="searchForm" method="POST">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button class="searchIcon" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="productsSection">
+
+                <div class="row row-cols-2 row-cols-md-5 container-fluid mx-0 my-4">
+                    <% if (searchResultCount===0) { %>
+                        <h1 style="text-align: center; width: 100%;">No Product Found !</h1>
+                    <% } else { %>
+                            <% searchResult.forEach(function(image) { %>
+
+                                <div class="col  mx-0">
+                                    <div class="inner-col">
+                                        <div class="card h-auto bg-dark">
+                                            <button type="button" class="btn-decs-container" data-bs-toggle="modal"
+                                                data-bs-target="#<%=image._id%>">
+                                                <div class="decs-container">
+                                                    <img class="card-img-top" alt="p1"
+                                                        src="data:image/<%=image.img.contentType%>;base64, <%=image.img.data.toString('base64')%>" />
+                                                    <div class="card-body p-2">
+                                                        <h5 class="card-title text-white">
+                                                            <%= image.name %>
+                                                        </h5>
+                                                        <p class="card-text">
+                                                            <%= image.category %>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <div class="modal" id="<%=image._id%>">
+                                                <div class="modal-dialog modal-static modal-dialog-centered modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5 text-center"
+                                                                id="exampleModalLabel">
+                                                                <%= image.name %>
+                                                            </h1>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="modal-product_img">
+                                                                <img class="card-img-top-modal" alt="p2"
+                                                                    src="data:image/<%=image.img.contentType%>;base64, <%=image.img.data.toString('base64')%>" />
+                                                            </div>
+                                                            <div class="modal-product-description">
+                                                                <h3 style="text-align: center;" class="card-text">
+                                                                    Category :
+                                                                    <%= image.category %>
+                                                                </h3>
+                                                                <h3>About</h3>
+                                                                <p>
+                                                                    <%= image.description %>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer bg-black"
+                                                            style="display: flex; justify-content: space-between;font-size: larger;">
+                                                            <p class="card-footer-price">Price : Rs. <span
+                                                                    id="product-modal-price">
+                                                                    <%= image.price %>
+                                                                </span></p>
+                                                            <form method="post" action="/useractions/addtocart">
+                                                                <input class="d-none" type="text" name="productid"
+                                                                    value=<%=image._id%>>
+                                                                <button type="submit" class="btn bg-dark">Add To
+                                                                    Cart</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer" style="padding-left: 0%;padding-right: 0%;">
+                                                <p class="card-footer-price">Price : Rs.<span id="product-modal-price">
+                                                        <%= image.price %>
+                                                    </span></p>
+                                                <button class="card-footer-AddToCart" data-bs-toggle="modal"
+                                                    data-bs-target="#<%=image._id%>">Add To Cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }) %>
+                        <% } %>
+
+
+                </div>
+            </div>
+        </div>
+
+        <script src="./JS/productPage.js"></script>
+        <script src="https://kit.fontawesome.com/1b34bcf330.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+
+</html>

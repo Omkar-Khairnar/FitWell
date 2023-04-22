@@ -1,7 +1,7 @@
 const express = require('express');
 const connectToMongo = require('./db')
 const app = express();
-let alert = require('alert')
+let alert = require('alert') 
 const PORT = 5000;
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
@@ -12,11 +12,15 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var fs = require('fs');
 var multer = require('multer');
-var productSchema = require('./models/product');
+const ProductSchema = require('./models/product');
 const ReviewSchema = require('./models/review');
 const TrainerSchema = require('./models/Trainer');
 const CartSchema = require('./models/Cart');
+const OrderSchema = require('./models/Order');
 const ContactFormSchema = require('./models/contactform');
+const PaymentSchema=require('./models/payments')
+
+
 
 require('dotenv').config();
 
@@ -74,20 +78,61 @@ app.post('/newProduct',upload.single('productImage'),(req,res) =>  {
 });
  
 app.get('/', (req, res) => {
-    res.render('home')
+    const userDetails=req.session.userDetails;
+    var loginStatus=1;
+    if(!userDetails){
+        loginStatus=0;
+    }
+    res.render('home',{loginStatus})
 })
 app.get('/footer', (req, res) => {
     res.render('footer')
 })
-app.get('/products', (req, res) => {
-    productSchema.find({})
-        .then((data, err) => {
-            if (err) {
-                console.log(err);
-            }
-            res.render('products', { itemsProduct: data })
-        })
+app.get('/productSearch', async(req, res) => {
+    const userDetails=req.session.userDetails;
+    var loginStatus=1;
+    if(!userDetails){
+        loginStatus=0;
+    }
+    res.render('productSearch',{loginStatus})
 })
+app.get('/products', async(req, res) => {
+    
+    const LatestCategory= await ProductSchema.find().sort({_id:-1}).limit(18);
+    const NutrientsCategory = await ProductSchema.find({category : 'Nutrients'}).sort({price:1});
+    const ProteinCategory = await ProductSchema.find({category : 'Whey Proteins'}).sort({price:1});
+    const EnergyCategory = await ProductSchema.find({category : 'Energy & Endurance'}).sort({price:1});
+    const RecoveryCategory = await ProductSchema.find({category : 'Recovery & Repair'}).sort({price:1});        const userDetails=req.session.userDetails;
+    var loginStatus=1;
+    if(!userDetails){
+        loginStatus=0;
+    }
+
+    res.render('products', { LatestCategory, NutrientsCategory, ProteinCategory, EnergyCategory, RecoveryCategory,loginStatus})
+})
+app.post('/productSearchResult',async(req, res)=>{
+    const search = req.body.search;
+    searchQuery = { name: { $regex: search, $options: 'i' } }
+    const searchResult = await ProductSchema.find(searchQuery).sort({price:1});
+    const searchResultCount = await ProductSchema.find(searchQuery).sort({price:1}).count();
+    const userDetails=req.session.userDetails;
+    var loginStatus=1;
+    if(!userDetails){
+        loginStatus=0;
+    }
+    res.render('productSearch',{searchResult,searchResultCount,loginStatus});
+
+});
+// app.post('/productFiltersResult',async(req, res)=>{
+//     const search = req.body.filter;
+//     searchQuery = { name: { $regex: search, $options: 'i' } }
+//     const searchResult = await ProductSchema.find(searchQuery).sort({price:1});
+//     const searchResultCount = await ProductSchema.find(searchQuery).sort({price:1}).count();
+//     res.render('productSearch',{searchResult,searchResultCount});
+
+// });
+
+
 app.get('/signin', (req, res) => {
     res.render('signin', { error: 0 })
 })
@@ -101,26 +146,58 @@ app.get('/adminlogin', (req, res) => {
     res.render('adminlogin', { error: 0 })
 })
 
-app.get('/about', (req, res) => {
-    res.render('about')
+app.get('/about', async(req, res) => {
+    try{
+        const userDetails=req.session.userDetails;
+    var loginStatus=1;
+    if(!userDetails){
+        loginStatus=0;
+    }
+    const trainers=await TrainerSchema.find().limit(4);
+    res.render('about',{loginStatus,trainers})
+    }
+    catch(err){
+        console.log(err);
+    }
+    
 })
 app.get('/reviews', async (req, res) => {
+    const userDetails=req.session.userDetails;
+    var loginStatus=1;
+    if(!userDetails){
+        loginStatus=0;
+    }
     try {
         const reviews = await ReviewSchema.find();
-        return res.render('reviews', { reviews })
+        return res.render('reviews', { reviews,loginStatus })
     }
     catch (err) {
         res.status(404).json({ Error: err })
     }
 })
 app.get('/centres', (req, res) => {
-    res.render('centres')
+    const userDetails=req.session.userDetails;
+    var loginStatus=1;
+    if(!userDetails){
+        loginStatus=0;
+    }
+    res.render('centres',{loginStatus})
 })
 app.get('/services', (req, res) => {
-    res.render('services')
+    const userDetails=req.session.userDetails;
+    var loginStatus=1;
+    if(!userDetails){
+        loginStatus=0;
+    }
+    res.render('services',{loginStatus})
 })
 app.get('/contact', (req, res) => {
-    res.render('contact')
+    const userDetails=req.session.userDetails;
+    var loginStatus=1;
+    if(!userDetails){
+        loginStatus=0;
+    }
+    res.render('contact',{loginStatus})
 })
 app.get('/user_Dashboard_home', (req, res) => {
     if (!req.session.userDetails) {
@@ -129,8 +206,14 @@ app.get('/user_Dashboard_home', (req, res) => {
     const userDetails = req.session.userDetails;
     res.render('user_Dashboard_home', { userDetails })
 })
-app.get('/user_Dashboard_myorders', (req, res) => {
-    res.render('user_Dashboard_myorders')
+app.get('/user_Dashboard_myorders', async(req, res) => {
+    if (!req.session.userDetails) {
+        return res.redirect('/signin')
+    }
+    const userDetails = req.session.userDetails;
+    const userid=userDetails.id;
+    const orders=await OrderSchema.find({user:userid});
+    res.render('user_Dashboard_myorders', {orders})
 })
 app.get('/user_Dashboard_payment', (req, res) => {
     res.render('user_Dashboard_payment')
@@ -151,6 +234,7 @@ app.get('/user_Dashboard_cart', async(req, res) => {
     const item = await productSchema.find({ _id: pid });
     products.push(item);
     })); 
+    req.session.products=products;
     
     res.render('user_Dashboard_cart', { userDetails,products})
 })
@@ -158,14 +242,17 @@ app.get('/user_dashboard_workout', (req, res) => {
     res.render('user_dashboard_workout')
 })
 app.get('/user_Dashboard_challenges', (req, res) => {
-    res.render('user_dashboard_challenges')
+    res.render('user_dashboard_challenges') 
 })
 app.get('/user_Dashboard_profile', (req, res) => {
+    if (!req.session.userDetails) {
+        return res.redirect('/signin')
+    }
     const userDetails = req.session.userDetails;
     res.render('user_Dashboard_profile', { userDetails })
 })
 app.get('/user_dashboard_navbar', (req, res) => {
-    res.render('user_dashboard_navbar')
+    res.render('user_dashboard_navbar') 
 })
 // app.get('/user_dashboard_chat', (req,res)=>{
 //     res.render('user_dashboard_chat')
@@ -174,11 +261,6 @@ app.get('/user_dashboard_navbar', (req, res) => {
 app.get('/timer', (req, res) => {
     res.render('timer')
 })
-
-
-
-
-
 app.get('/admin_dashboard_side_wrapper', (req, res) => {
     res.render('admin_dashboard_side_wrapper')
 })
@@ -208,14 +290,28 @@ app.get('/admin_dashboard_trainers', async (req, res) => {
     }
     res.render('admin_dashboard_trainers')
 })
-app.get('/admin_dashboard_payment', (req, res) => {
-    res.render('admin_dashboard_payment')
+app.get('/admin_dashboard_payment', async(req, res) => {
+    try{
+        const payments=await PaymentSchema.find().sort({_id:-1});
+        return res.render('admin_dashboard_payment',{payments});
+    }
+    catch(err){
+        console.log(err);
+        res.status(400).json({Error:err});
+    }
 })
 app.get('/admin_dashboard_add_product', (req, res) => {
     res.render('admin_dashboard_add_product')
 })
-app.get('/admin_Dashboard_order', (req, res) => {
-    res.render('admin_Dashboard_order')
+app.get('/admin_Dashboard_order', async(req, res) => {
+    try{
+        const orders=await OrderSchema.find().sort({_id:-1});
+        res.render('admin_Dashboard_order',{orders})
+    }
+    catch(err){
+        res.status(400).json({Error:err})
+    }
+    
 })
 app.get('/payment', (req, res) => {
     res.render('payment')
