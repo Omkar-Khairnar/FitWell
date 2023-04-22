@@ -189,15 +189,6 @@ app.get('/user_Dashboard_payment',async(req, res) => {
     }
     const userDetails = req.session.userDetails;
     const userid=userDetails.id;
-    const orders=await OrderSchema.find({user:userid});
-    res.render('user_Dashboard_myorders', {orders})
-})
-app.get('/user_Dashboard_payment',async(req, res) => {
-    if (!req.session.userDetails) {
-        return res.redirect('/signin')
-    }
-    const userDetails = req.session.userDetails;
-    const userid=userDetails.id;
     const payments=await PaymentSchema.find({user:userid});
     res.render('user_Dashboard_payment',{payments});
 })
@@ -341,8 +332,8 @@ app.post('/signup', async (req, res) => {
         }
 
         const pass = req.body.password;
-        const salt = await bcrypt.genSaltSync(10);
-        const secpass = await bcrypt.hashSync(pass, salt);
+        const salt = bcrypt.genSaltSync(10);
+        const secpass =  bcrypt.hashSync(pass, salt);
 
         let user = await User.create({
             name: req.body.name,
@@ -404,6 +395,7 @@ app.post('/signin', async (req, res) => {
             height: user.height,
             image: user.image,
             DateOfJoin: user.DateOfJoin,
+            expirydate:user.expirydate.toDateString(),
         }
         req.session.userDetails = userDetails;
         req.session.save();

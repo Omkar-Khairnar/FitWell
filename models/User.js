@@ -17,11 +17,15 @@ const UserSchema= new Schema({
     },
     DateOfJoin:{
         type:Date,
-        default:Date.now
+        default:Date.now 
     },
     age:{
         type:Number,
         required:true,
+    },
+    expirydate:{
+        type:Date,
+        default:Date.now()+30*24*60*60*1000,
     },
     gender:{  
         type:String, 
