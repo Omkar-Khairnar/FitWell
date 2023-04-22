@@ -44,10 +44,11 @@
                       <h3 class="past-order-product-name"><%=order.name%></h3>
                       <h5 class="past-order-price">Total: Rs <span id="order-price"><%=order.amount%></span></h5>
                       <h5 class="past-order-date">Ordered On : <span id="order-date"><%=order.Dateoforder.toDateString()%></span></h5>
+                      <h5 class="past-order-date">Ordered ID : <span id="order-date"><%=order._id.toString().substring(0,14)%></span></h5>
                       <p class="past-order-delivery">Delivery Address : <span id="order-address"><%=order.address%></span></p>
                       <form method="post" action="/userActions/deleteorder">
                         <input type="text" value=<%=order._id%> class="d-none" name="orderid" >
-                        <td> <button type="submit" style="border: none; background-color: white;"><i class="fa-solid fa-trash" style="color:red; cursor: pointer;"></i></button></td>
+                        <td> <button type="submit"  style="border: none; background-color: white;width: 50px; align-self: center;"><i class="fa-solid fa-trash" style="color:red; cursor: pointer;"></i></button></td>
                       </form>
                     </div>
                   </div>
