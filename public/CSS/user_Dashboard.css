@@ -600,8 +600,8 @@ input[type="submit"]:hover {
   max-height: 250px;
 }
 #past-order-item-img {
-  height: 100%;
-  width: auto;
+  height: 200px;
+  width: 200px;
   margin: 0%;
   padding: 0%;
   border-radius: 10PX;
@@ -1495,3 +1495,7 @@ profile css
 
 */
 
+
+.d-inline-block{
+  float:left
+}
