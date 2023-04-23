@@ -26,30 +26,20 @@
                     <ul id="testim-dots" class="dots">
                         <% reviews.forEach((review)=>{ %>
                             <li class="dot "></li>
-                        <% }) %>   
-                        
+                        <% }) %>
                     </ul>
-                    <div id="testim-content" class="cont">    
+                    <div id="testim-content" class="cont">
                      <% reviews.forEach((review)=>{ %>
                         <div class="active">
                             <div class="img"><img src=<%=review.image%> alt=""></div>
                             <h2><%=review.name%></h2>
-                            <p><%=review.comment%></p>                    
+                            <p><%=review.comment%></p>
                         </div>
                      <% }) %>
-                        
-    
-                        
-    
                     </div>
-    
                 </div>
         </section>
-    
     <script src="https://use.fontawesome.com/1744f3f671.js"></script>
-    
-      
-
     <%- include('footer'); %>
 
 
