@@ -5,23 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitMe - Products</title>
-    <link rel="stylesheet" href="./CSS/products.css" media="screen" type="text/css">
+    <title>FitMe - Products Search Result</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://kit.fontawesome.com/1b34bcf330.css" crossorigin="anonymous">
- 
+    <link rel="stylesheet" href="./CSS/products.css" media="screen" type="text/css">
 
 </head>
-><style>
-    .allProduct1 {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 20px 0;
-        transition: transform 1s ease-in-out;
-    }
-</style>
 
 <body>
 
@@ -59,26 +50,34 @@
                 <div class="latestTradings">
                     <h3 class="title_LT">Searched Products</h3>
                     <i id="rightArrow" class="fa fa-solid fa-2x fa-angle-right" aria-hidden="true"></i>
+
                 </div>
-                <!-- <div class="filters">
-                    <form action="/productFiltersResult" name="filterForm" method="POST">
-                        <button type="submit">
-                        <select name="filter" id="filterID">
-                            <option value="">Select</option>
+                <div class="filters">
+                    <form action="/productSearchResult" name="filterForm" method="POST">
+                        <input class="d-none" type="text" name="search" value="<%= search %>" >
+                        <select name="filter" id="filterID"
+                            style="background-color: orange;  border-radius: 5px; font-weight: bold;"
+                            class="p-2">
+                            <option value="">Select Filters</option>
                             <option value="pricelow">Lowest Price</option>
                             <option value="pricehigh">Highest Price</option>
-                            <option value="nameAesc">Ascending Name</option>
-                            <option value="nameDesc">Descending Name</option>
-                            <option value="newfirst">Newest First</option>
+                            <option value="energy">Energy & Endurance</option>
+                            <option value="nutrients">Nutrients</option>
+                            <option value="repair">Recovery & Repair</option>
+                            <option value="protein">Whey Protein</option>
                         </select>
-                        </button>
-
+                        <button type="submit"
+                            style="background-color: orangered; border-radius: 5px; font-weight: bold;"
+                            class="p-1">Apply Filter</button>
                     </form>
-                </div> -->
-                <div class="search-container">
+                </div>
+
+                <div class="search-container d-flex flex-row">
+
                     <form action="/productSearchResult" name="searchForm" method="POST">
-                        <input type="text" placeholder="Search.." name="search">
-                        <button class="searchIcon" type="submit"><i class="fa fa-search"></i></button>
+                        <input type="text" placeholder="Search.." name="search" value="">
+                        <input class="d-none" type="text" name="filter" value="pricelow">
+                        <button class="searchIcon" type="submit"><i class="fa p-1 fa-search"></i></button>
                     </form>
                 </div>
 
@@ -88,8 +87,9 @@
                 <div class="row row-cols-2 row-cols-md-5 container-fluid mx-0 my-4">
                     <% if (searchResultCount===0) { %>
                         <h1 style="text-align: center; width: 100%;">No Product Found !</h1>
-                    <% } else { %>
-                        <h1 style="text-align: center; width: 100%;color: aliceblue; margin-bottom: 20px;"><%- searchResultCount %> Results Found</h1>
+
+                        <% } else { %>
+                            <h1 style="text-align: center; width: 100%;color: aliceblue; margin-bottom: 20px;"><%- searchResultCount %> Results Found</h1>
                             <% searchResult.forEach(function(image) { %>
 
                                 <div class="col  mx-0">
@@ -143,7 +143,7 @@
                                                                     id="product-modal-price">
                                                                     <%= image.price %>
                                                                 </span></p>
-                                                            <form method="post" action="/useractions/addtocart">
+                                                            <form method="post" action="/addtocart">
                                                                 <input class="d-none" type="text" name="productid"
                                                                     value=<%=image._id%>>
                                                                 <button type="submit" class="btn bg-dark">Add To
@@ -164,7 +164,7 @@
                                     </div>
                                 </div>
                                 <% }) %>
-                        <% } %>
+                                    <% } %>
 
 
                 </div>

@@ -39,14 +39,14 @@ function scrollProduct (cards, left, right) {
 
     right.addEventListener("click", function () {
         if (position > -cardsWidth ) {
-            position -= cardWidth ;
+            position -= cardWidth*4 ;
             cards.style.transform = "translateX(" + position + "px)";
         }
     });
 
     left.addEventListener("click", function () {
         if (position < 0) {
-            position += cardWidth ;
+            position += cardWidth*4 ;
             cards.style.transform = "translateX(" + position + "px)";
         }
     });

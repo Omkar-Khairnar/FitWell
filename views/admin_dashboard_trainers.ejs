@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="./CSS/signup_signin.css" />
 
   <link rel="stylesheet" href="./CSS/admin_dashboard.css" />
-  <title>Responsive Admin Dashboard</title>
+  <title>Admin Dashboard - Trainers</title>
 </head>
 <style>
   /* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800'); */
@@ -129,9 +129,10 @@ button:active {
                       <th scope="col" width="50">Sr.</th>
                       <th scope="col">Name</th>
                       <th scope="col">Email</th>
-                      <th scope="col">DOJ</th>
                       <th scope="col">Gender</th>
-                      <th scope="col">Salary</th> 
+                      <th scope="col">DOJ</th>
+                      <th scope="col" class="text-center">Salary</th> 
+                      <th scope="col" class="text-center">Remove Trainer</th> 
                       <th scope="col"></th>
 
                     </tr>
@@ -145,11 +146,11 @@ button:active {
                         <td><%=trainer.name%></td>
                         <td><%=trainer.email%></td>
                         <td><%=trainer.gender%></td>
+                        <td><%=trainer.DateOfJoin.toDateString()%></td>
                         <td><%=trainer.salary%></td>
-                        <td><%=trainer.DateOfJoin%></td>
                         <form method="post" action="/adminactions/deletetrainer">
                           <input type="text" value=<%=trainer._id%> class="d-none" name="trainerid" >
-                          <td> <button type="submit" style="border: none; background-color: white;"><i class="fa-solid fa-trash" style="color:red; cursor: pointer;"></i></button></td>
+                          <td> <button type="submit" style="border: none; background-color: transparent;"><i class="fa-solid fa-trash" style="color:red; cursor: pointer;"></i></button></td>
                         </form>
                       </tr>
                     <% })%>

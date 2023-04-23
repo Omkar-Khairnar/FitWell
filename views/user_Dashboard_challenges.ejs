@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>User Dashboard</title>
+  <title>Fitwell - Challenges</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -38,10 +38,10 @@
               <% allChallenges.forEach(function(image){ %>
                <div class="col-challenge">
                 <div class="card h-auto bg-dark">
-                  <button type="button" class="btn challenge-img" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <button type="button" class="btn challenge-img" data-bs-toggle="modal" data-bs-target="#<%=image._id%>">
                     <img src="data:image/<%=image.img.contentType%>;base64, <%=image.img.data.toString('base64')%>" class="card-img-top" alt="p5" id="p5">
                   </button>
-                  <div class="modal" id="exampleModal">
+                  <div class="modal" id="<%=image._id%>">
                     <div class="modal-dialog modal-fullscreen">
                       <div class="modal-content">
                         <div class="modal-header">

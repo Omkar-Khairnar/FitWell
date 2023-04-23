@@ -40,9 +40,9 @@
     transition: 0.2s ease;
     filter: drop-shadow(10px 10px 10px rgb(15, 15, 13));
   }
-  .service img:hover {
+  /* .service img:hover {
     transform: scale(1.04);
-  }
+  } */
   
   #title {
     text-align: center;
@@ -77,11 +77,11 @@
   .service h4 {
     padding: 5px;
   }
-  @media screen and (max-width: 1000) {
+  /* @media screen and (max-width: 1000) {
     .services {
       grid-template-columns: repeat(3, 1fr);
     }
-  }
+  } */
   
 a {
   text-decoration: none;

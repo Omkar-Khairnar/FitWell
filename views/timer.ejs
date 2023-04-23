@@ -15,13 +15,16 @@
         justify-content: space-between;
         width: 55%;
     }
+
     #startBtn {
         background-color: rgb(0, 248, 0);
     }
+
     #stopBtn {
         background-color: rgb(255, 0, 0);
     }
-    .timerInputClass{
+
+    .timerInputClass {
         border-radius: 5px;
         font-size: larger;
         width: 50px;
@@ -30,11 +33,10 @@
         border: none;
 
     }
-    .timerCustomizer{
+
+    .timerCustomizer {
         display: flex;
     }
-
-    
 </style>
 
 
@@ -52,56 +54,63 @@
 </div>
 
 <script>
-    let intervalId;
-    let timer = document.getElementById("timer");
-    let startBtn = document.getElementById("startBtn");
-    let stopBtn = document.getElementById("stopBtn");
-    let inputMin = document.getElementById("inputMin");
-    let inputSec = document.getElementById("inputSec");
-    let setBtn = document.getElementById("setBtn");
-    let min = 0;
-    let sec = 0;
 
-    function startTimer() {
-        intervalId = setInterval(updateTimer, 1000);
-        startBtn.disabled = true;
-        stopBtn.disabled = false;
-    }
+    
+    
+    function timerWatch(timer1,startBtn1,stopBtn1,inputMin1,inputSec1,setBtn1) {
+        
+        let timer = document.getElementById(`${timer1}`);
+        let startBtn = document.getElementById(`${startBtn1}`);
+        let stopBtn = document.getElementById(`${stopBtn1}`);
+        let inputMin = document.getElementById(`${inputMin1}`);
+        let inputSec = document.getElementById(`${inputSec1}`);
+        let setBtn = document.getElementById(`${setBtn1}`);
 
-    function stopTimer() {
-        clearInterval(intervalId);
-        startBtn.disabled = false;
-        stopBtn.disabled = true;
-    }
+        let intervalId;
+        let min = 0;
+        let sec = 0;
 
-    function updateTimer() {
-        sec--;
-        if (sec < 0) {
-            sec = 59;
-            min--;
+        function startTimer() {
+            intervalId = setInterval(updateTimer, 1000);
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
         }
-        if (min < 0) {
+
+        function stopTimer() {
             clearInterval(intervalId);
             startBtn.disabled = false;
             stopBtn.disabled = true;
-            min = 0;
-            sec = 0;
-
         }
-        timer.innerText = `${min}:${sec.toString().padStart(2, "0")}`;
-        if (min === 0 && sec === 0) {
-            timer.innerText = "Times Up!";
+
+        function updateTimer() {
+            sec--;
+            if (sec < 0) {
+                sec = 59;
+                min--;
+            }
+            if (min < 0) {
+                clearInterval(intervalId);
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+                min = 0;
+                sec = 0;
+
+            }
+            timer.innerText = `${min}:${sec.toString().padStart(2, "0")}`;
+            if (min === 0 && sec === 0) {
+                timer.innerText = "Times Up!";
+            }
         }
-    }
 
-    function setTimer() {
-        min = parseInt(inputMin.value);
-        sec = parseInt(inputSec.value);
-        timer.innerText = `${min}:${sec.toString().padStart(2, "0")}`;
-    }
+        function setTimer() {
+            min = parseInt(inputMin.value);
+            sec = parseInt(inputSec.value);
+            timer.innerText = `${min}:${sec.toString().padStart(2, "0")}`;
+        }
 
-    startBtn.addEventListener("click", startTimer);
-    stopBtn.addEventListener("click", stopTimer);
-    setBtn.addEventListener("click", setTimer);
+        startBtn.addEventListener("click", startTimer);
+        stopBtn.addEventListener("click", stopTimer);
+        setBtn.addEventListener("click", setTimer);
+    }
 
 </script>

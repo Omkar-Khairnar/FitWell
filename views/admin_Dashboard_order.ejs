@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="./CSS/admin_dashboard.css" />
     <link rel="stylesheet" href="./CSS/admin_Dashboard_order" />
-    <title>Responsive Admin Dashboard</title>
+    <title>Admin Dashboard - Orders</title>
 </head>
 
 <body>
@@ -134,6 +134,7 @@
                                               <th scope="col">Amount</th> 
                                               <th scope="col">Status</th>
                                               <th scope="col">Address</th>
+                                              <th scope="col">Delete</th>
                                               <th scope="col"></th>
                                               
                                             </tr>
@@ -151,7 +152,7 @@
                                                 <td><%=order.address%></td>
                                                 <form method="post" action="/adminactions/deleteorder">
                                                   <input type="text" value=<%=order.id%> class="d-none" name="orderid" >
-                                                  <td> <button type="submit" style="border: none;"><i class="fa-solid fa-trash" style="color:red; cursor: pointer;"></i></button></td>
+                                                  <td> <button type="submit" style="border: none;background-color: transparent;"><i class="fa-solid fa-trash" style="color:red; background-color: transparent; cursor: pointer;"></i></button></td>
                                                 </form>
                                               </tr>
                                             <% })%>
