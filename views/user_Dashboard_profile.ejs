@@ -6,56 +6,36 @@
   <title>Fitwell - User Profile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" />
-  <link rel="stylesheet" href="./CSS/user_Dashboard.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./CSS/user_Dashboard.css" />
   
 
 </head>
 
 <style>
-  body {
-    /* background: rgb(99, 39, 120) */
-}
 
-.form-control w-100:focus {
-    box-shadow: none;
-    /* border-color: #BA68C8 */
-}
+
 
 .profile-button {
-    /* background: rgb(99, 39, 120); */
     box-shadow: none;
     border: none
 }
 
-.profile-button:hover {
-    /* background: #682773 */
-}
-
-.profile-button:focus {
-    /* background: #682773; */
-    box-shadow: none
-}
-
 .profile-button:active {
-    /* background: #682773; */
     box-shadow: none
 }
 
 .back:hover {
-    /* color: #682773; */
     cursor: pointer
 }
 
 .labels {
-    font-size: 11px
+    font-size: 20px
 }
 
 .add-experience:hover {
-    /* background: #BA68C8; */
     color: #fff;
     cursor: pointer;
-    /* border: solid 1px #BA68C8 */
 }
 span{
   font-size: 25px;
@@ -80,28 +60,52 @@ span{
         <!-- User's Payment  -->
         <div class="dashboard-content" id="dashboard-review-page">
           <div class="container">
-            <div class="container rounded bg-white mt-5 mb-5">
-              <div class="row">
-                  <div class="col-md-3 border-none mx-5 my-4">
-                      <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-lg-5" width="200px" src=<%=userDetails.image%>><span class="font-weight-bold"><%=userDetails.name%></span><span class="text-black-50"><%=userDetails.email%></span><span> </span></div>
+            <div class="container rounded bg-white mb-5">
+              <div class="row d-flex justify-content-center">
+                  <div class="col-md-3 border-none  mx-5 my-4">
+                      <div class="d-flex flex-column align-items-center">
+                        <img class="rounded-circle mt-lg-5" width="200px" height="200px" src=<%=userDetails.image%>>
+                        <h1><span class="font-weight-bold"><%=userDetails.name%></span></h1>
+                        <h2><span ><%=userDetails.email%></span></h2>
+                      </div>
                   </div>
                   <div class="col-md-5 ">
-                      <div class="p-3 py-5">
+                      <div class="p-3">
                           <div class="d-flex justify-content-between align-items-center mb-3">
-                              <h1 class="text-right">Profile Settings</h1>
+                              <h1 class="text-center fa-3x text-xl-center w-100 text-dark p-0 m-0">Profile Settings</h1>
                           </div>
-                          <div class="row mt-2">
+                          <div class="row mt-1">
                           </div>
                           <form action="/useractions/updateprofile" method="post">
-                            <div class="row mt-3">
-                              <div class="col-md-12"><label class="labels">Name</label><input type="text" name="name" class=" w-100" placeholder="first name" value=<%=userDetails.name%>></div> 
-                                <div class="col-md-12"><label class="labels">Date Of Join</label><input type="text" class=" w-100" placeholder="enter address line 1" value=<%=userDetails.DateOfJoin %> readonly></div>
-                                <div class="col-md-12"><label class="labels">Age</label><input type="text" name="age" class=" w-100" placeholder="enter address line 2" value=<%=userDetails.age%>></div>
-                                <div class="col-md-12"><label class="labels">Height</label><input type="text" name="height" class=" w-100" placeholder="enter address line 2" value=<%=userDetails.height%>></div>
-                                <div class="col-md-12"><label class="labels">Weight</label><input type="text" name="weight" class=" w-100" placeholder="enter address line 2" value=<%=userDetails.weight%>></div>
-                                <div class="col-md-12"><label class="labels">Upload New Profile image</label><input type="text" name="image" class=" w-100" placeholder="enter address line 2" value=<%=userDetails.image%>></div>
+                            <div class="row">
+                              <div class="col-md-12 p-0">
+                                <label class="labels m-0">Name</label>
+                                <input type="text" name="name" class="w-100 p-2 m-2" style="font-size: medium; font-weight: bold;" placeholder="Username" value=<%=userDetails.name%>>
+                              </div> 
+                                <div class="col-md-12 p-0">
+                                  <label class="labels m-0">Date Of Join</label>
+                                  <input type="text" class=" w-100 p-2 m-2" style="font-size: medium; font-weight: bold;" placeholder="Date of Join" value=<%=userDetails.DateOfJoin %> readonly>
+                                </div>
+                                <div class="col-md-12 p-0">
+                                  <label class="labels m-0">Age</label>
+                                  <input type="text" name="age" class=" w-100 p-2 m-2" style="font-size: medium; font-weight: bold;" placeholder="Age" value=<%=userDetails.age%>>
+                                </div>
+                                <div class="col-md-12 p-0">
+                                  <label class="labels m-0">Height</label>
+                                  <input type="text" name="height" class=" w-100 p-2 m-2" style="font-size: medium; font-weight: bold;" placeholder="Height" value=<%=userDetails.height%>>
+                                </div>
+                                <div class="col-md-12 p-0">
+                                  <label class="labels m-0">Weight</label>
+                                  <input type="text" name="weight" class=" w-100 p-2 m-2" style="font-size: medium; font-weight: bold;" placeholder="Weight" value=<%=userDetails.weight%>>
+                                </div>
+                                <div class="col-md-12 p-0">
+                                  <label class="labels m-0">Upload New Profile Image URL</label>
+                                  <input type="text" name="image" class=" w-100 p-2 m-2" style="font-size: medium; font-weight: bold;" placeholder="Profile Image URL" value=<%=userDetails.image%>>
+                                </div>
                             </div>
-                            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" style="background-color: orangered;">Update Profile</button></div>
+                            <div class="mt-5 text-center">
+                              <button class="btn fa-2x btn-primary profile-button" type="submit" style="background-color: orangered;">Update Profile</button>
+                            </div>
                           </form>
                       </div>
                   </div>

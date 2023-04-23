@@ -167,7 +167,7 @@ app.get('/reviews', async (req, res) => {
         loginStatus = 0;
     }
     try {
-        const reviews = await ReviewSchema.find();
+        const reviews = await ReviewSchema.find().sort({_id:-1}).limit(10);
         return res.render('reviews', { reviews, loginStatus })
     }
     catch (err) {
