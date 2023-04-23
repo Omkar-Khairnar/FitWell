@@ -170,18 +170,18 @@ router.post('/updateprofile', async(req, res)=>{
             if(type == 'enroll1'){
                 const date=new Date(Date.now()+30*24*60*60*1000);
                 const res=await UserSchema.findByIdAndUpdate(userid,{expirydate:date});
-                req.session.userDetails.expirydate=date;
+                req.session.userDetails.expirydate=date.toDateString();
             }
             else if(type == 'enroll2'){
                 const date=new Date(Date.now()+6*30*24*60*60*1000);
                 const res=await UserSchema.findByIdAndUpdate(userid,{expirydate:date});
-                req.session.userDetails.expirydate=date;
+                req.session.userDetails.expirydate=date.toDateString();
 
             }
             else{
                 const date=new Date(Date.now()+12*30*24*60*60*1000);
                 const res=await UserSchema.findByIdAndUpdate(userid,{expirydate:date});
-                req.session.userDetails.expirydate=date;
+                req.session.userDetails.expirydate=date.toDateString();
             }
             return res.redirect('/user_Dashboard_home')
         }

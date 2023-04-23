@@ -24,7 +24,7 @@ try{
         res.render('adminlogin', {error: 1})      
     }
     const data={
-        admin:{
+        admin:{ 
             id:admin.id,
         }
     }
@@ -32,11 +32,12 @@ try{
     if(authtoken){
         success=true;
     }
-    res.cookie('adminjwtoken',authtoken,{
-        expires:86400000,
-        httpOnly:true,
-    })
-    res.render('/admin_Dashboard_home')
+    const adminDetails={
+        name:admin.name,
+        email:admin.email,
+    }
+    req.cookies.adminDetails=adminDetails;
+    res.redirect('/admin_dashboard_home')
 }
 catch(err){
     console.log(err);
