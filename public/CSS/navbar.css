@@ -12,14 +12,14 @@ body{
     font-weight: bold; 
    
 }
-.collap ul a{
-    color: rgb(223, 212, 212);
+ .nav-item1 a{
+    color: white;
     
 }
 .container-fluid1{
     background-color: black;
     height: 5vw;
-    opacity: 0.5;
+    opacity: 0.6;
     font-family: 'Mulish', sans-serif;
     font-weight: 700;
  }

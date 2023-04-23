@@ -41,8 +41,6 @@ app.use(session({
     }
 }))
 
-
-
 app.get('/', (req, res) => {
     const userDetails = req.session.userDetails;
     var loginStatus = 1;
@@ -76,19 +74,6 @@ app.get('/products', async (req, res) => {
 
     res.render('products', { LatestCategory, NutrientsCategory, ProteinCategory, EnergyCategory, RecoveryCategory, loginStatus })
 })
-
-// app.post('/productSearchResult', async (req, res) => {
-//     const search = req.body.search;
-//     searchQuery = { name: { $regex: search, $options: 'i' } }
-//     const searchResult = await ProductSchema.find(searchQuery).sort({ price: 1 });
-//     const searchResultCount = await ProductSchema.find(searchQuery).sort({ price: 1 }).count();
-//     const userDetails = req.session.userDetails;
-//     var loginStatus = 1;
-//     if (!userDetails) {
-//         loginStatus = 0;
-//     }
-//     res.render('productSearch', { searchResult, searchResultCount, loginStatus, search});
-// });
 
 app.post('/productSearchResult',async(req, res)=>{
     const filter = req.body.filter;
@@ -287,10 +272,6 @@ app.get('/user_Dashboard_profile', (req, res) => {
 app.get('/user_dashboard_navbar', (req, res) => {
     res.render('user_dashboard_navbar')
 })
-// app.get('/user_dashboard_chat', (req,res)=>{
-//     res.render('user_dashboard_chat')
-// })
-
 app.get('/timer', (req, res) => {
     res.render('timer')
 })
@@ -472,6 +453,7 @@ app.post('/signin', async (req, res) => {
 
 app.use('/useractions', require('./routes/userActions'))
 app.use('/adminactions', require('./routes/adminActions'))
+app.use('/adminauth', require('./routes/adminAuth'))
 
 
 app.listen(PORT, () => {
