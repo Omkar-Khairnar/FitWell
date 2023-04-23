@@ -20,7 +20,7 @@ const UserSchema= new Schema({
         default:Date.now 
     },
     age:{
-        type:Number,
+        type:Number, 
         required:true,
     },
     expirydate:{

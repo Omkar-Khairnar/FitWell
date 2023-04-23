@@ -321,7 +321,7 @@ h1, .h1 {
       z-index: 1070;
   }
 
-  .dashboard-nav .mobile-show {
+  .dashboard-nav.mobile-show {
       display: flex;
       flex-direction: column;
       justify-content: space-between;

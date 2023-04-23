@@ -5,14 +5,62 @@
   <meta charset="UTF-8" />
   <title>User Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" /> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" />
   <link rel="stylesheet" href="./CSS/user_Dashboard.css" />
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> -->
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"> -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  
+
 </head>
 
+<style>
+  body {
+    /* background: rgb(99, 39, 120) */
+}
+
+.form-control w-100:focus {
+    box-shadow: none;
+    /* border-color: #BA68C8 */
+}
+
+.profile-button {
+    /* background: rgb(99, 39, 120); */
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    /* background: #682773 */
+}
+
+.profile-button:focus {
+    /* background: #682773; */
+    box-shadow: none
+}
+
+.profile-button:active {
+    /* background: #682773; */
+    box-shadow: none
+}
+
+.back:hover {
+    /* color: #682773; */
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    /* background: #BA68C8; */
+    color: #fff;
+    cursor: pointer;
+    /* border: solid 1px #BA68C8 */
+}
+span{
+  font-size: 25px;
+}
+</style>
 
 
 <body>
@@ -30,95 +78,51 @@
         </header>
 
         <!-- User's Payment  -->
-        <div class="dashboard-content" id="dashboard-review-page">
-          <div class="container">
-
-
-
-            <!-- EDIT HERE FOR PROFILE USER -->
-
-
-
-            <div class="container-review">
-              <h1>Profile Page</h1>
-
-              <div class="container rounded bg-white mt-5">
-                <div class="d-flex flex-column justify-content-center align-items-center p-3 py-5">
-                  <img class="rounded-circle mt-5" src="https://i.imgur.com/0eg0aG0.jpg">
-                </div>
-              </div>
-
-              <div class="col-md-8">
-                <div class="p-3 py-5">
-                  <div class="d-flex justify-content-between align-items-center mb-3">
-                    <div class="d-flex flex-row align-items-center back">
-                    </div>
-                    <h6 class="text-right">Edit Profile</h6>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-md-6">
-                      <input type="text" class="form-control" placeholder="First Name" value="John">
-                    </div>
-                    <div class="col-md-6">
-                      <input type="text" class="form-control" placeholder="Last Name" value="Doe">
-                    </div>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-md-6">
-                      <input type="text" class="form-control" placeholder="Email" value="john_doe12@bbb.com">
-                    </div>
-                    <div class="col-md-6">
-                      <input type="text" class="form-control" placeholder="Phone Number" value="+19685969668">
-                    </div>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-md-6">
-                      <input type="text" class="form-control" placeholder="Address"
-                        value="D-113, Right Avenue Block, CA, USA">
-                    </div>
-                    <div class="col-md-6">
-                      <input type="text" class="form-control" placeholder="Country" value="USA">
-                    </div>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-md-6">
-                      <input type="text" class="form-control" placeholder="Bank Name" value="Bank of America">
-                    </div>
-                    <div class="col-md-6">
-                      <input type="text" class="form-control" placeholder="Account Number" value="043958409584095">
-                    </div>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-md-6">
-                      <input type="text" class="form-control" placeholder="Height" value="6'2''">
-                    </div>
-                    <div class="col-md-6">
-                      <input type="text" class="form-control" placeholder="Weight" value="180 lbs">
-                    </div>
-                  </div>
-                
-                  <div class="mt-5 text-center">
-                    <div class="d-inline-block">
-                      <button class="btn btn-primary profile-button" type="button" style="background-color: #ff8000; color: #ffffff; font-weight: bold; border: none; padding: 10px 20px; border-radius: 5px;" onclick="saveProfile()">
-                        Save Profile
-                      </button>
-                    </div>
-                  </div>
-                  
-                  
-                </div>
-              </div>
       <div class="dashboard-content" id="dashboard-review-page">
-      </div>
-  </div>
-    </div>
+        <div class="container">
+          <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-3 border-none mx-5 my-4">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-lg-5" width="200px" src=<%=userDetails.image%>><span class="font-weight-bold"><%=userDetails.name%></span><span class="text-black-50"><%=userDetails.email%></span><span> </span></div>
+                </div>
+                <div class="col-md-5 ">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h1 class="text-right">Profile Settings</h1>
+                        </div>
+                        <div class="row mt-2">
+                        </div>
+                        <form action="/useractions/updateprofile" method="post">
+                          <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Name</label><input type="text" name="name" class=" w-100" placeholder="first name" value=<%=userDetails.name%>></div> 
+                              <div class="col-md-12"><label class="labels">Date Of Join</label><input type="text" class=" w-100" placeholder="enter address line 1" value=<%=userDetails.DateOfJoin %> readonly></div>
+                              <div class="col-md-12"><label class="labels">Age</label><input type="text" name="age" class=" w-100" placeholder="enter address line 2" value=<%=userDetails.age%>></div>
+                              <div class="col-md-12"><label class="labels">Height</label><input type="text" name="height" class=" w-100" placeholder="enter address line 2" value=<%=userDetails.height%>></div>
+                              <div class="col-md-12"><label class="labels">Weight</label><input type="text" name="weight" class=" w-100" placeholder="enter address line 2" value=<%=userDetails.weight%>></div>
+                              <div class="col-md-12"><label class="labels">Upload New Profile image</label><input type="text" name="image" class=" w-100" placeholder="enter address line 2" value=<%=userDetails.image%>></div>
+                          </div>
+                          <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" style="background-color: orangered;">Update Profile</button></div>
+                        </form>
+                    </div>
+                </div>
+             
+            </div>
+        </div>
+        </div>
+        </div>
 
 
-  </div> 
+            
+
+
+
+          
+       </div>
+    </div> 
   <!-- partial -->
   <script src="https://kit.fontawesome.com/1b34bcf330.js" crossorigin="anonymous"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="./JS/user_Dashboard.js"></script>
 </body>
 

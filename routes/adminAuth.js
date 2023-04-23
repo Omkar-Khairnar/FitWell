@@ -55,7 +55,7 @@ router.post('/createadmin',async(req, res)=>{
         const pass=req.body.password;
         const salt=await bcrypt.genSaltSync(10);
         const secpass=await bcrypt.hashSync(pass, salt);
-
+        
         let admin=await Admin.create({
             name:req.body.name,
             email:req.body.email,

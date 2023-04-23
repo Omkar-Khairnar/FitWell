@@ -119,7 +119,7 @@ router.post('/checkoutcart',async(req,res)=>{
     }
 })
 
-router.put('/updateprofile', async(req, res)=>{
+router.post('/updateprofile', async(req, res)=>{
     try{
         const userDetails=req.session.userDetails;
         const id=userDetails.id;
@@ -129,8 +129,14 @@ router.put('/updateprofile', async(req, res)=>{
         const height=req.body.height;
         const image=req.body.image;
 
-        await UserSchema.findByIdAndUpdate({id},{name:name, age:age, weight:weight,
+        await UserSchema.findByIdAndUpdate(id,{name:name, age:age, weight:weight,
         height:height,image:image});
+
+        userDetails.name=name;
+        userDetails.weight=weight;
+        userDetails.height=height;
+        userDetails.image=image;
+        userDetails.age=age;
 
         return res.redirect('/user_Dashboard_profile')
         
@@ -159,7 +165,7 @@ router.put('/updateprofile', async(req, res)=>{
             return res.redirect('/signin');
         }
         else{
-            const userid=userDetails.id;
+            const userid=userDetails.id; 
             const user=await UserSchema.find({_id:userid});
             if(type == 'enroll1'){
                 const date=new Date(Date.now()+30*24*60*60*1000);
