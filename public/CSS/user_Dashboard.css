@@ -68,17 +68,6 @@ h1, .h1 {
   font-weight: normal;
 }
 
-/* .card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0;
-} */
 
 .card-body {
   -webkit-box-flex: 1;
@@ -204,15 +193,6 @@ h1, .h1 {
   margin-bottom: 0%;
   padding: 0%;
 }
-
-/* .dashboard-nav-list {
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-} */
 
 .dashboard-nav-item {
   min-height: 50px;
@@ -1264,7 +1244,7 @@ input[type="submit"]:hover {
 } */
 
 
-.chatbox-container{
+/* .chatbox-container{
   max-width: 500 !important;
   margin: auto;
   margin-top: 4%;
@@ -1301,7 +1281,7 @@ input[type="submit"]:hover {
 
 .chatbox-active{
   display: flex;
-  /* width: 120px; */
+  width: 120px;
   float: left;
   margin-top: 10px;
 }
@@ -1414,7 +1394,6 @@ input[type="submit"]:hover {
 {
   display: inline-block;
   width: 20px;
-  float: right;
 }
 
 .msg-bottom
@@ -1442,17 +1421,6 @@ input[type="submit"]:hover {
   border-radius: 20px !important;
 }
 
-/* .input-group-text
-{
-  background: transparent !important;
-  border: none !important;
-
-}
-
-.input-group .fa{
-  color: #007bff;
-  float: right;
-} */
 
 .bottom-icons
 {
@@ -1472,30 +1440,17 @@ input[type="submit"]:hover {
   color: #fff;
   padding: 5px;
 }
-/* 
+
 .form-control:focus
 {
   border-color: none !important;
   box-shadow: none !important;
   border-radius: 20px;
-} */
+}
 
 
 .chat-back-button{
   background-color: #ff7b00;
   color: black;
 
-}
-
-
-
-
-/* 
-profile css
-
-*/
-
-
-.d-inline-block{
-  float:left
-}
+} */

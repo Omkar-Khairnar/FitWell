@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const connectToMongo = require('./db')
 const app = express();
 let alert = require('alert')
@@ -64,10 +65,10 @@ app.get('/productSearch', async (req, res) => {
 app.get('/products', async (req, res) => {
 
     const LatestCategory = await ProductSchema.find().sort({ _id: -1 }).limit(15);
-    const NutrientsCategory = await ProductSchema.find({ category: 'Nutrients' }).sort({ _id: -1 }).limit(15);
-    const ProteinCategory = await ProductSchema.find({ category: 'Whey Proteins' }).sort({ _id: -1 }).limit(15);
-    const EnergyCategory = await ProductSchema.find({ category: 'Energy & Endurance' }).sort({ _id: -1 }).limit(15);
-    const RecoveryCategory = await ProductSchema.find({ category: 'Recovery & Repair' }).sort({ _id: -1 }).limit(15); const userDetails = req.session.userDetails;
+    const NutrientsCategory = await ProductSchema.find({ category: 'Nutrients' }).limit(20);
+    const ProteinCategory = await ProductSchema.find({ category: 'Whey Proteins' }).limit(20);
+    const EnergyCategory = await ProductSchema.find({ category: 'Energy & Endurance' }).limit(15);
+    const RecoveryCategory = await ProductSchema.find({ category: 'Recovery & Repair' }).limit(13); const userDetails = req.session.userDetails;
     var loginStatus = 1;
     if (!userDetails) {
         loginStatus = 0;
@@ -75,28 +76,61 @@ app.get('/products', async (req, res) => {
 
     res.render('products', { LatestCategory, NutrientsCategory, ProteinCategory, EnergyCategory, RecoveryCategory, loginStatus })
 })
-app.post('/productSearchResult', async (req, res) => {
+
+// app.post('/productSearchResult', async (req, res) => {
+//     const search = req.body.search;
+//     searchQuery = { name: { $regex: search, $options: 'i' } }
+//     const searchResult = await ProductSchema.find(searchQuery).sort({ price: 1 });
+//     const searchResultCount = await ProductSchema.find(searchQuery).sort({ price: 1 }).count();
+//     const userDetails = req.session.userDetails;
+//     var loginStatus = 1;
+//     if (!userDetails) {
+//         loginStatus = 0;
+//     }
+//     res.render('productSearch', { searchResult, searchResultCount, loginStatus, search});
+// });
+
+app.post('/productSearchResult',async(req, res)=>{
+    const filter = req.body.filter;
     const search = req.body.search;
-    searchQuery = { name: { $regex: search, $options: 'i' } }
-    const searchResult = await ProductSchema.find(searchQuery).sort({ price: 1 });
-    const searchResultCount = await ProductSchema.find(searchQuery).sort({ price: 1 }).count();
+    var searchResult;
+    var searchResultCount
+    
+    if(filter == 'pricelow' || filter == ""){
+        searchQuery = { name: { $regex: search, $options: 'i' } };
+         searchResult = await ProductSchema.find(searchQuery).sort({price:1});
+         searchResultCount = await ProductSchema.find(searchQuery).sort({price:1}).count();
+    }else if(filter == 'pricehigh'){
+        searchQuery = { name: { $regex: search, $options: 'i' } };
+         searchResult = await ProductSchema.find(searchQuery).sort({price:-1});
+         searchResultCount = await ProductSchema.find(searchQuery).sort({price:-1}).count();
+    }else if(filter == 'energy'){
+        searchQuery = { name: { $regex: search, $options: 'i' },category: 'Energy & Endurance' };
+         searchResult = await ProductSchema.find(searchQuery);
+         searchResultCount = await ProductSchema.find(searchQuery).count();
+    }else if(filter == 'nutrients'){
+        searchQuery = { name: { $regex: search, $options: 'i' },category: 'Nutrients' };
+         searchResult = await ProductSchema.find(searchQuery);
+         searchResultCount = await ProductSchema.find(searchQuery).count();
+    }else if(filter == 'repair'){
+        searchQuery = { name: { $regex: search, $options: 'i' },category: 'Recovery & Repair' };
+         searchResult = await ProductSchema.find(searchQuery);
+         searchResultCount = await ProductSchema.find(searchQuery).count();
+    }else{
+        searchQuery = { name: { $regex: search, $options: 'i' },category: 'Whey Proteins' };
+         searchResult = await ProductSchema.find(searchQuery);
+         searchResultCount = await ProductSchema.find(searchQuery).count();
+    }
+
     const userDetails = req.session.userDetails;
     var loginStatus = 1;
     if (!userDetails) {
         loginStatus = 0;
     }
-    res.render('productSearch', { searchResult, searchResultCount, loginStatus });
-
+    res.render('productSearch', { searchResult, searchResultCount, loginStatus, search, filter});
+    
+    
 });
-// app.post('/productFiltersResult',async(req, res)=>{
-//     const search = req.body.filter;
-//     searchQuery = { name: { $regex: search, $options: 'i' } }
-//     const searchResult = await ProductSchema.find(searchQuery).sort({price:1});
-//     const searchResultCount = await ProductSchema.find(searchQuery).sort({price:1}).count();
-//     res.render('productSearch',{searchResult,searchResultCount});
-
-// });
-
 
 app.get('/signin', (req, res) => {
     res.render('signin', { error: 0 })
@@ -156,6 +190,8 @@ app.get('/services', (req, res) => {
     }
     res.render('services', { loginStatus })
 })
+
+
 app.get('/contact', (req, res) => {
     const userDetails = req.session.userDetails;
     var loginStatus = 1;
@@ -170,9 +206,25 @@ app.get('/user_Dashboard_home', async(req, res) => {
     }
     const userDetails = req.session.userDetails;
     const userid=userDetails.id;
+    const uID = new mongoose.Types.ObjectId(userid);
     const Numoforders=await OrderSchema.count({user:userid});
     const Numofreviews=await ReviewSchema.count({user:userid});
-    res.render('user_Dashboard_home', { userDetails,Numoforders,Numofreviews })
+    const revenue = await OrderSchema.aggregate([
+        {
+            $match: { user: uID }
+        },
+        {
+          $group: {
+            _id: null,
+            totalamount: { $sum: "$amount" }
+          }
+        }
+      ]);
+    var totalamount =0;
+    if (revenue.length > 0){
+        totalamount = revenue[0].totalamount;
+    }
+    res.render('user_Dashboard_home', { userDetails,Numoforders,Numofreviews,totalamount })
 })
 app.get('/user_Dashboard_myorders', async (req, res) => {
     if (!req.session.userDetails) {
@@ -180,7 +232,8 @@ app.get('/user_Dashboard_myorders', async (req, res) => {
     }
     const userDetails = req.session.userDetails;
     const userid = userDetails.id;
-    const orders = await OrderSchema.find({ user: userid });
+    const uID = new mongoose.Types.ObjectId(userid);
+    const orders = await OrderSchema.find({ user: uID }).sort({_id:-1});
     res.render('user_Dashboard_myorders', { orders })
 })
 app.get('/user_Dashboard_payment',async(req, res) => {
@@ -254,7 +307,16 @@ app.get('/admin_dashboard_home', async(req, res) => {
         const Numoftrainers=await TrainerSchema.count();
         const Numofusers=await User.count();
         const Numoforders=await OrderSchema.count();
-        res.render('admin_dashboard_home',{payments,orders,Numoftrainers,Numofusers,Numoforders});
+        const revenue = await OrderSchema.aggregate([
+            {
+              $group: {
+                _id: null,
+                totalamount: { $sum: "$amount" }
+              }
+            }
+          ]);
+        const totalamount = revenue[0].totalamount;
+        res.render('admin_dashboard_home',{payments,orders,Numoftrainers,Numofusers,Numoforders,totalamount});
         
     }
     catch(err){
@@ -263,7 +325,7 @@ app.get('/admin_dashboard_home', async(req, res) => {
 })
 app.get('/admin_dashboard_customers', async (req, res) => {
     try {
-        const users = await User.find();
+        const users = await User.find().sort({_id:-1});
         return res.render('admin_dashboard_customers', { users })
     }
     catch (err) {
@@ -309,7 +371,7 @@ app.get('/payment', (req, res) => {
 })
 app.get('/admin_dashboard_feedback', async (req, res) => {
     try {
-        const feedbacks = await ContactFormSchema.find();
+        const feedbacks = await ContactFormSchema.find().sort({_id:-1});
         return res.render('admin_dashboard_feedback', { feedbacks })
     }
     catch (err) {

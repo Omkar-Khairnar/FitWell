@@ -3,9 +3,9 @@
 ## How To Initialize And Run Code.
 ```
 1. Unzip(Extract) above "FitWell" Zipped Code base in a seperate folder.
-2. Open the above extracted folder's (FitWell) ADDRESS in the Windows Terminal.
+2. Open the above extracted folder's (FitWell) path in the Windows Terminal.
 (Select unzipped "FitWell" folder , then Right click , select 'Open in Terminal' option).
-3. Run the Command : "npm run serve".
+3. Run the Command in the Terminal : "npm run serve".
 4. Open Google Chrome and type "http://localhost:5000"
 5. Now you are redirected to our website.
 

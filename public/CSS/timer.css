@@ -1,0 +1,38 @@
+.timerBtnClass {
+    background-color: orange;
+    font-size: larger;
+    border: none;
+    margin: 0 5px;
+}
+
+#timerValue {
+    color: orangered;
+}
+
+.timer {
+    display: flex;
+    justify-content: space-between;
+    width: 55%;
+}
+
+.startBtn {
+    background-color: rgb(0, 248, 0);
+}
+
+.stopBtn {
+    background-color: rgb(255, 0, 0);
+}
+
+.timerInputClass {
+    border-radius: 5px;
+    font-size: larger;
+    width: 50px;
+    text-align: center;
+    padding: 0%;
+    border: none;
+
+}
+
+.timerCustomizer {
+    display: flex;
+}
