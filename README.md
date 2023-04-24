@@ -1,5 +1,5 @@
 # *FitWell* 
-## Note : Installation of Packages & Initiallize database only required When Repository is Clone from Github. Else Unzipped it and directly run the Application.
+## Note : Installation of Packages & Initiallize database only required When Repository is Clone from Github. Else Unzipped it and directly run the Application as it already contain required packages and '.env' file .
 
 ## Requirements
 ```
