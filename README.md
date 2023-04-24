@@ -4,7 +4,7 @@
 ## Requirements
 ```
 1. MongoDB Compass 
-2 .Node.JS environment 
+2. Node.JS environment 
 3. MongoDB Command Line Database Tools
 Sholud be Installed in your system.
 ```
@@ -29,35 +29,22 @@ Paste the following lines in the file ".env".
 JWT_SECRET=FFSD_FITWELL_PROJECT
 mongoURI=mongodb://127.0.0.1:27017/Fitwell
 ```
-5. Run the Command in the Terminal (current directory should be : FitWell).
-> - ``` npm run serve ```
-6. Wait for the below Message in terminal.
-```
-Fitwell app listening at http://localhost:5000
-MongoDB Database connected!
-```
-7. Press " ctrl+c " to terminate current Job. 
-
 
 
 
 ## Initiallize database
-- **We have total 11 collections and initiallize them in MongoDb Compass using JSON files provided in "Dump" folder**
-- Collections : admins, carts, challenges, contactforms, orders, payments, products, reviews, trainers, users, workouts.
-```
-1. Select "Fitwell" database. You'll see 11 collections.
-2. select collection "admins" -> 'ADD DATA' -> 'IMPORT JSON FILE' .
-3. select the file 'admins.json' from provided "DUMP"folder.
-4. Click : 'IMPORT' -> 'DONE'.
-5. 'admins' collection is Initiallized.
+> - Unzip the Provided DUMP folder.
+> - Make Sure that ```MongoDB Command Line Database Tools``` and ```MongoDB Compass``` is Installed and set up in your system.
 
-6. Repeat setps 2 to 4 to Initiallize other 10 collections. 
-Make sure to select respective JSON file for each collection.
+1. Open the commind line terminal and set the current directory as Parent directory of DUMP folder.
+(let Desktop is Parent directory of DUMP folder then , select Desktop as current directory in Terminal)
 
-Note : You can also Use online MongoDB Atlas, but make sure that value of mongoURI in ".env"  file should be according to that. 
-```
+2. Run the following command in the terminal
+>- ``` mongorestore  dump/ ```
+
+#
 >- ### Installation and Initiallization is COMPLETED.
-
+#
 
 
 
@@ -75,8 +62,10 @@ MongoDB Database connected!
 
 5. Now you are redirected to our website.
 
-
-
+## Sample Admin/User Login
+> - Email : admin123@gmail.com
+> - Password : Admin@123 
+ 
 
 ## Contributors
 ```
