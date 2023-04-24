@@ -457,6 +457,6 @@ app.use('/adminauth', require('./routes/adminAuth'))
 
 
 app.listen(PORT, () => {
-    console.log(`Example app listening at http://localhost:${PORT}`)
+    console.log(`Fitwell app listening at http://localhost:${PORT}`)
 })
 
