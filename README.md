@@ -53,7 +53,8 @@ Make sure to select respective JSON file for each collection.
 
 Note : You can also Use online MongoDB Atlas, but make sure that value of mongoURI in ".env"  file should be according to that. 
 ```
->- ### Installation and Initiallization is COMPLETED. 
+>- ### Installation and Initiallization is COMPLETED.
+>- https://github.com/Omkar-Khairnar/FitWell.git 
 
 
 
