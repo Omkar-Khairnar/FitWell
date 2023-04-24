@@ -50,6 +50,8 @@ MongoDB Database connected!
 
 6. Repeat setps 2 to 4 to Initiallize other 10 collections. 
 Make sure to select respective JSON file for each collection.
+
+Note : You can also Use online MongoDB Atlas, but make sure that value of mongoURI in ".env"  file should be according to that. 
 ```
 >- ### Installation and Initiallization is COMPLETED. 
 
