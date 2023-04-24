@@ -3,7 +3,10 @@
 
 ## Requirements
 ```
-MongoDB Compass and Node.JS environment sholud be Installed in your system.
+1. MongoDB Compass 
+2 .Node.JS environment 
+3. MongoDB Command Line Database Tools
+Sholud be Installed in your system.
 ```
 
 
