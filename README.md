@@ -40,7 +40,7 @@ mongoURI=mongodb://127.0.0.1:27017/Fitwell
 (let Desktop is Parent directory of DUMP folder then , select Desktop as current directory in Terminal)
 
 2. Run the following command in the terminal
->- ``` mongorestore  dumpFitwell/ ```
+>- ``` mongorestore dumpFitwell/ ```
 
 #
 >- ### Installation and Initiallization is COMPLETED.
