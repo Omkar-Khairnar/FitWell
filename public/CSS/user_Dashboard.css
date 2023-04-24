@@ -1206,8 +1206,9 @@ input[type="submit"]:hover {
 
 }
 .userimg img{
-  border-radius: 50%;
+  border-radius: 5px;
   height: 200px;
+  width: 200px;
 }
 .userimg{
   margin-right: 30px;
