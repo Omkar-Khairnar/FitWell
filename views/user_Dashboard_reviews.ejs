@@ -39,13 +39,11 @@
           <div class="container-review">
             <h1>Leave a Review</h1>
             <form id="review-form" method="post" action="/useractions/putreview">
-              <!-- <label for="name">Name:</label>
-              <input type="text" id="name" name="name" required> -->
               <label for="comment">Comment:</label>
-              <textarea id="comment" name="comment" rows="5" ></textarea>
+              <textarea id="comment" name="comment" rows="5" required ></textarea>
               
               <label for="rating">Rating:</label> 
-              <select id="rating" name="rating" >
+              <select id="rating" name="rating" required>
                 <option id="rating" value="">
                   Select
                 </option>
@@ -58,14 +56,9 @@
               <div class="review-submit">
               <input class="submit-review" type="submit" value="Submit">
               </div>
-              
             </form>
         </div>
-
-
       </div>
-
-
     </div>
   </div>
   <!-- partial -->

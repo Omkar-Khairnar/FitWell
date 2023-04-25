@@ -16,7 +16,6 @@
 </head>
 
 <body>
-  <!-- partial:index.partial.html -->
   <div class="dashboard">
     <%- include('user_dashboard_navbar.ejs'); %>
 
@@ -56,7 +55,7 @@
                     <td><%=products[i][0].category%></td>
                     <td>Rs<%=products[i][0].price%></td>
                   </tr>
-                <%}%>               
+                <%}%>
               </table>
             </div> 
 
@@ -84,7 +83,6 @@
                   <br /><br />
                 </tr>
                 <td>
-                  <!-- Button trigger modal -->
                   <button type="button" id="checkbut" class="btn btn-primary" data-toggle="modal"
                     data-target="#exampleModalCenter">Check Out</button>
                 </td>
@@ -97,9 +95,6 @@
         </div>
       </div>
   </div>
-
-
-
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"

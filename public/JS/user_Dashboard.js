@@ -45,6 +45,9 @@ $(document).ready(function () {
 // //   resultDiv.style.
 // }
 
+
+
+
 //Put a Review
 
 const form = document.getElementById('review-form');
@@ -52,8 +55,6 @@ const form = document.getElementById('review-form');
 const ratingInput = document.getElementById('rating');
 const commentInput = document.getElementById('comment');
 // const errorText = document.getElementsByClassName("error").innerText;
-
-
 form.addEventListener('submit', e => {
 
     const error = document.createElement('p');

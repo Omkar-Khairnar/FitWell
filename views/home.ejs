@@ -126,7 +126,7 @@
       </div>
     </div>
     <div class="card border-0 my-3" style="width: 20rem;">
-      <img src="./img/pic/pic-5.jpg" class="card-img-top" alt="...">
+      <img src="./img/services/service-8.jpg" class="card-img-top" alt="...">
       <div class="card-body bg-black">
         <span class="card-desc-1">STRENGTH</span> <br>  
         <span class="card-desc-2">Boxing</span>
@@ -147,11 +147,11 @@
     </div>
     <div class=" appoint-secondline"> 
               <div class="col-sm">
-                 <p id='my101' class="fs-2 text-light">0</p>
+                 <p id='my101' class="fs-2 text-light"><%= Numofusers %></p>
                  <p class="text-light">Total Members</p>
               </div>
               <div class="col-sm">
-                 <p id='my102' class="fs-2 text-light">0</p>
+                 <p id='my102' class="fs-2 text-light"><%= Numoftrainers %></p>
                  <p class="text-light">Total Collaborators</p>
                 </div>
     </div>
@@ -160,33 +160,8 @@
   <%- include('pricing',{loginStatus}); %>
   <%- include('footer'); %>
 
-      <script>
-      function animate(obj, initVal, lastVal, duration) {
-         let startTime = null;
-        let currentTime = Date.now();
-        const step = (currentTime ) => {
-       if (!startTime) {
-         startTime = currentTime ;
-      }
-      const progress = Math.min((currentTime - startTime)/ duration, 1);
-      obj.innerHTML = Math.floor(progress * (lastVal - initVal) + initVal);
-      if (progress < 1) {
-         window.requestAnimationFrame(step);
-      } else {
-            window.cancelAnimationFrame(window.requestAnimationFrame(step));
-         }
-      };
-        window.requestAnimationFrame(step);
-      }
-      let text1 = document.getElementById('my101');
-      let text2 = document.getElementById('my102');
-      const load = () => { 
-         animate(text1, 0, 1011, 7000);
-         animate(text2, 0, 45, 7000);
-      }
-   </script> 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/8f8e3c7113.js" crossorigin="anonymous"></script>
-  </body>
+ 
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/8f8e3c7113.js" crossorigin="anonymous"></script>
 </html>

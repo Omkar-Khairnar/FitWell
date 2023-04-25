@@ -161,6 +161,7 @@ router.post('/updateprofile', async(req, res)=>{
         const type=req.body.enrolltype;
         const userDetails=req.session.userDetails;
         if(!userDetails){
+            alert('Please SignIn First then Enroll Again.');
             return res.redirect('/signin');
         }
         else{

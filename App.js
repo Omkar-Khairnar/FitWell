@@ -20,7 +20,11 @@ const OrderSchema = require('./models/Order');
 const ContactFormSchema = require('./models/contactform');
 const PaymentSchema = require('./models/payments')
 
+
+
 require('dotenv').config();
+
+
 
 //Connection to MongoDB
 connectToMongo();
@@ -39,13 +43,17 @@ app.use(session({
     }
 }))
 
-app.get('/', (req, res) => {
+
+
+app.get('/', async(req, res) => {
     const userDetails = req.session.userDetails;
     var loginStatus = 1;
     if (!userDetails) {
         loginStatus = 0;
     }
-    res.render('home', { loginStatus })
+    const Numoftrainers=await TrainerSchema.count();
+    const Numofusers=await User.count();
+    res.render('home', { loginStatus ,Numoftrainers,Numofusers})
 })
 app.get('/footer', (req, res) => {
     res.render('footer')
@@ -70,65 +78,19 @@ app.get('/products', async (req, res) => {
     if (!userDetails) {
         loginStatus = 0;
     }
-
     res.render('products', { LatestCategory, NutrientsCategory, ProteinCategory, EnergyCategory, RecoveryCategory, loginStatus })
 })
 
-app.post('/productSearchResult',async(req, res)=>{
-    const filter = req.body.filter;
-    const search = req.body.search;
-    var searchResult;
-    var searchResultCount
-    
-    if(filter == 'pricelow' || filter == ""){
-        searchQuery = { name: { $regex: search, $options: 'i' } };
-         searchResult = await ProductSchema.find(searchQuery).sort({price:1});
-         searchResultCount = await ProductSchema.find(searchQuery).sort({price:1}).count();
-    }else if(filter == 'pricehigh'){
-        searchQuery = { name: { $regex: search, $options: 'i' } };
-         searchResult = await ProductSchema.find(searchQuery).sort({price:-1});
-         searchResultCount = await ProductSchema.find(searchQuery).sort({price:-1}).count();
-    }else if(filter == 'energy'){
-        searchQuery = { name: { $regex: search, $options: 'i' },category: 'Energy & Endurance' };
-         searchResult = await ProductSchema.find(searchQuery);
-         searchResultCount = await ProductSchema.find(searchQuery).count();
-    }else if(filter == 'nutrients'){
-        searchQuery = { name: { $regex: search, $options: 'i' },category: 'Nutrients' };
-         searchResult = await ProductSchema.find(searchQuery);
-         searchResultCount = await ProductSchema.find(searchQuery).count();
-    }else if(filter == 'repair'){
-        searchQuery = { name: { $regex: search, $options: 'i' },category: 'Recovery & Repair' };
-         searchResult = await ProductSchema.find(searchQuery);
-         searchResultCount = await ProductSchema.find(searchQuery).count();
-    }else{
-        searchQuery = { name: { $regex: search, $options: 'i' },category: 'Whey Proteins' };
-         searchResult = await ProductSchema.find(searchQuery);
-         searchResultCount = await ProductSchema.find(searchQuery).count();
-    }
-
-    const userDetails = req.session.userDetails;
-    var loginStatus = 1;
-    if (!userDetails) {
-        loginStatus = 0;
-    }
-    res.render('productSearch', { searchResult, searchResultCount, loginStatus, search, filter});
-    
-    
-});
 
 app.get('/signin', (req, res) => {
     res.render('signin', { error: 0 })
 })
-
-
 app.get('/signup', (req, res) => {
     res.render('signup')
 })
-
 app.get('/adminlogin', (req, res) => {
     res.render('adminlogin', { error: 0 })
 })
-
 app.get('/about', async (req, res) => {
     try {
         const userDetails = req.session.userDetails;
@@ -142,7 +104,6 @@ app.get('/about', async (req, res) => {
     catch (err) {
         console.log(err);
     }
-
 })
 app.get('/reviews', async (req, res) => {
     const userDetails = req.session.userDetails;
@@ -151,7 +112,7 @@ app.get('/reviews', async (req, res) => {
         loginStatus = 0;
     }
     try {
-        const reviews = await ReviewSchema.find();
+        const reviews = await ReviewSchema.find().sort({_id:-1}).limit(10);
         return res.render('reviews', { reviews, loginStatus })
     }
     catch (err) {
@@ -174,8 +135,6 @@ app.get('/services', (req, res) => {
     }
     res.render('services', { loginStatus })
 })
-
-
 app.get('/contact', (req, res) => {
     const userDetails = req.session.userDetails;
     var loginStatus = 1;
@@ -193,7 +152,7 @@ app.get('/user_Dashboard_home', async(req, res) => {
     const uID = new mongoose.Types.ObjectId(userid);
     const Numoforders=await OrderSchema.count({user:userid});
     const Numofreviews=await ReviewSchema.count({user:userid});
-    const revenue = await OrderSchema.aggregate([
+    const revenue = await PaymentSchema.aggregate([
         {
             $match: { user: uID }
         },
@@ -210,6 +169,7 @@ app.get('/user_Dashboard_home', async(req, res) => {
     }
     res.render('user_Dashboard_home', { userDetails,Numoforders,Numofreviews,totalamount })
 })
+
 app.get('/user_Dashboard_myorders', async (req, res) => {
     if (!req.session.userDetails) {
         return res.redirect('/signin')
@@ -287,7 +247,7 @@ app.get('/admin_dashboard_home', async(req, res) => {
         const Numoftrainers=await TrainerSchema.count();
         const Numofusers=await User.count();
         const Numoforders=await OrderSchema.count();
-        const revenue = await OrderSchema.aggregate([
+        const revenue = await PaymentSchema.aggregate([
             {
               $group: {
                 _id: null,
@@ -362,6 +322,7 @@ app.get('/userlogout', async (req, res) => {
     req.session.destroy();
     return res.redirect('/');
 })
+
 
 
 app.post('/signup', async (req, res) => {
@@ -450,12 +411,56 @@ app.post('/signin', async (req, res) => {
     }
 });
 
+app.post('/productSearchResult',async(req, res)=>{
+    const filter = req.body.filter;
+    const search = req.body.search;
+    var searchResult;
+    var searchResultCount
+    
+    if(filter == 'pricelow' || filter == ""){
+        searchQuery = { name: { $regex: search, $options: 'i' } };
+         searchResult = await ProductSchema.find(searchQuery).sort({price:1});
+         searchResultCount = await ProductSchema.find(searchQuery).sort({price:1}).count();
+    }else if(filter == 'pricehigh'){
+        searchQuery = { name: { $regex: search, $options: 'i' } };
+         searchResult = await ProductSchema.find(searchQuery).sort({price:-1});
+         searchResultCount = await ProductSchema.find(searchQuery).sort({price:-1}).count();
+    }else if(filter == 'energy'){
+        searchQuery = { name: { $regex: search, $options: 'i' },category: 'Energy & Endurance' };
+         searchResult = await ProductSchema.find(searchQuery);
+         searchResultCount = await ProductSchema.find(searchQuery).count();
+    }else if(filter == 'nutrients'){
+        searchQuery = { name: { $regex: search, $options: 'i' },category: 'Nutrients' };
+         searchResult = await ProductSchema.find(searchQuery);
+         searchResultCount = await ProductSchema.find(searchQuery).count();
+    }else if(filter == 'repair'){
+        searchQuery = { name: { $regex: search, $options: 'i' },category: 'Recovery & Repair' };
+         searchResult = await ProductSchema.find(searchQuery);
+         searchResultCount = await ProductSchema.find(searchQuery).count();
+    }else{
+        searchQuery = { name: { $regex: search, $options: 'i' },category: 'Whey Proteins' };
+         searchResult = await ProductSchema.find(searchQuery);
+         searchResultCount = await ProductSchema.find(searchQuery).count();
+    }
+
+    const userDetails = req.session.userDetails;
+    var loginStatus = 1;
+    if (!userDetails) {
+        loginStatus = 0;
+    }
+    res.render('productSearch', { searchResult, searchResultCount, loginStatus, search, filter});
+
+});
+
+
+
+
 app.use('/useractions', require('./routes/userActions'))
 app.use('/adminactions', require('./routes/adminActions'))
 app.use('/adminauth', require('./routes/adminAuth'))
 
 
 app.listen(PORT, () => {
-    console.log(`Example app listening at http://localhost:${PORT}`)
+    console.log(`Fitwell app listening at http://localhost:${PORT}`)
 })
 
