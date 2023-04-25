@@ -13,7 +13,7 @@ router.post('/adminlogin', async(req, res)=>{
     var password=req.body.password;
     let success=false;
 try{
-    console.log(email);
+    console.log(password);
     let admin=await Admin.findOne({email:email});
     if(!admin){
         res.render('adminlogin', {error: 1})

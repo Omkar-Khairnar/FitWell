@@ -141,7 +141,7 @@ router.post('/newWorkout', uploadsImages, (req, res) => {
             img0: {
                 data: fs.readFileSync(path.join(__dirname + '/../public/uploads/' + req.files[0].filename)),
                 contentType: 'image/png'
-            },
+            }, 
             img1: {
                 data: fs.readFileSync(path.join(__dirname + '/../public/uploads/' + req.files[1].filename)),
                 contentType: 'image/png'
