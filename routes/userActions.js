@@ -20,10 +20,10 @@ router.post('/contactus', async(req,res)=>{
         // const date=req.body.name; 
         const data=await ContactUs.create({
             name:name,
-            email:email,
+            email:email, 
             phone:phone,
             subject:subject,
-            message:message,
+            message:message, 
         })
         // const id=data.id;
             alert('Form Submitted Successfully!!');
@@ -35,7 +35,6 @@ router.post('/contactus', async(req,res)=>{
         console.log(err);
     }
 })
-
 
 //Submitting review. User Login required
 router.post('/putreview', async(req, res)=>{

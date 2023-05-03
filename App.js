@@ -19,6 +19,9 @@ const CartSchema = require('./models/Cart');
 const OrderSchema = require('./models/Order');
 const ContactFormSchema = require('./models/contactform');
 const PaymentSchema = require('./models/payments')
+
+
+
 require('dotenv').config();
 
 
@@ -69,7 +72,8 @@ app.get('/products', async (req, res) => {
     const NutrientsCategory = await ProductSchema.find({ category: 'Nutrients' }).limit(20);
     const ProteinCategory = await ProductSchema.find({ category: 'Whey Proteins' }).limit(20);
     const EnergyCategory = await ProductSchema.find({ category: 'Energy & Endurance' }).limit(15);
-    const RecoveryCategory = await ProductSchema.find({ category: 'Recovery & Repair' }).limit(13); const userDetails = req.session.userDetails;
+    const RecoveryCategory = await ProductSchema.find({ category: 'Recovery & Repair' }).limit(13); 
+    const userDetails = req.session.userDetails;
     var loginStatus = 1;
     if (!userDetails) {
         loginStatus = 0;
@@ -116,7 +120,7 @@ app.get('/reviews', async (req, res) => {
     }
 })
 app.get('/centres', (req, res) => {
-    const userDetails = req.session.userDetails;
+    const userDetails = req.session.userDetails; 
     var loginStatus = 1;
     if (!userDetails) {
         loginStatus = 0;
