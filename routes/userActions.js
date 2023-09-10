@@ -25,7 +25,6 @@ router.post('/contactus', async(req,res)=>{
             subject:subject,
             message:message, 
         })
-        // const id=data.id;
             alert('Form Submitted Successfully!!');
             return res.redirect('/contact');
         
@@ -86,18 +85,18 @@ router.post('/addtocart',async(req,res)=>{
         res.status(400).json({Error:err})
     }
 })
-router.post('/checkoutcart',async(req,res)=>{
+router.post('/checkoutcart',(req,res)=>{
     try{
         const userDetails=req.session.userDetails;
-        const userid=userDetails.id;
-        await CartSchema.deleteMany({user:userid})
+        const userid=userDetails.id;    
+         CartSchema.deleteMany({user:userid})
 
         //Here this products should enter into order schema.
         const address=req.body.address;
         const finalamount=req.body.finalamount;
         const products=req.session.products;
         products.forEach(async(item) => {
-            await OrderSchema.create({ 
+             OrderSchema.create({ 
                 user:userid,
                 name:item[0].name,
                 image:item[0].img,
@@ -107,7 +106,7 @@ router.post('/checkoutcart',async(req,res)=>{
             })
             // console.log("order with price added:" + item[0].price);
         });
-        await PaymentSchema.create({
+         PaymentSchema.create({
             user:userid,
             amount:finalamount,
         })
