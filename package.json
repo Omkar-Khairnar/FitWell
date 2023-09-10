@@ -1,7 +1,7 @@
 {
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon App.js"
+    "start": "nodemon App.js"
   },
   "dependencies": {
     "alert": "^5.1.4",

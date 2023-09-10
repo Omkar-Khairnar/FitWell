@@ -16,11 +16,13 @@ try{
     console.log(password);
     let admin=await Admin.findOne({email:email});
     if(!admin){
+        console.log("🚀 ~ file: adminAuth.js:19 ~ router.post ~ admin:", admin)
         res.render('adminlogin', {error: 1})
     }
     const comparePassword=await bcrypt.compare(password, admin.password);
 
     if(!comparePassword){
+        console.log("🚀 ~ file: adminAuth.js:25 ~ router.post ~ comparePassword:", comparePassword);
         res.render('adminlogin', {error: 1})      
     }
     const data={
@@ -37,6 +39,7 @@ try{
         email:admin.email,
     }
     req.cookies.adminDetails=adminDetails;
+    req.session.save();
     res.redirect('/admin_dashboard_home')
 }
 catch(err){
