@@ -13,18 +13,19 @@ router.post('/adminlogin', async(req, res)=>{
     var password=req.body.password;
     let success=false;
 try{
-    console.log(password);
+    // console.log(password);
     let admin=await Admin.findOne({email:email});
-    if(!admin){
-        res.render('adminlogin', {error: 1})
+    if(!admin){ 
+        return res.redirect('/adminlogin-error')      
     }
     const comparePassword=await bcrypt.compare(password, admin.password);
+    console.log(comparePassword);
 
     if(!comparePassword){
-        res.render('adminlogin', {error: 1})      
+        return res.redirect('/adminlogin-error')      
     }
     const data={
-        admin:{ 
+        admin:{  
             id:admin.id,
         }
     }
@@ -37,7 +38,7 @@ try{
         email:admin.email,
     }
     req.cookies.adminDetails=adminDetails;
-    res.redirect('/admin_dashboard_home')
+    return res.redirect('/admin_dashboard_home')
 }
 catch(err){
     console.log(err);
@@ -48,7 +49,7 @@ catch(err){
 //Route 2:Create Admin using Post
 router.post('/createadmin',async(req, res)=>{
     let success=false;
-    try{
+    try{ 
         let prevadmin=await Admin.findOne({email:req.body.email})
         if(prevadmin){
             alert('Email Id already Exists.');
@@ -79,4 +80,15 @@ router.post('/createadmin',async(req, res)=>{
     }
 })
 
+
+router.post('/adminlogout', async(req, res)=>{
+    try{
+        req.session.destroy();
+        return res.redirect('/');
+    }
+    catch(err){
+        res.status(500).json({Error:err});
+
+    }
+})
 module.exports=router

@@ -136,7 +136,7 @@ router.post('/newChallenge', upload.single('challengeImg'), (req, res) => {
 var uploadsImages = multer({ storage: storage }).array('workoutImg', 5);
 router.post('/newWorkout', uploadsImages, (req, res) => {
     var obj = {
-        description: req.body.WorkoutDescription,
+        description: req.body.WorkoutDescription, 
         img: {
             img0: {
                 data: fs.readFileSync(path.join(__dirname + '/../public/uploads/' + req.files[0].filename)),

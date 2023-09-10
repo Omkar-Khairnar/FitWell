@@ -25,12 +25,11 @@ const PaymentSchema = require('./models/payments')
 require('dotenv').config();
 
 
-
 //Connection to MongoDB
 connectToMongo();
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static('public'))
+app.use(express.static('public')) 
 app.use(express.json());
 app.use(cookieParser());
 app.use(session({
@@ -38,7 +37,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        // secure: true,
+        // secure: true, 
         maxAge: 86400000, //1 Day expiry
     }
 }))
@@ -91,6 +90,9 @@ app.get('/signup', (req, res) => {
 app.get('/adminlogin', (req, res) => {
     res.render('adminlogin', { error: 0 })
 })
+app.get('/adminlogin-error', (req, res) => {
+    res.render('adminlogin', { error: 1 })
+})
 app.get('/about', async (req, res) => {
     try {
         const userDetails = req.session.userDetails;
@@ -108,7 +110,7 @@ app.get('/about', async (req, res) => {
 app.get('/reviews', async (req, res) => {
     const userDetails = req.session.userDetails;
     var loginStatus = 1;
-    if (!userDetails) {
+    if (!userDetails) { 
         loginStatus = 0;
     }
     try {
@@ -390,7 +392,7 @@ app.post('/signin', async (req, res) => {
         }
         const userDetails = {
             id: user._id,
-            name: user.name,
+            name: user.name, 
             email: user.email,
             age: user.age,
             gender: user.gender,
