@@ -25,7 +25,6 @@ const PaymentSchema = require('./models/payments')
 require('dotenv').config();
 
 
-
 //Connection to MongoDB
 connectToMongo();
 app.set('view engine', 'ejs');
