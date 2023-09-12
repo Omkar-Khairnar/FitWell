@@ -8,11 +8,15 @@
   </head>
 
   <body>
-    <div class="container" onclick="onclick">
+    <div class="container" onclick="animation1()">
       <div class="top">
         <div class="bottom">
           <div class="form-container center sign-in-container">
-            <form name="logform" onsubmit="return validateAndSubmit()" method="POST">
+            <form
+              name="logform"
+              onsubmit="return validateAndSubmit()"
+              method="POST"
+            >
               <h1>LOGIN TO YOUR ACCOUNT</h1>
               <fieldset>
                 <% if(error==1){ %>
@@ -22,11 +26,25 @@
                 <% } %>
                 <br />
                 <span class="logemailver">Enter Valid Email Address.</span>
-                <input type="email" id="emaill" placeholder="Email" name="email" required />
-                <input type="password" id="passwordl" placeholder="Password" name="password" required />
+                <input
+                  type="email"
+                  id="emaill"
+                  placeholder="Email"
+                  name="email"
+                  required
+                />
+                <input
+                  type="password"
+                  id="passwordl"
+                  placeholder="Password"
+                  name="password"
+                  required
+                />
               </fieldset>
               <button id="signinbtn" type="submit">SIGN IN</button>
-              <a class="nevigate-to-signin-up" href="/signup">New User ? SIGN UP here..!</a>
+              <a class="nevigate-to-signin-up" href="/signup"
+                >New User ? SIGN UP here..!</a
+              >
             </form>
           </div>
         </div>
@@ -35,110 +53,76 @@
     <!-- <script src="script.js"></script> -->
     <script src="./JS/signup_signin.js"></script>
     <script>
+      function validateEmail(email) {
+        var regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return regEmail.test(email);
+      }
 
-function validateEmail(email) {
-  var regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  return regEmail.test(email);
-}
+      function validateEmailOnBlur() {
+        var email = document.getElementById("emaill").value;
 
-function validateEmailOnBlur() {
-  var email = document.getElementById('emaill').value;
+        if (!validateEmail(email)) {
+          document.querySelector(".logemailver").style.display = "block";
+        } else {
+          document.querySelector(".logemailver").style.display = "none";
+        }
+      }
 
-  if (!validateEmail(email)) {
-    document.querySelector('.logemailver').style.display = 'block';
-  } else {
-    document.querySelector('.logemailver').style.display = 'none';
-  }
-}
+      document
+        .getElementById("emaill")
+        .addEventListener("blur", validateEmailOnBlur);
 
-document.getElementById('emaill').addEventListener('blur', validateEmailOnBlur);
+      function showRegisterMessage() {
+        var email = document.getElementById("emaill").value;
 
-function showRegisterMessage() {
-  var email = document.getElementById('emaill').value;
+        if (!validateEmail(email)) {
+          document.querySelector(".registerMessage").style.display = "block";
+        } else {
+          document.querySelector(".registerMessage").style.display = "none";
+        }
+      }
 
-  if (!validateEmail(email)) {
-    document.querySelector('.registerMessage').style.display = 'block';
-  } else {
-    document.querySelector('.registerMessage').style.display = 'none';
-  }
-}
+      function validateAndSubmit() {
+        var email = document.getElementById("emaill").value;
 
-function validateAndSubmit() {
-  var email = document.getElementById('emaill').value;
+        if (!validateEmail(email)) {
+          document.querySelector(".logemailver").style.display = "block";
+          return false; // Prevent form submission
+        }
 
-  if (!validateEmail(email)) {
-    document.querySelector('.logemailver').style.display = 'block';
-    return false; // Prevent form submission
-  }
+        // If email is valid, you can proceed with AJAX submission
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/signin", true);
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
 
-  // If email is valid, you can proceed with AJAX submission
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/signin', true);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 400) {
+            // Handle success response (e.g., redirect to user dashboard)
+            window.location.href = "/user_Dashboard_home";
+          } else {
+            // Handle error response (e.g., display error message)
+            document.querySelector(".logcheck").textContent =
+              "Invalid email or password";
+          }
+        };
 
-  xhr.onload = function() {
-    if (xhr.status >= 200 && xhr.status < 400) {
-      // Handle success response (e.g., redirect to user dashboard)
-      window.location.href = '/user_Dashboard_home';
-    } else {
-      // Handle error response (e.g., display error message)
-      document.querySelector('.logcheck').textContent = 'Invalid email or password';
-    }
-  };
+        xhr.onerror = function () {
+          // Handle network error
+          console.error("Network error");
+        };
 
-  xhr.onerror = function() {
-    // Handle network error
-    console.error('Network error');
-  };
+        var formData =
+          "email=" +
+          encodeURIComponent(email) +
+          "&password=" +
+          encodeURIComponent(document.getElementById("passwordl").value);
+        xhr.send(formData);
 
-  var formData = 'email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(document.getElementById('passwordl').value);
-  xhr.send(formData);
-
-  return false; // Prevent form submission
-}
-</script>
-
-    <!-- <script>
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  const container = document.querySelector('.container');
-  const top = document.querySelector('.top');
-  const bottom = document.querySelector('.bottom');
-  const center = document.querySelector('.center');
-
-  container.addEventListener('mouseenter', function() {
-    top.style.transition = 'all 0.5s cubic-bezier(0.445, 0.05, 0, 1)';
-    bottom.style.transition = 'all 0.5s cubic-bezier(0.445, 0.05, 0, 1)';
-    top.style.transform = 'rotate(45deg)';
-    top.style.backgroundColor = '#000000';
-    top.style.opacity = '0.65';
-    bottom.style.transform = 'rotate(-45deg)';
-    bottom.style.backgroundColor = '#ff6f00';
-    bottom.style.opacity = '0.65';
-    
-    center.style.transition = 'opacity 0.2s';
-    center.style.opacity = '1';
-  });
-
-  container.addEventListener('mouseleave', function() {
-    top.style.transition = 'all 0.5s cubic-bezier(0.445, 0.05, 0, 1)';
-    bottom.style.transition = 'all 0.5s cubic-bezier(0.445, 0.05, 0, 1)';
-    top.style.transform = 'rotate(0deg)';
-    top.style.backgroundColor = '';
-    top.style.opacity = '';
-    bottom.style.transform = 'rotate(0deg)';
-    bottom.style.backgroundColor = '';
-    bottom.style.opacity = '';
-    
-    center.style.transition = 'opacity 0.2s';
-    center.style.opacity = '0';
-  });
-});
-
-
-
-    </script> -->
-
+        return false; // Prevent form submission
+      }
+    </script>
   </body>
-  </html>
+</html>
