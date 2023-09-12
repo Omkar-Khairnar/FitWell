@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <title>FitWell - SignUP</title>
   <link rel="stylesheet" href="./CSS/signup_signin.css" />
+  <!-- <link rel="stylesheet" href="./CSS/signIn_new.css" /> -->
+
 </head>
 <style>
   #signupbtn{
@@ -12,32 +14,37 @@
   }
 </style>
 <body>
-  <h1>CREATE ACCOUNT</h1>
-  <div class="container"> 
-    
-  </div> 
-  <div class="form-container sign-up-container">
-    <form name="regform" onchange="return Validation1()" method="POST" action="/signup">
-      <fieldset> 
-        <input type="text" id="namec" placeholder="Name" name="name" required />
-        <span class="regemailver">Enter Valid Email Address.</span>
-        <input type="text" id="emailc" placeholder="Email" name="email" required />
-        <span class="regpassver">Enter minimum eight characters, at least one Uppercase and one Lowercase letter, one
-          number and one special character:.</span>
-        <input type="password" id="passwordc" placeholder="Password" name="password" required />
-        <span class="regagever">Age should be between 15-100</span>
-        <input type="number" id="agec" placeholder="Age" name="age" required>
-      </fieldset>
-      <fieldset>
-        <input type="text" id="genderc" placeholder="Gender" name="gender" required>
-        <input type="text" id="weightc" placeholder="Weight" name="weight" required>
-        <input type="text" id="heightc" placeholder="Height(in cm)" name="height" required>
-        <input class="profile-img" type="url" id="image" name="image" placeholder="Enter Profile Image Url">
-      </fieldset>
-      <button id="signupbtn" type="submit">SIGN UP</button>
-      <a class="nevigate-to-signin-up" href="./signin">Already have Account ? Sign Here ...</a>
-    </form>
-  </div> 
+  
+  <div class="container" onclick="onclickFormAnimation">
+    <div class="top">
+      <div class="bottom">
+        <div class="form-container center sign-up-container">
+          <h1>CREATE ACCOUNT</h1>
+          <form name="regform" onchange="return Validation1()" method="POST" action="/signup">
+            <fieldset> 
+              <input type="text" id="namec" placeholder="Name" name="name" required />
+              <span class="regemailver">Enter Valid Email Address.</span>
+              <input type="text" id="emailc" placeholder="Email" name="email" required />
+              <span class="regpassver">Enter minimum eight characters, at least one Uppercase and one Lowercase letter, one
+                number and one special character:.</span>
+              <input type="password" id="passwordc" placeholder="Password" name="password" required />
+              <span class="regagever">Age should be between 15-100</span>
+              <input type="number" id="agec" placeholder="Age" name="age" required>
+            </fieldset>
+            <fieldset>
+              <input type="text" id="genderc" placeholder="Gender" name="gender" required>
+              <input type="text" id="weightc" placeholder="Weight" name="weight" required>
+              <input type="text" id="heightc" placeholder="Height(in cm)" name="height" required>
+              <input class="profile-img" type="url" id="image" name="image" placeholder="Enter Profile Image Url">
+            </fieldset>
+            <button id="signupbtn" type="submit">SIGN UP</button>
+            <a class="nevigate-to-signin-up" href="./signin">Already have Account ? Sign Here ...</a>
+          </form>
+        </div> 
+      </div>
+    </div>
+  </div>
+  
   <script src="./JS/signup_signin.js"></script>
 </body>
 

@@ -52,7 +52,7 @@ mongoURI=mongodb://127.0.0.1:27017/Fitwell
 
 1. Set the current directory as "Fitwell" Windows Termina/Powershell.
 2. Run the Command in the Terminal : 
-> - ``` npm run serve ```
+> - ``` npm start ```
 3. Wait for the below Message in terminal.
 ```
 Fitwell app listening at http://localhost:5000

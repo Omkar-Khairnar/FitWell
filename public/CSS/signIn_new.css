@@ -1,5 +1,21 @@
-/* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800'); */
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
+*,*:before,*:after{box-sizing:border-box}
+
+body{
+  width: 100%;
+  height: 640px;
+  margin: 0;
+  /* background-color: #fd5d00; */
+  color: #ffffff;
+  font-family: Tahoma;
+  font-size: 16px;
+
+
+  height:100%;
+  font-family: 'Raleway', sans-serif;
+  background-color: rgb(66, 29, 14);
+}
 button[type='submit'] {
   display: block;
   width: 60%;
@@ -9,18 +25,6 @@ button[type='submit'] {
   background-color: #ff7300;
   border-color: rgb(30, 173, 42);
   min-width: 300px;
-}
-
-body {
-  width: 100%;
-  height: 93vh;
-  margin: 0;
-  background-color: #fd5d00;
-  color: #000000;
-  font-family: Tahoma;
-  font-size: 16px;
-  background-image: radial-gradient(orangered,black) ;
-  /* background-image: linear-gradient(orangered,black); */
 }
 
 h1,
@@ -64,6 +68,8 @@ form {
   margin: 0 auto;
   padding-bottom: 10px;
 }
+
+
 .sign-up-container {
   overflow-y: auto;
   width: 50vw;
@@ -78,7 +84,7 @@ form {
 .sign-in-container {
   overflow-y: auto;
   width: 50vw;
-  height: 250px;
+  height: 400px;
   max-width: 550px;
   min-width: 400px;
   margin: 50px auto;
@@ -135,3 +141,73 @@ button:active {
   width: 100%;
   margin-left: 25%;
 }
+
+.container{
+  position:absolute;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  
+  &:hover,&:active{
+    .top, .bottom{
+      &:before, &:after{
+        margin-left: 275px;
+        transform-origin: -275px 50%;
+        transition-delay:0s;
+      }
+    }
+    
+    .center{
+      opacity:1;
+      transition-delay:0.2s;
+    }
+  }
+}
+
+.top, .bottom{
+  &:before, &:after{
+    content:'';
+    display:block;
+    position:absolute;
+    width:200vmax;
+    height:200vmax;
+    top:50%;left:50%;
+    margin-top:-100vmax;
+    transform-origin: 0 50%;
+    transition:all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+    z-index:10;
+    opacity:0.65;
+    transition-delay:0.2s;
+  }
+}
+
+.top{
+  &:before{transform:rotate(45deg);background:#000000;}
+  &:after{transform:rotate(135deg);background:#ff6f00;}
+}
+
+.bottom{
+  &:before{transform:rotate(-45deg);background:#ff6f00;}
+  &:after{transform:rotate(-135deg);background:#000000;}
+}
+
+.center{
+  position:absolute;
+  z-index: 100;
+  top:50%;left:45%;
+  margin-left:-198px;
+  margin-top:-200px;
+
+  opacity:0;
+  transition-delay:0s;
+  color:#fbeaea;
+  background-color: #ffffff;
+  
+  input{
+    border-radius:1px;
+    border:1px solid #ffffff;
+    font-family:inherit;
+  }
+}
+
+

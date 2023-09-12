@@ -370,49 +370,44 @@ app.post('/signin', async (req, res) => {
     var email = req.body.email;
     var password = req.body.password;
     let success = false;
+  
     try {
-        console.log(email);
-        let user = await User.findOne({ email: email });
-        if (!user) {
-            return res.render('signin', { error: 1 })
+      let user = await User.findOne({ email: email });
+  
+      if (!user || !(await bcrypt.compare(password, user.password))) {
+        res.status(400).send('Invalid email or password'); // Send error response
+        return res.redirect('/signin');
+      }
+  
+      const data = {
+        user: {
+          id: user.id,
         }
-        const comparePassword = await bcrypt.compare(password, user.password);
-
-        if (!comparePassword) {
-            return res.render('signin', { error: 1 })
-        }
-        const data = {
-            user: {
-                id: user.id,
-            }
-        }
-        var authtoken = await jwt.sign(data, process.env.JWT_SECRET);
-        if (authtoken) {
-            success = true;
-        }
-        const userDetails = {
-            id: user._id,
-            name: user.name, 
-            email: user.email,
-            age: user.age,
-            gender: user.gender,
-            weight: user.weight,
-            height: user.height,
-            image: user.image,
-            DateOfJoin: user.DateOfJoin,
-            expirydate:user.expirydate.toDateString(),
-        }
-        req.session.userDetails = userDetails;
-        req.session.save();
-        return res.redirect('/user_Dashboard_home')
+      }
+      var authtoken = jwt.sign(data, process.env.JWT_SECRET);
+  
+      const userDetails = {
+        id: user._id,
+        name: user.name, 
+        email: user.email,
+        age: user.age,
+        gender: user.gender,
+        weight: user.weight,
+        height: user.height,
+        image: user.image,
+        DateOfJoin: user.DateOfJoin,
+        expirydate: user.expirydate.toDateString(),
+      }
+  
+      req.session.userDetails = userDetails;
+      req.session.save();
+      return res.redirect('/signin'); // Send success response
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send('Internal server error'); // Send internal server error response
     }
-
-    catch (err) {
-        console.log(err);
-        res.status(400).json({ Error: err })
-    }
-});
-
+  });
+  
 app.post('/productSearchResult',async(req, res)=>{
     const filter = req.body.filter;
     const search = req.body.search;

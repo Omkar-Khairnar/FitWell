@@ -49,3 +49,36 @@ function Validation2(){
 		document.getElementsByClassName('logemailver')[0].style.display="none"
 	}
 }
+
+
+
+function animation1(){
+const element = document.querySelector('.container');
+element.addEventListener('mouseover', function() {
+  const topBottomElements = document.querySelectorAll('.top, .bottom');
+  const centerElement = document.querySelector('.center');
+
+  topBottomElements.forEach(el => {
+    el.style.transitionDelay = '0s';
+    el.style.transformOrigin = '-275px 50%';
+    el.style.marginLeft = '275px';
+  });
+
+  centerElement.style.opacity = '1';
+  centerElement.style.transitionDelay = '0.2s';
+});
+
+element.addEventListener('mouseout', function() {
+  const topBottomElements = document.querySelectorAll('.top, .bottom');
+  const centerElement = document.querySelector('.center');
+
+  topBottomElements.forEach(el => {
+    el.style.transitionDelay = '0.2s';
+    el.style.transformOrigin = '0 50%';
+    el.style.marginLeft = '0';
+  });
+
+  centerElement.style.opacity = '0';
+  centerElement.style.transitionDelay = '0s';
+});
+}
