@@ -64,7 +64,7 @@ MongoDB Database connected!
 
 ## Sample Admin/User Login
 > - Email : admin123@gmail.com
-> - Password : Admin@123 
+> - Password : admin 
  
 
 ## Contributors
